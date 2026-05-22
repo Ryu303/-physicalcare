@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom-First Clinical Chart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0B1120;
+            --bg-panel: #111827;
+            --border-color: #1F2937;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-base);
+            color: #E5E7EB;
+        }
+        
+        .chart-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-input {
+            background: #1F2937;
+            border: 1px solid #374151;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .search-input:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2), inset 0 2px 4px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .badge-tonic {
+            background: rgba(245, 158, 11, 0.2);
+            color: #FCD34D;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+        .badge-phasic {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93C5FD;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        [x-cloak] { display: none !important; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
+        ::-webkit-scrollbar-thumb { background: rgba(51, 65, 85, 0.8); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(71, 85, 105, 1); }
+
+        /* Pop-up animations */
+        .modal-enter { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal-enter-start { opacity: 0; transform: scale(0.95) translateY(10px); }
+        .modal-enter-end { opacity: 1; transform: scale(1) translateY(0); }
+        .modal-leave { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal-leave-start { opacity: 1; transform: scale(1) translateY(0); }
+        .modal-leave-end { opacity: 0; transform: scale(0.95) translateY(10px); }
+    </style>
+</head>
+<body class="min-h-screen pb-10">
+    <script src="manual_data.js"></script>
+
+    <div x-data="app()" class="max-w-[1400px] mx-auto px-4 py-8 relative">
+        
+        <!-- Universal Modal for Sections -->
+        <div x-show="activeSection" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" x-cloak>
+            <!-- Backdrop -->
+            <div x-show="activeSection" x-transition.opacity class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="closeSectionModal()"></div>
+            
+            <!-- Modal Content Panel -->
+            <div x-show="activeSection" 
+                 x-transition:enter="modal-enter" x-transition:enter-start="modal-enter-start" x-transition:enter-end="modal-enter-end"
+                 x-transition:leave="modal-leave" x-transition:leave-start="modal-leave-start" x-transition:leave-end="modal-leave-end"
+                 class="relative bg-[#0B1120] border border-gray-700 rounded-2xl w-full max-w-4xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+                
+                <template x-if="activeItem && activeSection">
+                    <div class="flex flex-col h-full">
+                        
+                        <!-- Header: Red Flag -->
+                        <template x-if="activeSection === 'redflag'">
+                            <div class="bg-red-950 border-b border-red-900 p-6 flex justify-between items-center sticky top-0 z-10">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-red-500/20 p-2 rounded-lg">
+                                        <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-red-500">Pathological Red Flag</h2>
+                                </div>
+                                <button @click="closeSectionModal()" class="text-red-400 hover:text-white transition-colors">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                            </div>
+                        </template>
+
+                        <!-- Header: Assessment -->
+                        <template x-if="activeSection === 'assessment'">
+                            <div class="bg-gray-800 border-b border-gray-700 p-6 flex justify-between items-center sticky top-0 z-10">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-emerald-500/20 p-2 rounded-lg border border-emerald-500/30">
+                                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-emerald-100">Assessment Protocol</h2>
+                                </div>
+                                <button @click="closeSectionModal()" class="text-gray-400 hover:text-white transition-colors">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                            </div>
+                        </template>
+
+                        <!-- Header: Muscles -->
+                        <template x-if="activeSection === 'muscles'">
+                            <div class="bg-gray-800 border-b border-gray-700 p-6 flex justify-between items-center sticky top-0 z-10">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-blue-500/20 p-2 rounded-lg border border-blue-500/30">
+                                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-blue-100">Involved Muscles & Janda</h2>
+                                </div>
+                                <button @click="closeSectionModal()" class="text-gray-400 hover:text-white transition-colors">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                            </div>
+                        </template>
+
+                        <!-- Header: Technique -->
+                        <template x-if="activeSection === 'technique'">
+                            <div class="bg-gray-800 border-b border-gray-700 p-6 flex justify-between items-center sticky top-0 z-10">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-teal-500/20 p-2 rounded-lg border border-teal-500/30">
+                                        <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path></svg>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-teal-100">Manual Technique</h2>
+                                </div>
+                                <button @click="closeSectionModal()" class="text-gray-400 hover:text-white transition-colors">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                            </div>
+                        </template>
+
+
+                        <!-- Modal Body (Scrollable Content) -->
+                        <div class="p-6 overflow-y-auto flex-1 custom-scrollbar">
+                            
+                            <!-- Body: Red Flag -->
+                            <template x-if="activeSection === 'redflag'">
+                                <div class="space-y-4">
+                                    <!-- Educational Banner -->
+                                    <div class="bg-red-500/10 border-l-4 border-red-500 p-4 rounded-r-lg">
+                                        <p class="text-red-300 text-sm font-medium">🚨 <strong>Red Flag란?</strong> 단순한 근육 불균형을 넘어 신경 압박, 인대 파열, 골절 등 병원 진료가 즉시 필요한 심각한 병리학적 상태를 의미합니다. 수기요법 전 반드시 확인하세요.</p>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="bg-red-900/20 p-6 rounded-xl border border-red-900/50">
+                                        <p class="text-red-200 text-lg font-medium leading-relaxed" x-text="activeItem.red_flag"></p>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Body: Assessment -->
+                            <template x-if="activeSection === 'assessment'">
+                                <div class="space-y-6">
+                                    <!-- Visual Guide -->
+                                    <template x-if="activeItem.image_url">
+                                        <div class="w-full h-48 md:h-64 rounded-xl overflow-hidden relative border border-gray-800 shadow-inner bg-[#0B1120]">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1120] to-transparent z-10"></div>
+                                            <img :src="activeItem.image_url" class="w-full h-full object-cover object-center opacity-70 mix-blend-screen" alt="Clinical Assessment Illustration">
+                                        </div>
+                                    </template>
+
+                                    <!-- Educational Banner -->
+                                    <div class="bg-emerald-500/10 border-l-4 border-emerald-500 p-4 rounded-r-lg">
+                                        <p class="text-emerald-300 text-sm font-medium">📋 <strong>평가 가이드:</strong> 근력검사(MMT) 시 '고정(Fixation)'이 풀리면 보상 작용이 일어나 정확한 검사가 불가능합니다. 항상 고정점을 최우선으로 확보하세요.</p>
+                                    </div>
+
+                                    <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 shadow-inner relative group">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-500 block">MRT Check (2-2-2 Rule)</span>
+                                            
+                                            <!-- Tooltip for 2-2-2 Rule -->
+                                            <div class="relative flex items-center cursor-help">
+                                                <svg class="w-4 h-4 text-gray-500 group-hover:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                <!-- Tooltip Content -->
+                                                <div class="absolute right-0 top-6 w-72 p-3 bg-gray-800 border border-gray-700 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-20">
+                                                    <p class="text-xs text-gray-300 leading-relaxed">
+                                                        <strong class="text-emerald-400 block mb-1">근육 반응 검사 (6초)</strong>
+                                                        • <span class="text-white">2초 수축:</span> 근육 동원 능력 파악<br>
+                                                        • <span class="text-white">2초 유지:</span> 신경계 약화 및 떨림 파악<br>
+                                                        • <span class="text-white">2초 이완:</span> 과긴장 및 스파즘 파악
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 text-base font-medium leading-relaxed" x-html="highlightMRT(activeItem.assessment.mrt)"></p>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <template x-for="mmt in activeItem.assessment.mmt_details" :key="mmt.muscle">
+                                            <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors shadow-inner">
+                                                <h4 class="text-lg text-gray-100 font-bold mb-4 border-b border-gray-800 pb-3 flex items-center gap-2">
+                                                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                                    <span x-text="mmt.muscle"></span> MMT
+                                                </h4>
+                                                <ul class="space-y-4 text-base text-gray-400">
+                                                    <li class="flex items-start gap-3"><span class="bg-blue-900/50 text-blue-400 px-2 py-0.5 rounded text-xs font-bold w-12 text-center shrink-0">자세</span> <span class="pt-0.5" x-text="mmt.position.replace('1. 자세: ', '')"></span></li>
+                                                    <li class="flex items-start gap-3"><span class="bg-indigo-900/50 text-indigo-400 px-2 py-0.5 rounded text-xs font-bold w-12 text-center shrink-0">고정</span> <span class="pt-0.5 text-indigo-200" x-text="mmt.fixation.replace('2. 고정: ', '')"></span></li>
+                                                    <li class="flex items-start gap-3"><span class="bg-pink-900/50 text-pink-400 px-2 py-0.5 rounded text-xs font-bold w-12 text-center shrink-0">검사</span> <span class="text-gray-200 font-medium pt-0.5" x-text="mmt.test.replace('3. 검사: ', '')"></span></li>
+                                                </ul>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Body: Muscles -->
+                            <template x-if="activeSection === 'muscles'">
+                                <div class="space-y-6">
+                                    <!-- Educational Banner -->
+                                    <div class="bg-blue-500/10 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                                        <p class="text-blue-300 text-sm font-medium mb-1">🧠 <strong>Janda의 근육 분류:</strong></p>
+                                        <ul class="text-blue-200/80 text-xs list-disc list-inside">
+                                            <li><strong class="text-yellow-500">Tonic (긴장성):</strong> 쉽게 단축되고 뭉치는 근육. 이완(Stretching/MET)이 우선입니다.</li>
+                                            <li><strong class="text-blue-400">Phasic (위상성):</strong> 쉽게 늘어지고 약해지는 근육. 활성화(Strengthening)가 필수입니다.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden shadow-inner">
+                                        <div class="divide-y divide-gray-800">
+                                            <template x-for="muscle in activeItem.involved_muscles" :key="muscle.name">
+                                                <div class="p-6 flex flex-col md:flex-row gap-6 hover:bg-gray-800/50 transition-colors">
+                                                    <div class="md:w-1/3 shrink-0">
+                                                        <h4 class="font-bold text-gray-100 text-lg mb-3" x-text="muscle.name"></h4>
+                                                        <span 
+                                                            class="text-xs font-bold px-3 py-1.5 rounded-md uppercase tracking-wider"
+                                                            :class="muscle.type.includes('Tonic') ? 'badge-tonic' : 'badge-phasic'"
+                                                            x-text="muscle.type">
+                                                        </span>
+                                                    </div>
+                                                    <div class="md:w-2/3">
+                                                        <div class="text-sm text-gray-400 font-mono space-y-3 bg-gray-950/50 p-5 rounded-lg border border-gray-800">
+                                                            <p class="flex"><span class="text-gray-500 font-bold w-10 shrink-0">Ori :</span> <span class="text-gray-300" x-text="muscle.origin"></span></p>
+                                                            <p class="flex"><span class="text-gray-500 font-bold w-10 shrink-0">Ins :</span> <span class="text-gray-300" x-text="muscle.insertion"></span></p>
+                                                            <p class="flex pt-2 border-t border-gray-800/50"><span class="text-blue-500/70 font-bold w-10 shrink-0">Act :</span> <span class="text-blue-100 font-medium" x-text="muscle.action"></span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Body: Technique -->
+                            <template x-if="activeSection === 'technique'">
+                                <div class="space-y-6">
+                                    <!-- Visual Guide -->
+                                    <template x-if="activeItem.image_url">
+                                        <div class="w-full h-48 md:h-64 rounded-xl overflow-hidden relative border border-gray-800 shadow-inner bg-[#0B1120]">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1120] to-transparent z-10"></div>
+                                            <img :src="activeItem.image_url" class="w-full h-full object-cover object-center opacity-70 mix-blend-screen" alt="Clinical Technique Illustration">
+                                        </div>
+                                    </template>
+
+                                    <!-- Educational Banner -->
+                                    <div class="bg-teal-500/10 border-l-4 border-teal-500 p-4 rounded-r-lg">
+                                        <p class="text-teal-300 text-sm font-medium mb-1">✋ <strong>수기요법 가이드:</strong></p>
+                                        <ul class="text-teal-200/80 text-xs list-disc list-inside">
+                                            <li><strong class="text-teal-400">MET (근에너지기법):</strong> 환자의 능동적 수축(20%의 힘)을 이용하여 골지건기관(GTO)을 자극해 근육을 리셋합니다.</li>
+                                            <li><strong class="text-green-400">PRT (자세이완기법):</strong> 근육을 억지로 누르지 않고, 가장 편안한 자세로 접어(Slacked) 통증 수용체의 민감도를 낮춥니다.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 space-y-6 shadow-inner">
+                                        <div class="flex flex-col gap-3">
+                                            <div>
+                                                <span class="inline-block bg-blue-900/50 text-blue-400 border border-blue-800 text-sm font-bold px-4 py-1.5 rounded mb-2">MET (Muscle Energy Technique)</span>
+                                            </div>
+                                            <p class="text-base text-gray-200 leading-relaxed bg-gray-950 p-5 rounded-lg border border-gray-800" x-html="highlightTechnique(activeItem.manual_technique.met)"></p>
+                                        </div>
+                                        
+                                        <div class="h-px w-full bg-gray-800"></div>
+
+                                        <div class="flex flex-col gap-3">
+                                            <div>
+                                                <span class="inline-block bg-green-900/50 text-green-400 border border-green-800 text-sm font-bold px-4 py-1.5 rounded mb-2">PRT (Positional Release Technique)</span>
+                                            </div>
+                                            <p class="text-base text-gray-200 leading-relaxed bg-gray-950 p-5 rounded-lg border border-gray-800" x-html="highlightTechnique(activeItem.manual_technique.prt)"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                        </div>
+
+                        <!-- Modal Footer -->
+                        <div class="p-4 border-t border-gray-800 flex justify-end bg-[#0B1120]">
+                            <button @click="closeSectionModal()" class="px-6 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors font-medium">닫기</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+
+        <!-- Header & Search -->
+        <header class="mb-10 text-center max-w-3xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3 flex items-center justify-center gap-3">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Symptom-First</span> Clinical Chart
+            </h1>
+            <p class="text-gray-400 mb-8">클라이언트의 통증 증상을 검색하여 즉각적인 진단 및 MMT/MET 로직을 확인하세요.</p>
+            
+            <div class="relative w-full max-w-2xl mx-auto">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                </div>
+                <input type="text" x-model="searchQuery" placeholder="호소 증상 입력 (예: 허리, 어깨, 무릎, 찌릿, 찝힘...)" 
+                    class="search-input w-full pl-12 pr-4 py-4 rounded-xl text-lg text-gray-100 placeholder-gray-500 transition-all">
+                <button x-show="searchQuery" @click="searchQuery = ''" class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-200">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Layout (Split Screen) -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+            
+            <!-- Sidebar: Symptom List -->
+            <div class="xl:col-span-4 flex flex-col gap-3 max-h-[850px] overflow-y-auto pr-2 custom-scrollbar">
+                <div class="flex items-center justify-between px-2 mb-2">
+                    <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Client Symptoms</span>
+                    <span class="bg-gray-800 text-gray-400 py-0.5 px-2 rounded text-xs font-mono" x-text="filteredData.length + ' Results'"></span>
+                </div>
+
+                <template x-if="filteredData.length === 0">
+                    <div class="chart-card p-6 rounded-xl text-center text-gray-500 border-dashed">
+                        일치하는 증상이 없습니다.
+                    </div>
+                </template>
+
+                <template x-for="(items, category) in groupedData" :key="category">
+                    <div class="mb-4" x-data="{ expanded: false }" x-effect="if(searchQuery !== '') expanded = true">
+                        <div @click="expanded = !expanded" class="sticky top-0 z-20 bg-[#0B1120]/95 backdrop-blur-sm py-3 px-2 mb-2 border-b border-gray-800 cursor-pointer hover:bg-gray-800/50 transition-colors flex items-center justify-between group">
+                            <h3 class="text-[13px] font-bold text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+                                <span x-text="category"></span>
+                                <span class="bg-gray-800 text-gray-400 py-0.5 px-2 rounded-full text-xs font-mono" x-text="items.length"></span>
+                            </h3>
+                            <svg class="w-5 h-5 text-gray-500 group-hover:text-emerald-400 transition-transform duration-300" :class="{'rotate-180': expanded}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div x-show="expanded" x-transition.opacity.duration.200ms class="flex flex-col gap-3">
+                            <template x-for="item in items" :key="item.symptom">
+                                <div 
+                                    @click="selectItem(item)"
+                                    :class="{'border-blue-500 bg-blue-900/10': activeItem === item, 'border-gray-800 bg-gray-900 hover:border-gray-700': activeItem !== item}"
+                                    class="chart-card rounded-xl p-5 cursor-pointer transition-all border-l-4 group">
+                                    <div class="flex items-start gap-3">
+                                        <div class="mt-1 shrink-0">
+                                            <svg class="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors" :class="{'text-blue-500': activeItem === item}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                                        </div>
+                                        <h3 class="font-medium text-gray-200 leading-snug group-hover:text-blue-200 transition-colors" x-text="`&quot;${item.symptom}&quot;`"></h3>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Main Panel: Interactive Menu Dashboard -->
+            <div class="xl:col-span-8">
+                <template x-if="activeItem">
+                    <div class="chart-card rounded-2xl overflow-hidden flex flex-col animate-fade-in">
+                        
+                        <!-- Header & Red Flag Button -->
+                        <div class="bg-gray-800 border-b border-gray-700 p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative overflow-hidden">
+                            <div class="z-10">
+                                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1">Diagnosis / Scenario</span>
+                                <h2 class="text-xl md:text-2xl font-bold text-white leading-tight" x-text="`&quot;${activeItem.symptom}&quot;`"></h2>
+                            </div>
+                            <button @click="openSectionModal('redflag')" class="z-10 shrink-0 flex items-center gap-2 bg-red-950/80 hover:bg-red-900 text-red-400 border border-red-900/80 px-4 py-2.5 rounded-lg transition-all font-bold text-sm shadow-lg shadow-red-900/20">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                병리학적 경고
+                            </button>
+                        </div>
+
+                        <!-- Clinical Insight Banner (New) -->
+                        <div class="bg-[#1e293b] border-b border-gray-700 p-5 flex items-start gap-4">
+                            <div class="text-2xl shrink-0 pt-0.5">💡</div>
+                            <p class="text-gray-300 text-sm leading-relaxed font-medium" x-html="activeItem.clinical_insight.replace('💡 임상 메커니즘: ', '<strong class=\'text-blue-400\'>[임상 메커니즘]</strong> ')"></p>
+                        </div>
+
+                        <!-- Dashboard Menus -->
+                        <div class="p-6 md:p-8 grid grid-cols-1 gap-5 bg-[#0B1120]">
+                            <p class="text-gray-500 text-sm mb-2 text-center font-medium">아래 카드를 클릭하여 <span class="text-blue-400">세부 평가 및 수기요법 가이드</span>를 팝업으로 확인하세요.</p>
+                            
+                            <!-- 1. Assessment Button -->
+                            <button @click="openSectionModal('assessment')" class="bg-gray-900 border border-gray-800 rounded-xl p-6 text-left hover:border-emerald-500/50 hover:bg-gray-800/80 transition-all group shadow-lg">
+                                <div class="flex items-center gap-5">
+                                    <div class="w-14 h-14 shrink-0 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all border border-emerald-500/20">
+                                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-gray-200 group-hover:text-emerald-300 transition-colors">Assessment Protocol (평가)</h3>
+                                        <p class="text-gray-500 text-sm mt-1.5">MRT 2-2-2 Rule 및 근육별 MMT (자세/고정/검사)</p>
+                                    </div>
+                                    <div class="text-gray-600 group-hover:text-emerald-400 transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- 2. Involved Muscles Button -->
+                            <button @click="openSectionModal('muscles')" class="bg-gray-900 border border-gray-800 rounded-xl p-6 text-left hover:border-blue-500/50 hover:bg-gray-800/80 transition-all group shadow-lg">
+                                <div class="flex items-center gap-5">
+                                    <div class="w-14 h-14 shrink-0 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-500/20 transition-all border border-blue-500/20">
+                                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-gray-200 group-hover:text-blue-300 transition-colors">Involved Muscles (기능해부학)</h3>
+                                        <p class="text-gray-500 text-sm mt-1.5">관여 근육별 O.I.A 및 Janda 이론 기반 분류 (Tonic/Phasic)</p>
+                                    </div>
+                                    <div class="text-gray-600 group-hover:text-blue-400 transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- 3. Manual Technique Button -->
+                            <button @click="openSectionModal('technique')" class="bg-gray-900 border border-gray-800 rounded-xl p-6 text-left hover:border-teal-500/50 hover:bg-gray-800/80 transition-all group shadow-lg">
+                                <div class="flex items-center gap-5">
+                                    <div class="w-14 h-14 shrink-0 rounded-full bg-teal-500/10 text-teal-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-teal-500/20 transition-all border border-teal-500/20">
+                                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path></svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-gray-200 group-hover:text-teal-300 transition-colors">Manual Technique (수기 요법)</h3>
+                                        <p class="text-gray-500 text-sm mt-1.5">MET (PIR/RI 적용) 및 PRT (Slacked position 유지 지침)</p>
+                                    </div>
+                                    <div class="text-gray-600 group-hover:text-teal-400 transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+                    </div>
+                </template>
+
+                <template x-if="!activeItem && filteredData.length > 0">
+                    <div class="h-full min-h-[600px] flex flex-col items-center justify-center chart-card rounded-xl">
+                        <svg class="w-20 h-20 text-gray-700 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <h2 class="text-2xl font-semibold text-gray-500 mb-3">증상을 선택해 주세요</h2>
+                        <p class="text-gray-600 text-center max-w-md">좌측 목록에서 클라이언트의 호소 증상을 선택하시면<br>해당 증상에 특화된 상세 프로토콜 대시보드가 나타납니다.</p>
+                    </div>
+                </template>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('app', () => ({
+                data: typeof manualData !== 'undefined' ? manualData : [],
+                searchQuery: '',
+                activeItem: null,
+                activeSection: null, // null, 'redflag', 'assessment', 'muscles', 'technique'
+
+                init() {},
+
+                get filteredData() {
+                    if (this.searchQuery.trim() === '') {
+                        return this.data;
+                    }
+                    const q = this.searchQuery.toLowerCase();
+                    return this.data.filter(item => {
+                        return item.symptom.toLowerCase().includes(q);
+                    });
+                },
+
+                get groupedData() {
+                    const groups = {};
+                    this.filteredData.forEach(item => {
+                        const cat = item.category || '미분류';
+                        if (!groups[cat]) groups[cat] = [];
+                        groups[cat].push(item);
+                    });
+                    return groups;
+                },
+
+                selectItem(item) {
+                    this.activeItem = null;
+                    this.activeSection = null; // Close any open modal when changing item
+                    document.body.style.overflow = 'auto';
+                    setTimeout(() => {
+                        this.activeItem = item;
+                    }, 50);
+                },
+
+                openSectionModal(sectionName) {
+                    this.activeSection = sectionName;
+                    document.body.style.overflow = 'hidden';
+                },
+
+                closeSectionModal() {
+                    this.activeSection = null;
+                    document.body.style.overflow = 'auto';
+                },
+
+                highlightMRT(text) {
+                    return text.replace(/2-2-2 Rule/g, '<strong class="text-emerald-400">2-2-2 Rule</strong>')
+                               .replace(/2초/g, '<span class="text-white font-bold">2초</span>');
+                },
+
+                highlightTechnique(text) {
+                    return text.replace(/20%/g, '<strong class="text-yellow-400">20%</strong>')
+                               .replace(/5~7초/g, '<strong class="text-yellow-400">5~7초</strong>')
+                               .replace(/10초/g, '<strong class="text-yellow-400">10초</strong>')
+                               .replace(/90초/g, '<strong class="text-yellow-400">90초</strong>')
+                               .replace(/PIR/g, '<strong class="text-blue-300">PIR</strong>')
+                               .replace(/RI/g, '<strong class="text-blue-300">RI</strong>')
+                               .replace(/Slacked/g, '<strong class="text-green-300">Slacked</strong>');
+                }
+            }))
+        })
+    </script>
+</body>
+</html>
