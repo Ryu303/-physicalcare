@@ -1,1406 +1,1886 @@
-const manualData = [
+const manualDataTree = [
   {
-    "symptom": "허리를 숙이거나 젖힐 때, 또는 기립 시 허리가 끊어질 듯 아프고 골반이 틀어진 느낌",
-    "image_url": "assets/images/lumbar.png",
-    "clinical_insight": "💡 임상 메커니즘: 장요근 단축이 골반 전방경사를 만들면, 요방형근(QL)이 과부하를 받아 척추 측만을 유발하는 하행성 연쇄의 전형입니다. 대둔근의 약화를 반드시 동반합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 고관절 굴곡/신전 시 2초 등척성 수축-2초 유지-2초 이완을 적용하여 통증 유발 및 신경계 스위칭 결함 확인",
-      "mmt_details": [
-        {
-          "muscle": "요방형근 (Quadratus Lumborum)",
-          "position": "1. 자세: Supine 자세에서 검사하는 쪽으로 양쪽 다리를 끌어다 놓는다.",
-          "fixation": "2. 고정: 피검사자가 검사대의 양 옆을 손으로 붙잡도록 한다.",
-          "test": "3. 검사: 검사자는 발목 부위에 접촉하여 양쪽 발목을 가운데로 잡아당기며 저항을 준다."
-        },
-        {
-          "muscle": "대둔근 (Gluteus Maximus)",
-          "position": "1. 자세: Prone 자세에서 고관절 신전 + 슬관절 굴곡을 유지한다.",
-          "fixation": "2. 고정: 반대쪽 골반을 강하게 고정한다.",
-          "test": "3. 검사: 한 손을 대퇴부 후면에 접촉하여 하방으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
+    "id": "part_knee_ankle",
+    "title": "🦵 무릎/발목 (Knee & Ankle)",
+    "type": "body_part",
+    "children": [
       {
-        "name": "요방형근 (Quadratus Lumborum)",
-        "origin": "Post. iliac crest, iliolumbar ligament",
-        "insertion": "12th rib, transverse process of L1~L4",
-        "action": "Lateral flexion, extension (vertebral column)",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_knee_outer",
+        "title": "보행 시 무릎 바깥쪽 통증 및 짝다리",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_itb_pelvis",
+            "title": "원인 A: 골반 기인 (장경인대 마찰 증후군)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_itb_glute",
+                "title": "중둔근 약화 및 TFL 과활성화",
+                "type": "sub_class",
+                "clinical_insight": "고관절 외전근(중둔근)이 약해져 보행 시 골반이 무너지며, 이를 보상하기 위해 대퇴근막장근(TFL)이 무릎 바깥쪽 인대(ITB)를 마찰시키는 현상입니다.",
+                "postural_pattern": "Sway Back (골반 전방이동) / 편측 짝다리 체형",
+                "teaching_cues": {
+                  "analogy": "회원님, 골반이 건물의 주춧돌인데 한쪽으로 무너져버리면 기둥(허벅지뼈)이 바깥으로 휘면서 무릎 바깥쪽 밧줄(인대)이 자꾸 뼈에 긁히게 되는 원리예요.",
+                  "movement_cue": "조개껍질을 열듯이 무릎을 벌리되, 골반은 벽에 붙인 것처럼 절대 뒤로 넘어가지 않게 코어를 꽉 잡아보세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "TFL 및 외측광근 폼롤링 (무릎 바깥쪽 텐션 해소)",
+                  "step2_activation": "사이드 라이잉 클램쉘 (Side-lying Clam shell) - 중둔근 후방 섬유 타겟",
+                  "step3_integration": "싱글 레그 데드리프트 (Single-leg Deadlift) - 보행 시 골반 수평 유지 훈련"
+                },
+                "contraindications": [
+                  "무릎이 안으로 모이는(Valgus) 중량 스쿼트",
+                  "과도한 경사도(Incline)의 러닝머신 걷기",
+                  "다리 꼬고 앉는 생활 습관"
+                ],
+                "assessment": {
+                  "mrt": "[고관절 외전 저항 평가] 회원을 옆으로 눕히고(측와위) 위쪽 다리를 약간 뒤로 빼서(신전) 들어 올리게 합니다. 트레이너가 발목 부위에서 아래쪽으로 누를 때, 회원이 버티는 과정에서 중둔근의 근력 약화나 골반이 뒤로 휙 넘어가는 보상작용이 발생하는지 관찰합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "중둔근",
+                      "position": "회원은 측와위(옆으로 누운 자세)로 눕고, 아래쪽 다리는 무릎을 굽혀 안정성을 확보한 뒤 위쪽 다리를 30도 외전 및 약간 신전시킵니다.",
+                      "fixation": "트레이너는 한 손으로 회원의 장골능(Iliac crest)을 강하게 압박하여 골반이 흔들리지 않게 고정합니다.",
+                      "test": "트레이너의 다른 손으로 회원의 발목 바로 위를 잡고 바닥을 향해(내전 방향) 점진적으로 강한 힘을 가하여 저항을 버티는지 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "중둔근 (Gluteus Medius)",
+                    "origin": "Outer surface of ilium",
+                    "insertion": "Greater trochanter",
+                    "action": "Hip Abduction, Stabilization",
+                    "type": "Phasic (강화)"
+                  },
+                  {
+                    "name": "대퇴근막장근 (TFL)",
+                    "origin": "ASIS",
+                    "insertion": "Iliotibial tract",
+                    "action": "Hip Flexion, Abduction, Internal Rotation",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "TFL PIR: [자세] 회원은 앙와위(바로 누운 자세)로 눕고, 트레이너는 베드 옆에 섭니다. [기법] 검사할 다리를 베드 바깥으로 빼서 살짝 아래로 늘어뜨린 후, 회원에게 '다리를 안쪽 위로(굴곡/내전) 20%의 힘으로 올리세요'라고 지시합니다. 트레이너는 7초간 등척성 저항을 준 뒤, '힘 빼세요'라는 지시와 함께 다리를 바닥 쪽으로 더 깊게 눌러 TFL 근막을 길게 이완시킵니다.",
+                  "prt": "TFL PRT: [자세] 회원을 앙와위로 눕힙니다. [기법] 트레이너는 골반 앞쪽 뼈(ASIS) 바로 아래 TFL 근복부의 압통점(Tender point)을 엄지로 지그시 누릅니다. 그 상태에서 회원의 무릎을 굽히고 다리를 바깥쪽(외전) 및 안쪽으로 회전(내회전)시켜, 엄지에 느껴지는 근육의 팽팽함이 가장 흐물흐물해지는(Slacked) 각도를 찾아 90초간 완벽히 유지한 후 천천히 원래 자세로 돌아옵니다."
+                },
+                "red_flag": "보행 시 무릎이 덜컥거리며 빠질 것 같은 느낌 시 십자인대 손상 의심 병원 진료 권장.",
+                "image_url": "assets/images/leg.png"
+              },
+              {
+                "id": "sub_itb_glute",
+                "title": "중둔근 약화 및 TFL 과활성화",
+                "type": "sub_class",
+                "clinical_insight": "고관절 외전근(중둔근)이 약해져 보행 시 골반이 무너지며, 이를 보상하기 위해 대퇴근막장근(TFL)이 무릎 바깥쪽 인대(ITB)를 마찰시키는 현상입니다.",
+                "postural_pattern": "Sway Back (골반 전방이동) / 편측 짝다리 체형",
+                "teaching_cues": {
+                  "analogy": "회원님, 골반이 건물의 주춧돌인데 한쪽으로 무너져버리면 기둥(허벅지뼈)이 바깥으로 휘면서 무릎 바깥쪽 밧줄(인대)이 자꾸 뼈에 긁히게 되는 원리예요.",
+                  "movement_cue": "조개껍질을 열듯이 무릎을 벌리되, 골반은 벽에 붙인 것처럼 절대 뒤로 넘어가지 않게 코어를 꽉 잡아보세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "TFL 및 외측광근 폼롤링 (무릎 바깥쪽 텐션 해소)",
+                  "step2_activation": "사이드 라이잉 클램쉘 (Side-lying Clam shell) - 중둔근 후방 섬유 타겟",
+                  "step3_integration": "싱글 레그 데드리프트 (Single-leg Deadlift) - 보행 시 골반 수평 유지 훈련"
+                },
+                "contraindications": [
+                  "무릎이 안으로 모이는(Valgus) 중량 스쿼트",
+                  "과도한 경사도(Incline)의 러닝머신 걷기",
+                  "다리 꼬고 앉는 생활 습관"
+                ],
+                "assessment": {
+                  "mrt": "[고관절 외전 저항 평가] 회원을 옆으로 눕히고(측와위) 위쪽 다리를 약간 뒤로 빼서(신전) 들어 올리게 합니다. 트레이너가 발목 부위에서 아래쪽으로 누를 때, 회원이 버티는 과정에서 중둔근의 근력 약화나 골반이 뒤로 휙 넘어가는 보상작용이 발생하는지 관찰합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "중둔근",
+                      "position": "회원은 측와위(옆으로 누운 자세)로 눕고, 아래쪽 다리는 무릎을 굽혀 안정성을 확보한 뒤 위쪽 다리를 30도 외전 및 약간 신전시킵니다.",
+                      "fixation": "트레이너는 한 손으로 회원의 장골능(Iliac crest)을 강하게 압박하여 골반이 흔들리지 않게 고정합니다.",
+                      "test": "트레이너의 다른 손으로 회원의 발목 바로 위를 잡고 바닥을 향해(내전 방향) 점진적으로 강한 힘을 가하여 저항을 버티는지 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "중둔근 (Gluteus Medius)",
+                    "origin": "Outer surface of ilium",
+                    "insertion": "Greater trochanter",
+                    "action": "Hip Abduction, Stabilization",
+                    "type": "Phasic (강화)"
+                  },
+                  {
+                    "name": "대퇴근막장근 (TFL)",
+                    "origin": "ASIS",
+                    "insertion": "Iliotibial tract",
+                    "action": "Hip Flexion, Abduction, Internal Rotation",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "TFL PIR: [자세] 회원은 앙와위(바로 누운 자세)로 눕고, 트레이너는 베드 옆에 섭니다. [기법] 검사할 다리를 베드 바깥으로 빼서 살짝 아래로 늘어뜨린 후, 회원에게 '다리를 안쪽 위로(굴곡/내전) 20%의 힘으로 올리세요'라고 지시합니다. 트레이너는 7초간 등척성 저항을 준 뒤, '힘 빼세요'라는 지시와 함께 다리를 바닥 쪽으로 더 깊게 눌러 TFL 근막을 길게 이완시킵니다.",
+                  "prt": "TFL PRT: [자세] 회원을 앙와위로 눕힙니다. [기법] 트레이너는 골반 앞쪽 뼈(ASIS) 바로 아래 TFL 근복부의 압통점(Tender point)을 엄지로 지그시 누릅니다. 그 상태에서 회원의 무릎을 굽히고 다리를 바깥쪽(외전) 및 안쪽으로 회전(내회전)시켜, 엄지에 느껴지는 근육의 팽팽함이 가장 흐물흐물해지는(Slacked) 각도를 찾아 90초간 완벽히 유지한 후 천천히 원래 자세로 돌아옵니다."
+                },
+                "red_flag": "보행 시 무릎이 덜컥거리며 빠질 것 같은 느낌 시 십자인대 손상 의심 병원 진료 권장.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_knee_lumbar",
+            "title": "원인 B: 요추 기인 (신경 방사통)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_l4l5_disc",
+                "title": "L4-L5 신경근 압박성 통증",
+                "type": "sub_class",
+                "clinical_insight": "무릎 자체 문제가 없는데 무릎 외측부터 정강이까지 저린다면 요추 신경 압박에 의한 가짜 무릎 통증일 확률이 높습니다.",
+                "postural_pattern": "Flat Back (일자 허리) / 요추 전만 소실",
+                "teaching_cues": {
+                  "analogy": "전선(신경)이 허리에서 눌려 있는데, 스피커(무릎)에서 잡음이 나는 것과 같아요. 스피커를 고칠 게 아니라 허리 쪽 전선을 펴줘야 합니다.",
+                  "movement_cue": "허리가 바닥에 완전히 눌리지 않게, 손바닥 하나 들어갈 정도의 아치를 유지하며 호흡해보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "맥켄지 신전 운동 (Mckenzie Extension) - 요추 전만 회복",
+                  "step2_activation": "버드독 (Bird-Dog) - 요부 다열근 및 코어 안정성 확보",
+                  "step3_integration": "힙 힌지 (Hip Hinge) 인지 훈련 - 허리 대신 고관절 쓰기"
+                },
+                "contraindications": [
+                  "허리를 둥글게 마는 윗몸일으키기(Sit-up)",
+                  "데드리프트 및 바벨 로우 (요추 압력 급증)",
+                  "다리를 뻗고 앉아 허리 숙이기 (Toe touch 스트레칭)"
+                ],
+                "assessment": {
+                  "mrt": "[하지직거상(SLR) 및 발목 근력 평가] 앙와위에서 다리를 편 채로 들어 올려 30~70도 사이에서 무릎 바깥쪽이나 허리에 찌릿한 방사통이 재현되는지 확인하고, 추가로 L4 신경 지배를 받는 발목 배측굴곡 근력을 면밀히 체크합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "전경골근",
+                      "position": "회원은 앙와위 또는 앉은 자세에서 발목을 몸 쪽으로 최대한 젖히고(배측굴곡) 발바닥을 안으로 돌립니다(내번).",
+                      "fixation": "트레이너는 한 손으로 회원의 종아리 하단(하퇴부)을 흔들리지 않게 꽉 잡아 고정합니다.",
+                      "test": "다른 손으로 회원의 발등을 감싸 쥐고 발바닥 쪽(저측굴곡) 및 바깥쪽(외번)으로 강하게 밀어내어 발목이 버티지 못하고 툭 떨어지는지(Foot drop 징후) 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "요부 다열근 (Lumbar Multifidus)",
+                    "origin": "Sacrum, PSIS",
+                    "insertion": "Spinous processes (spanning 2-4 vertebrae)",
+                    "action": "Spinal stabilization, Extension",
+                    "type": "Phasic (강화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "[요추 이완기법] 회원은 앙와위로 눕고 양 무릎을 세웁니다. 트레이너는 회원의 발치에 서서 양손으로 회원의 종아리를 감싸 쥐고, 체중을 뒤로 실어 회원의 골반과 요추 부위가 아래쪽으로 부드럽게 당겨지도록(Traction) 30초 이상 지속적인 텐션을 제공하여 요추부 압력을 줄여줍니다.",
+                  "prt": "장요근 PRT: 앙와위 자세에서 회원의 양 무릎을 굽혀 세웁니다. 배꼽과 ASIS를 잇는 선 중간 깊숙한 곳의 장요근 텐션 부위를 손끝으로 컨택한 후, 회원의 무릎을 가슴 쪽으로 깊게 굽혀(고관절 심굴곡) 복부의 텐션을 완전히 없앤 상태로 90초간 대기합니다."
+                },
+                "red_flag": "발목을 스스로 젖히지 못하는 Foot Drop 발생 시 즉각적인 병원 정밀검사 안내.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "대둔근 (Gluteus Maximus)",
-        "origin": "Posterior surface of ilium, sacrum, coccyx",
-        "insertion": "Gluteal tuberosity of femur, Iliotibial tract",
-        "action": "Extension, External rotation (hip)",
-        "type": "Phasic (강화 대상)"
+        "id": "sym_knee_front",
+        "title": "계단 오르내릴 때 무릎 앞쪽(슬개골) 시큰거림",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_pfps_quads",
+            "title": "원인 A: 대퇴부 기인 (슬개대퇴통증증후군)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_quad_dominant",
+                "title": "대퇴사두근 우세 및 햄스트링 약화",
+                "type": "sub_class",
+                "clinical_insight": "허벅지 앞쪽(대퇴사두근)이 뒤쪽(햄스트링)보다 비정상적으로 팽팽해져, 슬개골을 위로 강하게 잡아당겨 무릎 굽힘 시 관절면이 강하게 마찰됩니다.",
+                "postural_pattern": "Quad Dominant (허벅지 앞쪽 우세 체형) / 골반 전방경사",
+                "teaching_cues": {
+                  "analogy": "앞쪽 밧줄(앞허벅지)이 너무 질겨져서 무릎 뚜껑 뼈를 위로 꽉 잡아당기니까, 굽힐 때마다 뼈끼리 사포처럼 긁히는 상태입니다.",
+                  "movement_cue": "무릎을 앞으로 밀어내며 앉지 말고, 엉덩이로 뒤에 있는 투명 의자를 찾는 느낌으로 먼저 빠져보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "허벅지 전면부(대퇴직근) 폼롤링 및 장요근 스트레칭",
+                  "step2_activation": "스위스볼 햄스트링 컬 (Swiss Ball Hamstring Curl) - 후면 사슬 활성화",
+                  "step3_integration": "바벨 힙 스러스트 (Hip Thrust) - 엉덩이/햄스트링 우세 패턴 재교육"
+                },
+                "contraindications": [
+                  "레그 익스텐션 머신 (슬개골 압박 최대로 증가)",
+                  "무릎이 발끝을 과도하게 넘어가는 프론트 런지",
+                  "내리막길 뛰기"
+                ],
+                "assessment": {
+                  "mrt": "[토마스 변형 평가] 테이블 끝에 걸터앉아 한쪽 무릎을 가슴으로 안고 뒤로 눕습니다. 허공에 떠 있는 반대쪽 다리의 무릎이 90도 이상 굽혀지지 않고 앞을 향해 뻗어져 있다면 대퇴직근의 심각한 과긴장으로 판단합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "대퇴직근",
+                      "position": "회원은 베드 끝에 앉아 종아리가 아래로 늘어지게 한 후, 무릎을 완전히 폅니다(슬관절 신전).",
+                      "fixation": "트레이너는 한 손으로 회원의 허벅지 위쪽을 눌러 몸통이 들썩이지 않게 고정합니다.",
+                      "test": "트레이너의 다른 손으로 회원의 발목 앞쪽을 잡고, 무릎을 굽히는(굴곡) 방향으로 서서히 강한 체중을 실어 누릅니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "대퇴직근 (Rectus Femoris)",
+                    "origin": "AIIS",
+                    "insertion": "Tibial tuberosity via Patellar tendon",
+                    "action": "Hip Flexion, Knee Extension",
+                    "type": "Tonic (이완)"
+                  },
+                  {
+                    "name": "햄스트링 (Hamstrings)",
+                    "origin": "Ischial tuberosity",
+                    "insertion": "Tibia and Fibula",
+                    "action": "Hip Extension, Knee Flexion",
+                    "type": "Phasic (강화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "대퇴직근 PIR: 회원을 엎드리게(복와위) 하고 무릎을 엉덩이 쪽으로 굽힙니다. 한계점에 도달하면 회원에게 무릎을 펴려는 힘(20%)을 쓰게 하고 트레이너는 7초간 그 힘을 못 움직이게 막습니다. 이후 회원이 힘을 빼면 트레이너가 발뒤꿈치를 엉덩이 쪽으로 부드럽게 더 밀어 넣어 허벅지 앞면을 늘려줍니다.",
+                  "prt": "대퇴직근 PRT: 앙와위 자세에서 대퇴직근 중앙부의 가장 단단한 띠(Taut band)를 핀치 그립으로 잡습니다. 그 상태에서 트레이너의 무릎으로 회원의 다리를 받치며 고관절을 굴곡시키고 무릎을 완전히 펴서 허벅지 앞면 근육이 가장 느슨해지는 포지션을 찾아 90초 유지합니다."
+                },
+                "red_flag": "슬개골 부종 및 열감 발생 시 급성 염증 의심.",
+                "image_url": "assets/images/leg.png"
+              },
+              {
+                "id": "sub_quad_dominant",
+                "title": "대퇴사두근 우세 및 햄스트링 약화",
+                "type": "sub_class",
+                "clinical_insight": "허벅지 앞쪽(대퇴사두근)이 뒤쪽(햄스트링)보다 비정상적으로 팽팽해져, 슬개골을 위로 강하게 잡아당겨 무릎 굽힘 시 관절면이 강하게 마찰됩니다.",
+                "postural_pattern": "Quad Dominant (허벅지 앞쪽 우세 체형) / 골반 전방경사",
+                "teaching_cues": {
+                  "analogy": "앞쪽 밧줄(앞허벅지)이 너무 질겨져서 무릎 뚜껑 뼈를 위로 꽉 잡아당기니까, 굽힐 때마다 뼈끼리 사포처럼 긁히는 상태입니다.",
+                  "movement_cue": "무릎을 앞으로 밀어내며 앉지 말고, 엉덩이로 뒤에 있는 투명 의자를 찾는 느낌으로 먼저 빠져보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "허벅지 전면부(대퇴직근) 폼롤링 및 장요근 스트레칭",
+                  "step2_activation": "스위스볼 햄스트링 컬 (Swiss Ball Hamstring Curl) - 후면 사슬 활성화",
+                  "step3_integration": "바벨 힙 스러스트 (Hip Thrust) - 엉덩이/햄스트링 우세 패턴 재교육"
+                },
+                "contraindications": [
+                  "레그 익스텐션 머신 (슬개골 압박 최대로 증가)",
+                  "무릎이 발끝을 과도하게 넘어가는 프론트 런지",
+                  "내리막길 뛰기"
+                ],
+                "assessment": {
+                  "mrt": "[토마스 변형 평가] 테이블 끝에 걸터앉아 한쪽 무릎을 가슴으로 안고 뒤로 눕습니다. 허공에 떠 있는 반대쪽 다리의 무릎이 90도 이상 굽혀지지 않고 앞을 향해 뻗어져 있다면 대퇴직근의 심각한 과긴장으로 판단합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "대퇴직근",
+                      "position": "회원은 베드 끝에 앉아 종아리가 아래로 늘어지게 한 후, 무릎을 완전히 폅니다(슬관절 신전).",
+                      "fixation": "트레이너는 한 손으로 회원의 허벅지 위쪽을 눌러 몸통이 들썩이지 않게 고정합니다.",
+                      "test": "트레이너의 다른 손으로 회원의 발목 앞쪽을 잡고, 무릎을 굽히는(굴곡) 방향으로 서서히 강한 체중을 실어 누릅니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "대퇴직근 (Rectus Femoris)",
+                    "origin": "AIIS",
+                    "insertion": "Tibial tuberosity via Patellar tendon",
+                    "action": "Hip Flexion, Knee Extension",
+                    "type": "Tonic (이완)"
+                  },
+                  {
+                    "name": "햄스트링 (Hamstrings)",
+                    "origin": "Ischial tuberosity",
+                    "insertion": "Tibia and Fibula",
+                    "action": "Hip Extension, Knee Flexion",
+                    "type": "Phasic (강화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "대퇴직근 PIR: 회원을 엎드리게(복와위) 하고 무릎을 엉덩이 쪽으로 굽힙니다. 한계점에 도달하면 회원에게 무릎을 펴려는 힘(20%)을 쓰게 하고 트레이너는 7초간 그 힘을 못 움직이게 막습니다. 이후 회원이 힘을 빼면 트레이너가 발뒤꿈치를 엉덩이 쪽으로 부드럽게 더 밀어 넣어 허벅지 앞면을 늘려줍니다.",
+                  "prt": "대퇴직근 PRT: 앙와위 자세에서 대퇴직근 중앙부의 가장 단단한 띠(Taut band)를 핀치 그립으로 잡습니다. 그 상태에서 트레이너의 무릎으로 회원의 다리를 받치며 고관절을 굴곡시키고 무릎을 완전히 펴서 허벅지 앞면 근육이 가장 느슨해지는 포지션을 찾아 90초 유지합니다."
+                },
+                "red_flag": "슬개골 부종 및 열감 발생 시 급성 염증 의심.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_knee_ankle_limit",
+            "title": "원인 B: 발목 기인 (보상작용)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_dorsiflexion_limit",
+                "title": "발목 배측굴곡 제한",
+                "type": "sub_class",
+                "clinical_insight": "종아리 근육 단축으로 발목이 위로 잘 꺾이지 않으면, 스쿼트나 계단을 오를 때 무릎이 과도하게 앞으로 밀려 슬개골에 체중 부하가 집중됩니다.",
+                "postural_pattern": "O/X다리 동반 발목 뻣뻣함 / 과도한 종아리 긴장형",
+                "teaching_cues": {
+                  "analogy": "발목 관절에 브레이크가 걸려 있어서 충격 흡수를 못 하니까, 무릎이 대신 그 타격을 다 받고 있는 상황이에요.",
+                  "movement_cue": "발뒤꿈치를 바닥에 본드로 붙였다고 상상하고, 정강이만 앞으로 살며시 밀어보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "하프 닐링 발목 가동성 스트레칭 (Half-kneeling Ankle Dorsiflexion)",
+                  "step2_activation": "전경골근 리프트 (Tibialis Raise) - 정강이 앞쪽 근력 활성화",
+                  "step3_integration": "뒤꿈치 밑에 원판 깔고 고블렛 스쿼트 (역학적 보상 활용 훈련)"
+                },
+                "contraindications": [
+                  "뒤꿈치가 심하게 들리는 맨몸 딥 스쿼트",
+                  "종아리를 폭발적으로 쓰는 줄넘기나 박스 점프"
+                ],
+                "assessment": {
+                  "mrt": "[딥 스쿼트 평가] 회원에게 맨몸으로 쪼그려 앉기를 지시합니다. 발뒤꿈치가 바닥에서 들리거나, 뒤로 넘어질 것 같아 상체가 과도하게 앞으로 숙여진다면 족관절 배측굴곡 제한이 뚜렷한 것입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "가자미근",
+                      "position": "회원은 엎드린 상태에서 슬관절을 90도 굽혀 종아리를 세웁니다.",
+                      "fixation": "트레이너는 한 손으로 회원의 정강이(경골) 뒤쪽을 감싸 안정시킵니다.",
+                      "test": "발바닥(종골)을 잡고 발끝을 정강이 쪽으로 밀어내는(배측굴곡) 방향으로 지그시 압력을 가하여 뻣뻣한 저항감이 언제 발생하는지 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "가자미근 (Soleus)",
+                    "origin": "Posterior tibia & fibula",
+                    "insertion": "Calcaneus via Achilles tendon",
+                    "action": "Plantar flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "가자미근 PIR: 엎드려 무릎을 90도 굽힌 회원의 발목을 끝까지 젖혀줍니다. 회원은 엑셀을 밟듯 발목을 아래로 내리려(저측굴곡) 하고, 트레이너는 양손으로 발바닥 전체를 감싸 안아 7초간 강하게 버팁니다. 이후 발목을 더욱 젖혀 가동범위를 늘립니다.",
+                  "prt": "아킬레스건 주변부 PRT: 엎드린 회원의 아킬레스건 상단(가자미근 근건이행부)을 엄지로 압박한 후, 무릎을 굽히고 발목을 아래로(저측굴곡) 꺾어 근육이 완전히 헐거워지게 만든 상태로 90초 대기합니다."
+                },
+                "red_flag": "운동 중 아킬레스건 부위의 찌릿함 발생 시 중단.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sym_plantar_fasciitis",
+        "title": "아침 첫 발 디딜 때 발바닥 통증",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_calf_tightness",
+            "title": "원인 A: 종아리 후면 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_calf_fascia",
+                "title": "비복근 단축에 의한 근막 당김",
+                "type": "sub_class",
+                "clinical_insight": "발바닥 근막은 아킬레스건을 거쳐 종아리 근육과 하나의 표면후방선(SBL)으로 연결됩니다. 비복근이 단축되면 발바닥까지 과도한 장력이 전달됩니다.",
+                "postural_pattern": "Weight Forward (체중 전방 이동) / 하이힐 착용 체형",
+                "teaching_cues": {
+                  "analogy": "두꺼운 패딩 뒤쪽을 누가 꽉 잡아당기면 앞쪽 지퍼가 조이듯이, 종아리가 뭉치면 발바닥까지 그 줄이 팽팽하게 당겨지는 거예요.",
+                  "movement_cue": "종아리에 있는 물풍선을 위아래로 길게 늘어뜨린다는 느낌으로 뒤꿈치를 눌러보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "벽 밀기 종아리 스트레칭 (Wall Calf Stretch - 무릎 펴고/굽히고 2가지)",
+                  "step2_activation": "숏풋 엑서사이즈 (Short Foot Exercise) - 발 내재근 살리기",
+                  "step3_integration": "맨발 런지 홀드 (Barefoot Lunge Hold) - 발바닥 아치 버티기"
+                },
+                "contraindications": [
+                  "딱딱한 바닥에서의 맨발 러닝 및 플라이오메트릭 점프",
+                  "카프 레이즈 (Calf Raise - 종아리 수축 운동 배제)"
+                ],
+                "assessment": {
+                  "mrt": "[Lunge Test] 회원이 벽을 마주보고 서서 앞발의 발끝을 벽에서 10cm 띄웁니다. 발뒤꿈치를 떼지 않고 무릎을 벽에 닿게 밀어 넣었을 때 뒤꿈치가 들리면 종아리 단축을 시사합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "비복근",
+                      "position": "회원은 앙와위로 누워 무릎을 완전히 폅니다.",
+                      "fixation": "트레이너는 회원의 무릎 바로 위(대퇴 하단)를 눌러 무릎이 굽혀지지 않게 고정합니다.",
+                      "test": "트레이너의 배로 회원의 발바닥을 밀며 발목을 최대한 배측굴곡시켜 장딴지에 강한 텐션이나 통증이 재현되는지 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "비복근 (Gastrocnemius)",
+                    "origin": "Femur medial/lateral condyles",
+                    "insertion": "Calcaneus via Achilles tendon",
+                    "action": "Plantar flexion, Knee flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "비복근 자가 MET: 회원은 수건을 발바닥(전족부)에 걸고 양손으로 팽팽하게 당깁니다. 7초간 수건을 밀어내는(저측굴곡) 힘을 주고 버틴 후, 숨을 내쉬면서 수건을 더욱 세게 몸 쪽으로 당겨 종아리를 늘립니다.",
+                  "prt": "비복근 PRT: 엎드린 회원의 종아리 알(비복근 내/외측두) 중앙의 결절을 컨택하고, 무릎을 90도 굽힌 채 발목을 저측굴곡시켜 가장 텐션이 사라지는 각도를 찾아 90초 유지합니다."
+                },
+                "red_flag": "발뒤꿈치 뼈(종골) 타진 시 극심한 통증이 있으면 피로골절 우려.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_windlass",
+            "title": "원인 B: 엄지발가락 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_hallux_limit",
+                "title": "엄지발가락 신전 제한 (Windlass Failure)",
+                "type": "sub_class",
+                "clinical_insight": "보행 시 뒤꿈치가 떨어질 때 엄지발가락이 위로 꺾이며 아치를 팽팽하게 감아올려야(Windlass Mechanism) 충격이 흡수되는데, 이 가동성이 떨어지면 발바닥 근막에 과부하가 누적됩니다.",
+                "postural_pattern": "Flat Foot (평발) / 무지외반증 동반 패턴",
+                "teaching_cues": {
+                  "analogy": "지렛대가 부러져서 무거운 물건을 맨손으로 들어야 하는 상황과 같아요. 엄지발가락이 지렛대 역할을 못 하니 근막이 찢어지는 겁니다.",
+                  "movement_cue": "엄지발가락만 피아노 건반 누르듯 꾸욱 누르고 나머지 발가락은 들어보세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "엄지발가락 수동 신전 스트레칭 (손으로 엄지발가락 꺾기)",
+                  "step2_activation": "토 요가 (Toe Yoga) - 엄지발가락과 네 발가락 분리 컨트롤 훈련",
+                  "step3_integration": "수건 집기 (Towel Curl) 후 카프 레이즈 연결"
+                },
+                "contraindications": [
+                  "엄지발가락 관절에 체중이 다 실리는 푸시업 자세 오래 버티기",
+                  "밑창이 너무 얇고 딱딱한 신발(리프팅화) 신고 걷기"
+                ],
+                "assessment": {
+                  "mrt": "[Windlass Test] 회원이 서 있는 상태에서 트레이너가 회원의 엄지발가락을 강하게 위로 젖혀 올립니다(수동 신전). 이때 60도 이상 올라가지 않거나 발바닥 안쪽에 날카로운 통증이 유발되는지 확인합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "장무지굴근",
+                      "position": "앙와위 자세에서 회원에게 엄지발가락을 밑으로 꽉 구부리게 지시합니다.",
+                      "fixation": "트레이너는 회원의 발등과 발목을 안정적으로 고정합니다.",
+                      "test": "트레이너는 회원의 엄지발가락을 위로 펴는(신전) 방향으로 힘을 주어 회원의 굴곡 저항력을 체크합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "장무지굴근 (Flexor Hallucis Longus)",
+                    "origin": "Posterior fibula",
+                    "insertion": "Base of distal phalanx of big toe",
+                    "action": "Flexes big toe, Plantar flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "엄지발가락 MET: 회원의 엄지발가락을 끝까지 위로 젖혀 텐션을 만듭니다. 회원에게 '엄지발가락으로 제 손가락을 아래로 누르세요'라고 지시하고 7초간 가볍게 저항합니다. 이후 더 위로 젖혀 가동범위를 확장합니다.",
+                  "prt": "장무지굴근 PRT: 엎드린 회원의 발바닥 내측 아치와 안쪽 복숭아뼈 뒤쪽 라인을 엄지로 부드럽게 압박합니다. 회원의 발목을 저측굴곡하고 엄지발가락을 끝까지 구부려 조직의 긴장을 없앤 채 90초 대기합니다."
+                },
+                "red_flag": "무지외반증이 심하게 동반된 경우 무리한 교정 지양.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sym_ankle_instability",
+        "title": "스쿼트 시 발아치 붕괴 및 잦은 발목 염좌",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_flat_foot",
+            "title": "원인 A: 평발 패턴 기인 (내측 아치 무너짐)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_tibialis_post_weak",
+                "title": "후경골근 약화 및 비복근 타이트니스",
+                "type": "sub_class",
+                "clinical_insight": "발바닥 아치를 위로 팽팽하게 끌어올려주는 핵심 코어 근육인 후경골근이 약해지면, 체중을 견디지 못하고 발목이 안쪽으로 무너지면서 무릎까지 안으로 꺾이게(Knee Valgus) 됩니다.",
+                "postural_pattern": "Pes Planus (평발) / 과회내(Over-pronation)",
+                "teaching_cues": {
+                  "analogy": "다리의 텐트 뼈대가 발바닥 아치인데, 기둥이 푹 주저앉으니까 무릎이랑 허리까지 와르르 도미노처럼 흔들리고 있는 거예요.",
+                  "movement_cue": "발가락을 움켜쥐지 말고, 발바닥 전체를 바닥에 도장 찍듯 붙인 상태에서 발등만 살짝 위로 들어올려보세요 (Short Foot)."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "테니스볼 발바닥 릴리즈 및 폼롤러 종아리(비복근) 이완",
+                  "step2_activation": "숏풋 엑서사이즈 (Short Foot) 및 밴드를 이용한 발목 내번 훈련",
+                  "step3_integration": "루프 밴드를 무릎에 걸고 고블렛 스쿼트 (외전근 및 아치 동시 활성화)"
+                },
+                "contraindications": [
+                  "쿠션이 너무 푹신한 러닝화 신고 중량 스쿼트 치기",
+                  "맨발로 딱딱한 바닥에서 줄넘기 장시간 수행"
+                ],
+                "assessment": {
+                  "mrt": "[Navicular Drop Test] 회원이 앉았을 때 주상골(발 안쪽 볼록 튀어나온 뼈)의 높이와, 일어서서 체중을 실었을 때 주상골의 높이 차이를 잽니다. 10mm 이상 주저앉으면 평발 패턴입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "후경골근",
+                      "position": "회원은 앉거나 앙와위로 누워 발목을 아래로 내리고(저측굴곡) 발바닥을 안쪽으로 틉니다(내번).",
+                      "fixation": "트레이너는 회원의 종아리(하퇴)를 흔들리지 않게 꽉 잡습니다.",
+                      "test": "회원의 발등 안쪽을 감싸고 발목을 바깥쪽 위(외번 및 배측굴곡) 방향으로 강하게 당기며 버티는 힘을 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "후경골근 (Tibialis Posterior)",
+                    "origin": "Posterior tibia & fibula",
+                    "insertion": "Navicular and medial cuneiform",
+                    "action": "Plantar flexion, Inversion (supports arch)",
+                    "type": "Phasic (강화/안정화)"
+                  },
+                  {
+                    "name": "비복근 (Gastrocnemius)",
+                    "origin": "Femur condyles",
+                    "insertion": "Calcaneus",
+                    "action": "Plantar flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "후경골근 활성화 등척성 기법: 회원의 발목을 내번(Inversion) 상태로 세팅한 후, 트레이너가 발목을 외번시키려 힘을 줍니다. 회원에게 그 힘에 맞서 10초간 버티게(등척성 수축) 하여 아치를 들어올리는 신경을 깨워줍니다.",
+                  "prt": "종아리 심부 PRT: 엎드린 회원의 종아리 안쪽 뼈(경골 내측연)를 따라 깊숙이 손가락을 넣어 뻐근한 텐션을 찾습니다. 발목을 아래로(저측굴곡) 그리고 안으로(내번) 꺾어 가장 편안한 상태를 만들어 90초간 릴리즈합니다."
+                },
+                "red_flag": "발목에서 체중을 실을 수 없을 정도의 통증 동반 시 피로골절/인대파열 의심.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_chronic_sprain",
+            "title": "원인 B: 만성 발목 불안정성 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_peroneus_weak",
+                "title": "비골근 약화 및 고유수용감각 상실",
+                "type": "sub_class",
+                "clinical_insight": "발목을 바깥으로 삐는(Inversion Sprain) 부상 이후, 발목 바깥쪽에서 브레이크를 잡아주는 비골근이 약해지고 센서(고유수용감각)가 망가져 습관적으로 계속 발목이 꺾이는 상태입니다.",
+                "postural_pattern": "Supination (요족) / 발바닥 바깥쪽 체중 지지",
+                "teaching_cues": {
+                  "analogy": "발목 바깥쪽에 있는 안전벨트가 한 번 끊어진 뒤로 헐거워진 상태입니다. 머리(뇌)에서 발목 위치를 정확하게 인식하는 훈련을 다시 해야 해요.",
+                  "movement_cue": "새끼발가락 쪽이 바닥에서 자꾸 뜨지 않게, 엄지와 새끼발가락 양쪽 모두에 똑같이 체중을 실어보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "발목 배측굴곡 모빌리티 훈련 (Wall Ankle Mobilization)",
+                  "step2_activation": "밴드를 이용한 발목 외번(Eversion) 저항 훈련 - 비골근 타겟",
+                  "step3_integration": "보수볼(BOSU) 위에서 싱글 레그 스탠드 (고유수용감각 및 밸런스 회복)"
+                },
+                "contraindications": [
+                  "불안정한 지면에서 고중량 바벨 운동",
+                  "방향 전환이 급격한 플라이오메트릭 점프 운동"
+                ],
+                "assessment": {
+                  "mrt": "[Single Leg Balance Test] 맨발로 한 발 서기를 지시합니다. 10초 이내에 발목이 심하게 흔들리거나 반대발이 바닥에 닿는다면 고유수용감각(Proprioception)의 심각한 저하 상태입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "비골근 (장/단비골근)",
+                      "position": "회원은 앉거나 앙와위로 누워 발목을 아래로 내리고(저측굴곡) 발바닥을 바깥쪽으로 틉니다(외번).",
+                      "fixation": "트레이너는 종아리 하단을 꽉 잡아 고정합니다.",
+                      "test": "회원의 발등 바깥쪽을 감싸고 발목을 안쪽(내번) 방향으로 강하게 당기며 버티는 힘을 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "비골근 (Peroneus Longus/Brevis)",
+                    "origin": "Lateral fibula",
+                    "insertion": "1st metatarsal & medial cuneiform / 5th metatarsal",
+                    "action": "Eversion, Plantar flexion",
+                    "type": "Phasic (강화/안정화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "비골근 PIR 및 RI: 발목 바깥쪽 유착을 풀기 위해, 회원의 발목을 내번(안쪽 꺾임)시켜 텐션을 유발합니다. 회원에게 바깥으로 밀어내려는 힘(외번)을 주게 하고 7초간 저항하여 근육을 활성화한 뒤, 다시 내번 방향으로 부드럽게 늘려줍니다.",
+                  "prt": "비골근 PRT: 측와위(옆으로 누운 자세)에서 비골(종아리 바깥쪽 뼈) 라인을 따라 단단히 뭉친 부위를 찾습니다. 발목을 외번 및 저측굴곡 시켜 바깥쪽 근막 라인을 헐렁하게 만든 상태로 90초간 유지합니다."
+                },
+                "red_flag": "발목 바깥쪽 복숭아뼈 주변에 심한 붓기와 피멍이 있으면 급성 파열로 간주.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "manual_technique": {
-      "met": "MET (PIR/RI): 대상 근육을 텐션이 느껴지는 지점까지 늘린 후, 환자에게 20%의 힘으로 주동근 수축(PIR) 또는 길항근 수축(RI)을 5~7초간 유도하고 이완 사이클을 반복한다.",
-      "prt": "PRT (Positional Release): QL 압통점 압박 후 환자의 골반을 수동으로 들어올려 가장 편안한(Slacked) 자세를 찾아 90초간 유지한다."
-    },
-    "red_flag": "하지로 뻗치는 찌릿한 방사통, 감각 소실, 발가락 근력 약화 동반 시 즉시 중재를 중단하고 병원 의뢰 (추간판 신경근 압박 위험).",
-    "category": "🦴 체형 및 관절 기초 통증"
+    ]
   },
   {
-    "symptom": "걸을 때 무릎 바깥쪽이 아프거나 엉덩이 측면이 시큰거리고 짝다리를 짚게 됨",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 중둔근 약화 시 보행 중 골반이 옆으로 빠지며, 이를 막기 위해 TFL이 비정상적으로 과활성화되어 장경인대(ITB) 마찰 증후군을 유발합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 고관절 외전 시 근수축 2초-유지 2초-이완 2초 중 약화나 떨림 현상이 있는지 확인하여 Phasic 억제 여부 판단",
-      "mmt_details": [
-        {
-          "muscle": "중둔근 (Gluteus Medius)",
-          "position": "1. 자세: Supine(또는 측와위) 자세에서 고관절을 외전시킨다.",
-          "fixation": "2. 고정: 반대쪽 다리의 발목(또는 골반)을 확실히 고정한다.",
-          "test": "3. 검사: 발목의 근위부에 접촉하여 내전 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "대퇴근막장근 (Tensor Fascia Lata)",
-          "position": "1. 자세: Supine 자세에서 고관절 굴곡(20도) + 외전 + 내회전 + 슬관절 신전 자세를 취한다.",
-          "fixation": "2. 고정: 반대편 골반이나 발목을 고정한다.",
-          "test": "3. 검사: 발목의 근위부에 접촉하여 내전+신전 방향으로 저항을 준다 (반대쪽 다리를 향하여)."
-        },
-        {
-          "muscle": "이상근 (Piriformis)",
-          "position": "1. 자세: Prone 자세에서 슬관절 90도 굴곡 + 고관절 외회전시킨다.",
-          "fixation": "2. 고정: 검사하는 쪽의 슬관절을 고정한다.",
-          "test": "3. 검사: 발목 내측에 접촉하여 내회전 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
+    "id": "part_neck_shoulder",
+    "title": "🧑 목/어깨 (Neck & Shoulder)",
+    "type": "body_part",
+    "children": [
       {
-        "name": "중둔근 (Gluteus Medius)",
-        "origin": "Outer surface of ilium",
-        "insertion": "Greater trochanter",
-        "action": "Abduction, Flexion/Extension, Internal/External rotation",
-        "type": "Phasic (강화 대상)"
+        "id": "sym_shoulder_impingement",
+        "title": "만세/팔 들 때 어깨 앞쪽 찝힘",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_anterior_glide",
+            "title": "원인 A: 역학적 기인 (상완골 전방활주)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_humeral_glide",
+                "title": "상완골 전방활주 패턴",
+                "type": "sub_class",
+                "clinical_insight": "후방 관절낭이 단축되거나 가슴근육이 과활성화되면, 팔을 움직일 때 상완골두가 관절와(Socket) 중심을 벗어나 앞쪽으로 밀리면서(전방활주) 어깨 앞쪽 구조물을 강하게 찝게 됩니다.",
+                "postural_pattern": "라운드 숄더 (상완골 전방 전위형)",
+                "teaching_cues": {
+                  "analogy": "문경첩이 헐거워져서 문을 열 때마다 문짝이 문틀에 쿵쿵 부딪히는 것과 같아요. 경첩(어깨 심부근육)을 꽉 조여야 합니다.",
+                  "movement_cue": "날개뼈를 조이려고 하지 말고, 겨드랑이 밑에 달걀을 하나 쥐고 있다고 생각하며 가볍게 힘을 줘보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "Sleeper Stretch (슬리퍼 스트레칭) - 단축된 후방관절낭 유연성 확보",
+                  "step2_activation": "짐볼 월 프레스 (Belly Press 변형) - 견갑하근 활성화",
+                  "step3_integration": "케틀벨 암바 (Kettlebell Arm-bar) - 능동적 관절 중심화 훈련"
+                },
+                "contraindications": [
+                  "딥스 (Dips - 상완골을 극단적으로 앞으로 밀어냄)",
+                  "비하인드 넥 프레스",
+                  "바벨 벤치 프레스 (덤벨로 대체하여 가동범위 제한 필요)"
+                ],
+                "assessment": {
+                  "mrt": "[견갑하근 기능 평가 (Belly Press Test)] 회원은 서서 손바닥을 자신의 배꼽 위에 얹고, 팔꿈치를 몸통보다 앞쪽으로 뺍니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "견갑하근",
+                      "position": "배꼽 위에 손바닥을 밀착시킨 자세를 유지합니다.",
+                      "fixation": "트레이너는 회원의 어깨 뒤쪽을 손으로 받쳐 보상 작용을 막습니다.",
+                      "test": "회원에게 손바닥으로 배를 강하게 누르라고 지시합니다. 이때 팔꿈치가 뒤로 빠지거나, 손바닥 대신 손목이 구부러진다면 견갑하근의 약화 및 기능부전을 의미합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "견갑하근 (Subscapularis)",
+                    "origin": "Subscapular fossa",
+                    "insertion": "Lesser tubercle of humerus",
+                    "action": "Internal rotation, stabilizes humeral head",
+                    "type": "Phasic (강화/안정화)"
+                  },
+                  {
+                    "name": "후방관절낭 (Posterior Capsule)",
+                    "origin": "Posterior glenoid margin",
+                    "insertion": "Anatomical neck of humerus",
+                    "action": "Joint stabilization",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "전방활주 개선 MET: 앙와위로 눕힌 회원의 어깨 앞에 트레이너의 손바닥(Heel of hand)을 대고, 튀어나온 상완골두를 바닥 쪽(후방)으로 지그시 밀어 넣습니다. 그 상태에서 회원의 팔을 살짝 안으로 돌리는(내회전) 등척성 수축을 유도하여 어깨 심부 안정화 근육을 재교육합니다.",
+                  "prt": "상완골 전면 PRT: 앙와위 자세에서 어깨 앞쪽으로 밀려나온 상완골두 주변 압박 부위를 부드럽게 누릅니다. 회원의 팔을 약간 굽혀 몸통에 붙이고 내회전시켜 조직이 가장 편안해지는 각도로 90초 유지합니다."
+                },
+                "red_flag": "어깨 앞쪽에서 심한 파열음(Pop)이 나면 즉각 중단.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_sh_thoracic_chain",
+            "title": "원인 B: 흉추-견갑 연쇄 기인 (라운드숄더)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_thoracic_pec",
+                "title": "흉추 후만 및 소흉근 단축",
+                "type": "sub_class",
+                "clinical_insight": "라운드숄더는 단순히 어깨만의 문제가 아니라 흉추 가동성 부족(굽은 등)에서 시작되는 경우가 많습니다. 흉추가 굽으면 날개뼈가 앞으로 쏟아지고(전방경사), 이로 인해 가슴 앞쪽 소흉근이 짧아지며 견봉하 공간이 좁아져 충돌을 유발합니다.",
+                "postural_pattern": "Upper Crossed Syndrome (상지교차증후군) / 흉추 굽음",
+                "teaching_cues": {
+                  "analogy": "거북이 등껍질처럼 등이 굽어있으니, 팔을 올리려 해도 지붕(어깨뼈)이 막고 있어서 찌그러지는 거예요. 등(지붕)부터 펴야 팔이 올라갑니다.",
+                  "movement_cue": "가슴 한가운데(흉골)에 플래시 라이트가 달려있다고 상상하고, 그 빛으로 천장을 비춰보세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "폼롤러 흉추 신전 모빌리티 (가슴 펴기)",
+                  "step2_activation": "월 엔젤 (Wall Angel) - 흉추 및 견갑골 하방회전근 활성화",
+                  "step3_integration": "시티드 케이블 로우 (Seated Cable Row) - 견갑골 모으고 내리기 집중"
+                },
+                "contraindications": [
+                  "무거운 랫풀다운 (흉추가 말린 상태에서 어깨 관절 찝힘 폭발)",
+                  "플랭크 파생 운동 (등이 더 말릴 위험이 큼)"
+                ],
+                "assessment": {
+                  "mrt": "[시각적 평가 및 Wall Angel Test] 앙와위로 평평한 바닥에 누웠을 때 어깨 후면이 바닥에서 주먹 하나 들어갈 정도로 붕 떠 있다면 가슴 근육 단축이 뚜렷합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "소흉근",
+                      "position": "회원은 앙와위로 누워 양팔을 몸통 옆에 편안하게 둡니다.",
+                      "fixation": "트레이너는 회원의 늑골 부위를 부드럽게 고정합니다.",
+                      "test": "트레이너는 바닥에서 솟아오른 회원의 양쪽 어깨뼈(오훼돌기 부근)에 양 손바닥을 얹고 바닥 쪽으로 지그시 누릅니다. 이때 강한 뻣뻣함이나 텐션이 느껴지면 단축 상태입니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "소흉근 (Pectoralis Minor)",
+                    "origin": "3rd to 5th ribs",
+                    "insertion": "Coracoid process of scapula",
+                    "action": "Anterior tilt, depression of scapula",
+                    "type": "Tonic (이완)"
+                  },
+                  {
+                    "name": "흉추 기립근 (Thoracic Erector Spinae)",
+                    "origin": "Thoracic spinous processes",
+                    "insertion": "Upper spinous and transverse processes",
+                    "action": "Spinal extension",
+                    "type": "Phasic (강화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "소흉근 상호억제 활성화: 회원을 앉히거나 엎드리게 한 후, '날개뼈를 등 중앙으로 꽉 모으세요(견갑골 후인)'라고 지시합니다. 중부/하부 승모근이 능동적으로 10초간 수축하면, 신경학적 반사(상호억제)로 인해 앞쪽의 소흉근이 자연스럽게 이완됩니다. 이 패턴을 5회 반복합니다.",
+                  "prt": "소흉근 PRT: 앙와위 자세에서 쇄골 밑 오훼돌기에 부착된 텐션 부위를 손가락으로 가볍게 컨택합니다. 회원의 팔을 대각선 위(가슴 반대편)로 넘겨 가슴 앞쪽 근육을 쭈글쭈글하게 단축시킨 상태로 90초간 인내합니다."
+                },
+                "red_flag": "팔을 스스로 내리지 못하면 회전근개 손상 우려.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "대퇴근막장근 (TFL)",
-        "origin": "Ant. iliac crest (ASIS)",
-        "insertion": "Greater trochanter ~ iliotibial tract",
-        "action": "Flexion, Abduction, Internal rotation",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_shoulder_side",
+        "title": "팔을 옆으로 들 때 어깨 측면 뻐근함",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_supraspinatus",
+            "title": "원인 A: 회전근개 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_supra_weak",
+                "title": "극상근 기능 저하",
+                "type": "sub_class",
+                "clinical_insight": "팔을 올리는 초기 30도를 담당하는 극상근이 약해지면 상관골두가 밑으로 안정적으로 당겨지지 않고 위로 치솟아 관절 공간을 좁히게 됩니다.",
+                "postural_pattern": "Shoulder Impingement Type (견봉하 공간 협소형)",
+                "teaching_cues": {
+                  "analogy": "엘리베이터가 올라가려면 밑에서 도르래가 꽉 잡아줘야 흔들리지 않는데, 도르래(극상근)가 풀려서 엘리베이터가 천장에 자꾸 쿵쿵 부딪히는 겁니다.",
+                  "movement_cue": "팔을 옆으로 들 때, 손이 올라가는 게 아니라 팔꿈치를 누가 밖에서 실로 잡아당긴다고 생각해보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "어깨 펜듈럼 운동 (Pendulum Exercise) - 관절 공간 확보 및 혈류량 증가",
+                  "step2_activation": "Full Can Exercise (엄지 하늘 방향) - 견갑면 30도 거상 훈련",
+                  "step3_integration": "바텀업 케틀벨 프레스 (Bottom-up Kettlebell Press) - 극강의 회전근개 코어 컨트롤"
+                },
+                "contraindications": [
+                  "사이드 레터럴 레이즈 (Side Lateral Raise - 무거운 덤벨 절대 금지)",
+                  "엄지가 땅을 향하는 Empty Can 방식의 운동"
+                ],
+                "assessment": {
+                  "mrt": "[Empty Can Test] 양팔을 견갑면(앞으로 30도, 옆으로 90도)으로 뻗고 캔의 물을 쏟듯 엄지를 아래로 돌립니다. 트레이너가 양팔을 아래로 누를 때 버티지 못하고 툭 떨어지는지 확인합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "극상근",
+                      "position": "앉거나 선 자세에서 팔을 견갑면 각도로 90도 들어 올리고 엄지를 내립니다.",
+                      "fixation": "트레이너는 회원의 어깨 바로 위를 눌러 몸통의 보상을 막습니다.",
+                      "test": "회원의 전완 하단을 잡고 바닥 쪽으로 지속적인 압박을 주며 회원이 그 위치를 유지하는지(근력 여부) 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "극상근 (Supraspinatus)",
+                    "origin": "Supraspinous fossa of scapula",
+                    "insertion": "Greater tubercle of humerus",
+                    "action": "Abduction of humerus",
+                    "type": "Phasic (강화/안정화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "극상근 등척성 컨디셔닝: 회원은 서서 팔을 몸통에 바짝 붙입니다. 트레이너가 회원의 팔꿈치 바깥쪽에 손을 대고 저항을 주는 상태에서, 회원은 팔을 옆으로 벌리려는 힘(10% 미만의 매우 약한 힘)을 줍니다. 어깨 으쓱임 없이 심부 회전근개만 자극합니다.",
+                  "prt": "극상근 PRT: 엎드린 회원의 견갑골 상단 극상와 부위에 있는 텐션 부위를 지그시 누릅니다. 회원의 팔을 베드 밖으로 늘어뜨려 90도 벌리고(외전) 천장 쪽으로 돌려(외회전) 근육이 가장 짧아지는 포지션을 90초간 인내합니다."
+                },
+                "red_flag": "수면을 방해할 정도의 야간통 시 석회성 질환 등 의심.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_deltoid_dom",
+            "title": "원인 B: 겉근육 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_deltoid_over",
+                "title": "삼각근 우세 패턴",
+                "type": "sub_class",
+                "clinical_insight": "심부 안정화 근육이 제 역할을 못하는 상태에서 겉근육인 삼각근만 무리하게 힘을 써서 팔꿈치를 위로 끌어올리는(Shrug) 잘못된 보상 패턴입니다.",
+                "postural_pattern": "Shrugging Pattern / 상부승모근 과긴장 체형",
+                "teaching_cues": {
+                  "analogy": "속옷(속근육)은 안 입고 겉옷(삼각근)만 엄청 무겁게 껴입어서, 팔을 움직일 때마다 옷이 위로 말려 올라가는 거랑 같아요.",
+                  "movement_cue": "귀랑 어깨가 세상에서 제일 멀어진다고 생각하고 어깨를 끌어내린 상태에서 시작하세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "광배근/삼각근 폼롤링 및 하부승모근 릴리즈",
+                  "step2_activation": "Prone Y-Raise - 하부승모근을 깨워 어깨 하방 고정력 세팅",
+                  "step3_integration": "케이블 페이스 풀 (Face Pull) - 후면사슬 및 회전근개 통합 훈련"
+                },
+                "contraindications": [
+                  "슈러그 (Shrugs - 상부승모근 타겟 운동)",
+                  "고중량 밀리터리 프레스"
+                ],
+                "assessment": {
+                  "mrt": "[어깨 으쓱임(Shrugging) 관찰] 회원에게 양팔을 옆으로 천천히 들어보라고 지시합니다. 팔이 올라가기 전 어깨가 먼저 귀 쪽으로 으쓱 올라간다면 삼각근 및 상부승모근 과사용 패턴입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "중삼각근",
+                      "position": "회원은 앉아서 팔꿈치를 편 채 팔을 90도 옆으로 들어 올립니다(외전).",
+                      "fixation": "트레이너는 반대쪽 어깨를 눌러 체간이 기울어지지 않게 고정합니다.",
+                      "test": "회원의 팔꿈치 바로 윗부분(상완 하단)에 손을 얹고 바닥 방향으로 묵직하게 눌러 비정상적인 버티기 반응이 발생하는지 봅니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "중삼각근 (Middle Deltoid)",
+                    "origin": "Acromion of scapula",
+                    "insertion": "Deltoid tuberosity of humerus",
+                    "action": "Abduction of humerus",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "삼각근 PIR: 앉은 회원의 팔을 몸통 뒤쪽 대각선 아래로(신전 및 내전) 길게 늘어뜨려 어깨 겉근육을 최대로 늘립니다. 회원은 팔을 앞쪽 위로 들어올리려 하고 트레이너는 이를 7초간 막아줍니다. 회원이 힘을 빼면 더 뒤로 당겨 이완합니다.",
+                  "prt": "삼각근 PRT: 앙와위 자세에서 어깨 바깥쪽 삼각근 조면을 엄지로 부드럽게 컨택합니다. 회원의 팔을 앞으로 살짝 들어(굴곡) 가슴 쪽으로 당긴(내전) 채 90초 대기하여 근육 긴장도를 떨어뜨립니다."
+                },
+                "red_flag": "어깨 탈구 병력 주의.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "이상근 (Piriformis)",
-        "origin": "Internal surface of sacrum",
-        "insertion": "Greater trochanter of femur",
-        "action": "External rotation, Abduction (hip)",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_neck_headache_multi",
+        "title": "뒷목 뻣뻣함 및 피로감",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_neck_local",
+            "title": "원인 A: 거북목 체형 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_fhp_local",
+                "title": "후두하근 및 목 후면부 긴장",
+                "type": "sub_class",
+                "clinical_insight": "머리가 앞으로 빠지며 시선을 정면으로 유지하기 위해 뒷목 근육(후두하근)이 꺾인 채 굳어져 뇌로 가는 혈류를 방해하고 피로감을 유발합니다.",
+                "postural_pattern": "Forward Head Posture (거북목) / 일자목",
+                "teaching_cues": {
+                  "analogy": "머리가 5kg짜리 수박인데, 목 뼈 중심에서 1cm 앞으로 빠질 때마다 체감 무게가 2배씩 늘어나요. 뒷목 근육이 매일 수박을 들고 벌을 서고 있는 거예요.",
+                  "movement_cue": "턱을 무작정 당기지 말고, 정수리에서 누가 실로 하늘로 쭉 잡아당겨서 키가 커진다고 생각하세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "땅콩볼 후두하근 릴리즈 및 흉쇄유돌근 스트레칭",
+                  "step2_activation": "친인 (Chin-in) + 경추 심부 굴곡근 등척성 운동 (수건 누르기)",
+                  "step3_integration": "쿼드루페드(네발기기) 자세에서 뒷통수로 천장 밀어내기 버티기"
+                },
+                "contraindications": [
+                  "핸드폰이나 모니터를 바닥/아래쪽으로 내려다보는 자세 금지",
+                  "목 뒤로 과도하게 젖히며 돌리는 넥 서클(Neck Circle)"
+                ],
+                "assessment": {
+                  "mrt": "[턱 당기기(Chin-in) 가동성 평가] 회원을 앙와위로 눕히고 뒤통수가 바닥에 닿은 상태에서 턱만 가슴 쪽으로 당겨 뒷목이 길어지게 해보라고 지시합니다. 이때 고개가 바닥에서 붕 뜨거나 턱이 전혀 내려가지 않는다면 후두하근의 강한 단축입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "후두하근",
+                      "position": "회원은 엎드린 상태(복와위)에서 고개를 베개 밖으로 빼고 이중 턱(Chin-in) 자세를 단단히 세팅합니다.",
+                      "fixation": "트레이너는 한 손으로 회원의 뒤통수 아래(후두골)를 가볍게 감싸 고정합니다.",
+                      "test": "트레이너의 다른 손을 회원의 이마에 대고 바닥을 향해 누르며, 회원이 턱 당김을 풀지 않고 자세를 사수하는지 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "후두하근 (Suboccipitalis)",
+                    "origin": "C1 and C2 vertebrae",
+                    "insertion": "Occipital bone",
+                    "action": "Head extension, lateral flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "안구 움직임을 이용한 목 릴리즈: 앙와위로 누운 회원에게 눈동자를 천장 위쪽으로 치켜뜨게 지시합니다. 이때 회원이 고개를 아주 미세하게(5% 힘) 뒤로 젖히려 하면 트레이너는 손으로 이를 막아줍니다. 7초 뒤 회원이 눈을 발끝 방향으로 내리깔게 하고 턱을 당겨 뒷목을 이완합니다.",
+                  "prt": "후두하근 PRT: 앙와위 자세에서 베드 끝에 선 트레이너는 양손의 2~3번째 손가락 패드를 회원의 두개골 바로 아래(후두하 공간)에 밀어 넣습니다. 머리의 무게를 온전히 손가락으로 떠받친 채, 회원의 고개를 살짝 뒤로 젖혀 근막이 젤리처럼 부드럽게 될 때까지 90초 이상 대기합니다."
+                },
+                "red_flag": "운동 중 지속적인 어지럼증 동반 시 혈압 및 혈관 이슈 체크.",
+                "image_url": "assets/images/neck.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_neck_respiratory",
+            "title": "원인 B: 얕은 호흡 패턴 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_scalene_apical",
+                "title": "목 앞쪽 근육 과활성화 및 흉식 호흡",
+                "type": "sub_class",
+                "clinical_insight": "코어 근육과 횡격막 대신 목 앞쪽 근육(사각근)으로 얕은 가슴 호흡을 반복하면, 숨을 쉴 때마다 목 근육이 혹사당하여 만성적인 뻣뻣함을 유발합니다.",
+                "postural_pattern": "Apical Breathing Pattern / 들숨 우세 체형",
+                "teaching_cues": {
+                  "analogy": "폐(풍선)를 아래(배)로 부풀려야 하는데, 코르셋을 꽉 조인 것처럼 배가 굳어 있어서 어깨와 목을 들썩이며 억지로 숨을 쉬고 있는 거예요.",
+                  "movement_cue": "숨을 마실 때 어깨가 귀랑 가까워지면 안 돼요. 갈비뼈를 양옆으로 아코디언처럼 늘려보세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "가슴 앞쪽(대흉근/소흉근) 및 사각근 릴리즈 스트레칭",
+                  "step2_activation": "크로커다일 브리딩 (Crocodile Breathing) - 엎드린 상태에서 횡격막 호흡 인지",
+                  "step3_integration": "데드버그 (Dead bug) 수행 중 코어 압력 및 정상 호흡 유지 훈련"
+                },
+                "contraindications": [
+                  "어깨가 으쓱 올라가는 흉식 호흡 습관",
+                  "벨트를 너무 꽉 조이고 하는 고중량 리프팅"
+                ],
+                "assessment": {
+                  "mrt": "[호흡 패턴 시각적 관찰 (Hi-Lo Test)] 회원에게 한 손은 가슴에, 한 손은 복부에 얹게 하고 평소처럼 편안하게 호흡하게 합니다. 복부의 손은 가만히 있고 가슴의 손만 위아래로 심하게 움직인다면 잘못된 호흡 보상 패턴입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "사각근",
+                      "position": "회원은 앙와위로 누워 턱을 당긴 채 고개를 앞쪽 대각선(굴곡+측굴)으로 살짝 들어 올립니다.",
+                      "fixation": "트레이너는 반대쪽 어깨를 눌러 상체가 뜨지 않게 고정합니다.",
+                      "test": "트레이너가 회원의 이마 측면에 손을 대고 바닥 대각선 방향으로 눌러 목 앞쪽 근육이 버티는 힘을 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "사각근 (Scalenes)",
+                    "origin": "Transverse processes of C2-C7",
+                    "insertion": "1st and 2nd ribs",
+                    "action": "Elevates ribs (inspiration), lateral flexion of neck",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "사각근 릴리즈 및 호흡 인지: 회원을 앙와위로 눕히고 쇄골에 트레이너의 손바닥을 얹어 아래로 지그시 누릅니다. 회원이 숨을 깊게 들이마실 때 어깨가 위로 들리려 하는 보상 작용을 트레이너가 차단합니다. 숨을 뱉을 때 회원의 고개를 반대편 대각선 뒤로 젖혀 목 앞쪽을 길게 늘려줍니다.",
+                  "prt": "사각근 PRT: 앙와위 자세에서 목 빗근(흉쇄유돌근) 바로 뒤쪽으로 손가락을 가볍게 컨택합니다. 회원의 고개를 타겟 근육 방향으로 돌리고(회전) 눕혀서(측굴) 근막 텐션이 가장 편안해지는 위치를 찾아 90초간 이완합니다."
+                },
+                "red_flag": "팔 끝까지 찌릿한 느낌이 심해지면 신경 눌림(흉곽출구증후군) 의심.",
+                "image_url": "assets/images/neck.png"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sym_winging_scapula",
+        "title": "푸시업 자세에서 날개뼈가 등 뒤로 붕 뜸 (익상견갑)",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_scapular_dyskinesis",
+            "title": "원인 A: 견갑 흉곽 관절 안정성 결여",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_serratus_weakness",
+                "title": "전거근 약화 및 소흉근 단축 (Winging Scapula)",
+                "type": "sub_class",
+                "clinical_insight": "날개뼈를 갈비뼈(흉곽)에 찰싹 달라붙게 고정해 주는 전거근이 마비되듯 약해지면, 앞쪽의 소흉근이 날개뼈를 앞으로 기울게 만들어 날개뼈 하각(아래쪽)이 등 뒤로 툭 튀어나오는 익상견갑이 발생합니다. 이는 모든 상체 운동 부상의 시작점입니다.",
+                "postural_pattern": "Winging Scapula (익상견갑) / 굽은 등",
+                "teaching_cues": {
+                  "analogy": "벽에 붙어있어야 할 포스트잇(날개뼈)이 접착력을 잃고 덜렁덜렁 떨어지려 하는 상태입니다. 접착제(전거근)를 다시 발라줘야 무거운 걸 들어도 어깨가 안 다칩니다.",
+                  "movement_cue": "날개뼈를 억지로 등 뒤로 모으려 하지 말고, 겨드랑이 아래쪽 근육을 써서 날개뼈를 몸통(갈비뼈) 옆면으로 부드럽게 랩핑하듯 감싸보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "소흉근 릴리즈 및 흉추 신전 스트레칭 (가동성 회복)",
+                  "step2_activation": "베어 크롤 (Bear Crawl) 홀딩 - 바닥을 강하게 밀어내며 전거근 인지",
+                  "step3_integration": "케틀벨 암바 (Arm-bar) 또는 바텀업 겟업 - 날개뼈 3D 안정화 훈련"
+                },
+                "contraindications": [
+                  "무거운 바벨 벤치프레스 (견갑 고정이 안 되어 어깨 작살남)",
+                  "덤벨 숄더 프레스 (상방회전 불가로 충돌증후군 유발)"
+                ],
+                "assessment": {
+                  "mrt": "[Wall Push-up Test] 회원에게 벽을 짚고 푸시업을 지시합니다. 팔을 뻗어 벽을 밀어낼 때 날개뼈 안쪽 모서리(내측연)가 등 뒤로 손가락이 쑥 들어갈 정도로 들린다면 전거근 약화(Winging) 양성입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "전거근",
+                      "position": "앙와위로 누워 팔을 천장 방향으로 90도 뻗고 주먹을 쥡니다.",
+                      "fixation": "어깨가 바닥에서 떨어지도록 팔을 위로 밀어올리게(Protraction) 합니다.",
+                      "test": "트레이너가 회원의 주먹을 바닥 쪽으로 체중을 실어 누르며 날개뼈가 바닥으로 무너지는지 버티는 힘을 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "전거근 (Serratus Anterior)",
+                    "origin": "Outer surfaces of upper 8-9 ribs",
+                    "insertion": "Medial border of scapula",
+                    "action": "Scapular protraction, Upward rotation",
+                    "type": "Phasic (강화/활성화 필수)"
+                  },
+                  {
+                    "name": "소흉근 (Pectoralis Minor)",
+                    "origin": "3rd to 5th ribs",
+                    "insertion": "Coracoid process of scapula",
+                    "action": "Anterior tilt of scapula",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "소흉근 릴리즈 기법: 앙와위로 누운 회원의 어깨(오훼돌기)를 바닥 쪽으로 부드럽게 누릅니다. 회원에게 어깨를 천장 쪽으로 으쓱 들어올리려는 힘을 가볍게 쓰게 하고 방어한 뒤, 릴리즈 시 어깨를 바닥으로 더 눕혀 소흉근을 엽니다.",
+                  "prt": "견갑하근/소흉근 PRT: 앙와위 자세에서 회원의 팔을 가슴 위 대각선 반대편으로 가볍게 넘겨 앞쪽 텐션을 줄인 상태에서 쇄골 밑 소흉근 포인트를 가볍게 터치하고 90초간 호흡을 유도합니다."
+                },
+                "red_flag": "장흉신경(Long Thoracic Nerve) 마비 시 심각한 익상견갑이 나타나며 이는 트레이닝으로 해결 불가(병원 정밀검사).",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "manual_technique": {
-      "met": "TFL PIR: 다리를 신전/내전 방향으로 늘린 후, 환자가 20%의 힘으로 외전/굴곡(위로 드는 힘)을 5~7초 유지하게 한 뒤 10초 이완한다.",
-      "prt": "이상근 및 TFL 트리거포인트 촉진 후 고관절을 외전/굴곡 시켜 근육이 가장 느슨해지는 각도에서 90초간 지그시 유지한다."
-    },
-    "red_flag": "무릎 관절 자체에 열감이나 부종이 있거나, 보행 자체가 불가능할 정도의 체중 지지 실패 시 관절강 내 구조적 손상 의심.",
-    "category": "🦴 체형 및 관절 기초 통증"
+    ]
   },
   {
-    "symptom": "어깨를 들거나 돌릴 때 앞쪽이 찝히고 등 뒤로 손이 잘 안 넘어감 (라운드숄더)",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 소흉근 단축은 견갑골을 앞/아래로 기울게(Anterior tilt) 만들어, 팔을 올릴 때 견봉하 공간을 좁혀 극상근 건을 물리적으로 찝히게 합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견관절 내회전/외회전 시 2초 수축-유지-이완을 통해 회전근개 및 대흉근/소흉근의 비정상적 근긴장도 파악",
-      "mmt_details": [
-        {
-          "muscle": "소흉근 (Pectoralis Minor)",
-          "position": "1. 자세: 주관절 신전, 견관절 90도 굴곡 + 최대한 내회전 + 수평내전 (이때 어깨가 올라가지 않게).",
-          "fixation": "2. 고정: 반대쪽 어깨를 고정한다.",
-          "test": "3. 검사: 손가락을 편 상태에서 피검사자의 손목에 접촉하여 외하방(45도) 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "전거근 (Serratus Anterior)",
-          "position": "1. 자세: Supine 상태에서 견갑대의 Protraction 동작을 유지시킨다.",
-          "fixation": "2. 고정: 없음. 검사자의 반대 손은 견갑 내측연(Medial border)을 촉진한다.",
-          "test": "3. 검사: 한 손으로 아래 방향(검사대)으로 저항하며 내측연이 밀려 내려오는지 확인한다."
-        },
-        {
-          "muscle": "극상근 (Supraspinatus)",
-          "position": "1. 자세: 서거나 앉은 자세에서 견관절 외전(15도) + 굴곡(30도) (손바닥이 서혜부 방향).",
-          "fixation": "2. 고정: 반대쪽 견관절을 고정한다.",
-          "test": "3. 검사: 손목 근위부에 접촉하여 서혜부 방향으로 하방 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
+    "id": "part_lumbar_pelvis",
+    "title": "🦴 허리/골반 (Lumbar & Pelvis)",
+    "type": "body_part",
+    "children": [
       {
-        "name": "소흉근 (Pectoralis Minor)",
-        "origin": "Outer surfaces of ribs 3~5",
-        "insertion": "Coracoid process of scapula",
-        "action": "Protraction, Depression, Downward rotation, Anterior tilt",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_lumbar_flexion_pain",
+        "title": "허리 숙일 때 뻐근함 및 가동 범위 제한",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_lumbar_hamstring",
+            "title": "원인 A: 하체 후면 기인 (골반 리듬 깨짐)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_hamstring_short",
+                "title": "햄스트링 타이트니스",
+                "type": "sub_class",
+                "clinical_insight": "허벅지 뒤쪽(햄스트링)이 뻣뻣하여 상체를 숙일 때 골반이 함께 넘어가주지 못하면, 요추(허리뼈)만 억지로 둥글게 말리면서 허리에 과부하가 걸리게 됩니다.",
+                "postural_pattern": "Posterior Pelvic Tilt (골반 후방경사) / 일자 허리",
+                "teaching_cues": {
+                  "analogy": "바지를 입을 때 뒤쪽 주머니가 밑으로 꽉 당겨져 있으면 허리를 숙이기 힘든 것처럼, 허벅지 뒤쪽 근육이 골반을 아래로 꽉 잡고 안 놔주고 있는 겁니다.",
+                  "movement_cue": "인사하듯 허리를 숙일 때, 꼬리뼈를 천장 쪽으로 치켜올린다는 느낌을 먼저 줘보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "햄스트링 액티브 아이솔레이션 스트레칭 (수건 걸고 다리 당기기)",
+                  "step2_activation": "짐볼 브릿지 (Swiss Ball Bridge) - 햄스트링 수축 및 이완 조절 훈련",
+                  "step3_integration": "루마니안 데드리프트 (RDL) 빈 바벨 연습 - 완벽한 골반 리듬 학습"
+                },
+                "contraindications": [
+                  "무릎을 다 편 상태에서 억지로 바닥 터치하는 스트레칭",
+                  "레그 컬(Leg Curl) 머신 고중량 사용"
+                ],
+                "assessment": {
+                  "mrt": "[하지직거상(SLR) 능동 평가] 회원 스스로 무릎을 편 채로 다리를 들어보게 합니다. 60도 이하에서 허벅지 뒤쪽이 심하게 당기거나 허리가 바닥으로 강하게 짓눌리면 햄스트링 유연성 부족을 시사합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "햄스트링",
+                      "position": "회원은 엎드린 상태(복와위)에서 한쪽 무릎을 90도 굽힙니다.",
+                      "fixation": "트레이너는 회원의 골반 후면(천골 부위)을 눌러 고정합니다.",
+                      "test": "트레이너가 회원의 발목을 잡고 바닥 쪽(슬관절 신전 방향)으로 눌러 내리며 회원의 무릎 굽히는 힘에 대한 버티기 능력을 측정합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "햄스트링 (Hamstrings)",
+                    "origin": "Ischial tuberosity",
+                    "insertion": "Tibia and Fibula",
+                    "action": "Hip extension, Knee flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "햄스트링 PIR: 회원을 앙와위로 눕히고 다리를 뻗은 채 위로 들어올립니다(수동 SLR). 저항감이 느껴지는 한계점에서 멈추고, 회원에게 발뒤꿈치로 트레이너의 어깨를 20% 힘으로 누르라고 지시합니다. 7초 유지 후 힘을 빼게 하고, 다리를 가슴 쪽으로 더 밀어 올려 후면 사슬을 깊게 엽니다.",
+                  "prt": "햄스트링 PRT: 엎드린 자세에서 회원의 오금 바로 위쪽 허벅지 뒤편(슬와부)의 단단해진 부위를 지그시 누릅니다. 회원의 무릎을 편안한 각도로 구부리게 하여 손끝에 느껴지는 근육의 긴장감이 완전히 해소되는 위치를 찾아 90초간 홀드합니다."
+                },
+                "red_flag": "SLR 시 허벅지 뒤가 아닌 허리 중앙이 심하게 아프다면 요추부 안정화부터 선행.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_lumbar_psoas",
+            "title": "원인 B: 코어 심부 기인 (골반 전방 락킹)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_psoas_locking",
+                "title": "장요근 단축 (골반 전방경사 고착)",
+                "type": "sub_class",
+                "clinical_insight": "오랜 좌식 생활로 코어 앞쪽의 장요근이 짧아져 골반을 앞으로 꽉 잡고 있으면(전방경사), 허리를 뒤로 빼거나 숙이려는 동작 자체가 방해를 받습니다.",
+                "postural_pattern": "Anterior Pelvic Tilt (골반 전방경사) / 오리궁둥이 체형",
+                "teaching_cues": {
+                  "analogy": "바지 앞 주머니 쪽 고무줄이 너무 짧게 묶여 있어서, 허리를 숙이려고 하면 앞에서 꽉 막혀버리는 현상입니다.",
+                  "movement_cue": "배꼽을 명치 쪽으로 끌어당겨서 허리 뒤쪽을 바닥에 납작하게 붙여보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "하프 닐링 장요근 스트레칭 (Half-kneeling Hip Flexor Stretch)",
+                  "step2_activation": "데드버그 (Dead Bug) 및 골반 후방경사(PPT) 인지 훈련",
+                  "step3_integration": "플랭크 (Plank) 상태에서 복부 및 둔근 강한 수축 버티기"
+                },
+                "contraindications": [
+                  "레그 레이즈 (Leg Raise - 허리가 뜨면 장요근만 혹사당함)",
+                  "과도한 코브라 자세 스트레칭"
+                ],
+                "assessment": {
+                  "mrt": "[토마스 기능 평가] 회원이 베드 끝에 앉아 한쪽 무릎을 가슴 깊숙이 안고 천천히 뒤로 눕게 유도합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "장요근",
+                      "position": "회원은 앉은 자세 또는 앙와위에서 고관절을 100도 이상 깊게 굴곡하여 다리를 가슴 쪽으로 당깁니다.",
+                      "fixation": "반대쪽 다리가 뜨지 않게 폼롤러 등으로 누르거나 골반의 중립을 세팅합니다.",
+                      "test": "트레이너가 회원의 무릎 바로 위(대퇴 하부)를 바닥 쪽(신전 방향)으로 누르며 코어 심부 근육의 활성도를 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "장요근 (Iliopsoas)",
+                    "origin": "T12-L5 vertebrae, Iliac fossa",
+                    "insertion": "Lesser trochanter of femur",
+                    "action": "Hip flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "장요근 능동 릴리즈: 회원이 토마스 평가 자세로 누운 상태에서, 베드 밖으로 떨어뜨린 다리를 천장 위로 들어올리게(고관절 굴곡) 지시합니다. 트레이너가 그 힘을 7초간 버티고 난 뒤, 회원이 힘을 풀면 다리를 바닥 쪽으로 천천히 더 지그시 눌러 장요근을 이완합니다.",
+                  "prt": "장요근 PRT: 앙와위 자세에서 회원의 무릎을 굽혀 세웁니다. 골반 앞 뼈(ASIS)와 배꼽 사이 중간 지점에서 심부 장요근 텐션을 찾아 엄지로 부드럽게 컨택합니다. 컨택을 유지한 채 회원의 다리를 가슴 쪽으로 바짝 굽혀 복부를 헐렁하게 만들어 90초간 이완 사이클을 기다립니다."
+                },
+                "red_flag": "복부 컨택 시 비정상적으로 강한 맥박이 느껴지면 압박 금지.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "전거근 (Serratus Anterior)",
-        "origin": "Outer surfaces ribs 1~8 or 9",
-        "insertion": "Medial border and inferior angle of scapula",
-        "action": "Upward rotation, Protraction",
-        "type": "Phasic (강화 대상)"
+        "id": "sym_lumbar_extension_pain",
+        "title": "허리 젖힐 때 / 기립 자세 유지 시 피로감",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_facet_joint",
+            "title": "원인 A: 후면 사슬 불균형",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_lumbar_hyper",
+                "title": "기립근 과긴장 및 둔근 활성화 부족",
+                "type": "sub_class",
+                "clinical_insight": "가장 큰 엔진인 엉덩이(대둔근)가 스위치 오프 되어 있으면, 그 위의 얇은 허리 근육(기립근)이 무리하게 상체를 받치느라 허리 관절이 짓눌리는 보상 작용이 일어납니다.",
+                "postural_pattern": "Gluteal Amnesia (엉덩이 기억상실증) / 하이퍼로도시스",
+                "teaching_cues": {
+                  "analogy": "대기업(엉덩이)이 일을 안 하니까 중소기업(허리)이 매일 야근하다가 결국 과로로 쓰러지기 일보 직전인 상태예요. 대기업을 깨워야 합니다.",
+                  "movement_cue": "허리를 꺾어서 다리를 들지 말고, 엉덩이에 동전을 꽉 끼운다고 생각하고 힘을 먼저 주세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "고양이-소 자세 (Cat-Cow) 및 폼롤러 요추 릴리즈",
+                  "step2_activation": "글루트 브릿지 (Glute Bridge) - 허리 꺾임 없이 엉덩이만 수축",
+                  "step3_integration": "케틀벨 스윙 (Kettlebell Swing) - 후면 사슬 폭발적 통합 (초보자 주의)"
+                },
+                "contraindications": [
+                  "백 익스텐션 머신 (Back Extension - 기립근만 타겟 시 독이 됨)",
+                  "슈퍼맨 자세 (허리 과도한 신전)"
+                ],
+                "assessment": {
+                  "mrt": "[Prone Hip Extension 패턴 평가] 엎드린 회원에게 다리를 뒤로 들어올리게 지시합니다. 대둔근보다 기립근이나 햄스트링이 먼저 강하게 수축한다면 비효율적인 후면 사슬 동원 패턴입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "대둔근",
+                      "position": "엎드린 자세(복와위)에서 무릎을 90도 굽힌 상태로 허벅지를 천장 방향으로 들어 올립니다(고관절 신전).",
+                      "fixation": "트레이너는 한 손으로 회원의 요추부를 덮어 허리가 보상 작용으로 꺾이지 않게 방어합니다.",
+                      "test": "트레이너의 다른 손으로 회원의 허벅지 뒤쪽을 아래로 누르며 엉덩이 근육만의 순수한 동원 능력을 체크합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "기립근 (Erector Spinae)",
+                    "origin": "Sacrum, Iliac crest, Lumbar vertebrae",
+                    "insertion": "Ribs, Cervical/Thoracic vertebrae",
+                    "action": "Spinal extension",
+                    "type": "Tonic (이완)"
+                  },
+                  {
+                    "name": "대둔근 (Gluteus Maximus)",
+                    "origin": "Posterior ilium, Sacrum",
+                    "insertion": "Gluteal tuberosity, IT tract",
+                    "action": "Hip extension",
+                    "type": "Phasic (강화/활성화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "요부 기립근 PIR: 회원은 베드에 앉은 자세에서 상체를 둥글게 말고(굴곡), 트레이너는 등 뒤에 위치합니다. 회원에게 허리를 꼿꼿이 세워 펴라고 지시하고, 트레이너는 양손으로 회원의 양어깨를 눌러 7초간 방어합니다. 힘을 뺀 뒤 상체를 더 깊숙이 말아 기립근의 텐션을 해소합니다.",
+                  "prt": "요부 기립근 PRT: 엎드린 회원의 허리에서 가장 단단하게 뭉친 기립근 포인트를 컨택합니다. 회원의 다리를 살짝 들어 올리거나 골반 밑에 쿠션을 대어(고관절 신전 셋업) 허리 근육이 살짝 느슨해지는 각도를 확보한 뒤 90초간 텐션 감소를 유도합니다."
+                },
+                "red_flag": "운동 시 다리로 뻗치는 저림 발생 시 척추관 이슈 확인 필요.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "극상근 (Supraspinatus)",
-        "origin": "Supraspinous fossa of scapula",
-        "insertion": "Greater tubercle of humerus",
-        "action": "Abduction (humerus)",
-        "type": "Tonic/Phasic 혼합"
+        "id": "sym_sciatica",
+        "title": "엉덩이 깊은 곳부터 다리까지의 뻐근한 저림",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_piriformis",
+            "title": "원인 A: 고관절 심부 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_piri_spasm",
+                "title": "이상근 타이트니스 (가짜 좌골신경통)",
+                "type": "sub_class",
+                "clinical_insight": "골반 안쪽 깊은 곳에 있는 이상근이 타이트해져서 부풀어 오르면, 그 근처를 지나가는 좌골신경을 눌러 다리가 저린 듯한 불편함을 유발합니다.",
+                "postural_pattern": "팔자걸음 체형 / 고관절 외회전 고착",
+                "teaching_cues": {
+                  "analogy": "호스(신경) 위를 무거운 돌덩이(이상근)가 누르고 있어서 물(감각)이 잘 안 통하는 거예요. 돌덩이를 치워주면 싹 가라앉습니다.",
+                  "movement_cue": "다리를 꼬는 자세(4자 다리)를 만들고 엉덩이 깊숙한 곳이 뻐근해질 때까지만 당겨주세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "피존 포즈 스트레칭 (Pigeon Pose) 또는 좌식 4자 다리 스트레칭",
+                  "step2_activation": "사이드 라이잉 내회전 훈련 - 이상근의 길항근 활성화",
+                  "step3_integration": "스플릿 스쿼트 (Split Squat) - 골반의 좌우 중립 정렬 잡기"
+                },
+                "contraindications": [
+                  "과도한 와이드 스쿼트 (이상근 긴장 유발)",
+                  "다리 꼬고 장시간 앉아있기"
+                ],
+                "assessment": {
+                  "mrt": "[FAIR 움직임 검사] 측와위(불편한 쪽이 위)에서 고관절을 60도 굽히고(Flexion), 내전(Adduction) 및 내회전(Internal Rotation) 시켰을 때 엉덩이 깊은 곳에 찌릿한 텐션이 재현되는지 봅니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "이상근",
+                      "position": "엎드린 자세(복와위)에서 무릎을 90도 굽히고 발을 바깥쪽으로 벌려 눕힙니다(고관절 내회전 유도 자세).",
+                      "fixation": "트레이너는 회원의 골반이 들리지 않게 반대편 골반을 강하게 픽스합니다.",
+                      "test": "트레이너가 회원의 발목 안쪽을 바깥으로 밀며 이상근의 외회전 버티기 능력을 테스트하고 뻐근함 발생 여부를 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "이상근 (Piriformis)",
+                    "origin": "Anterior sacrum",
+                    "insertion": "Greater trochanter of femur",
+                    "action": "External rotation of hip",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "이상근 컨디셔닝: 앙와위로 누운 회원의 무릎을 굽히고 다리를 반대편 가슴 쪽 대각선으로 깊게 넘깁니다. 회원에게 무릎을 바깥으로 벌리려는 힘을 7초간 주게 한 후 방어하고, 힘을 뺄 때 다리를 몸통 대각선 쪽으로 더 당겨 이상근의 길이를 확보합니다.",
+                  "prt": "이상근 PRT: 엎드린 회원의 엉덩이 한가운데 가장 깊숙하고 뻐근한 텐션 부위를 엄지 또는 팔꿈치로 지그시 컨택합니다. 회원의 다리를 베드 바깥쪽으로 떨어뜨려(외전 및 외회전 유도) 이상근을 가장 짧고 편안하게 셋업한 상태로 90초 유지합니다."
+                },
+                "red_flag": "발가락 폄/굽힘 근력 저하가 동반된다면 디스크 관련 정밀 체크가 우선.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "manual_technique": {
-      "met": "소흉근 RI: 환자에게 견갑골 후인(Retraction) 방향으로 능동 수축(5~7초)을 유도하여 소흉근의 상호억제 이완을 유도한다.",
-      "prt": "소흉근 오훼돌기 부착부 핀칭 후 어깨를 전방으로 살짝 둥글게 말아 가장 통증이 없는 Slacked position을 90초간 유지한다."
-    },
-    "red_flag": "야간 통증이 심하여 잠을 깨거나, 팔을 들어올린 후 천천히 내리지 못하고 툭 떨어지는 경우 회전근개 파열 의심.",
-    "category": "🦴 체형 및 관절 기초 통증"
+    ]
   },
   {
-    "symptom": "목을 젖히거나 돌릴 때 뒷목이 뻣뻣하고 두통이 동반되며 어깨 위가 항상 무거움",
-    "image_url": "assets/images/neck.png",
-    "clinical_insight": "💡 임상 메커니즘: 거북목(FHP) 자세는 후두하근과 상부승모근을 만성적으로 단축시키며, 이는 대후두신경을 압박하여 경추성 두통과 안구 통증을 유발할 수 있습니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 경추 측굴 시 2초 저항-유지-이완을 통해 목갈비근(사각근)과 견갑거근의 스파즘(Spasm) 여부 확인",
-      "mmt_details": [
-        {
-          "muscle": "상부승모근 (Upper Trapezius)",
-          "position": "1. 자세: 검사하는 쪽의 어깨를 올리며 동시에 귀를 어깨 쪽으로 가져간다. (고개는 반대로 약간 회전).",
-          "fixation": "2. 고정: 없음.",
-          "test": "3. 검사: 양손을 이용하여 어깨와 머리를 서로 반대 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "견갑거근 (Levator Scapulae)",
-          "position": "1. 자세: 주관절 90도 굴곡 + 어깨 내전. 목은 검사 방향으로 측굴시킨다.",
-          "fixation": "2. 고정: 검사하는 쪽 어깨를 고정한다.",
-          "test": "3. 검사: 주관절 내측에 접촉하여 견관절 외전 방향으로 잡아당긴다. (어깨 하강 강조)"
-        },
-        {
-          "muscle": "흉쇄유돌근 (SCM)",
-          "position": "1. 자세: Supine에서 검사 반대쪽으로 고개를 회전 + 굴곡시킨다.",
-          "fixation": "2. 고정: 없음.",
-          "test": "3. 검사: 측두골에 접촉하여 아래쪽 사선 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
+    "id": "part_thoracic_back",
+    "title": "🩻 흉추/코어 (Thoracic & Core)",
+    "type": "body_part",
+    "children": [
       {
-        "name": "상부승모근 (Upper Trapezius)",
-        "origin": "Occipital bone, nuchae ligament, C7~T12",
-        "insertion": "Lateral 1/3 clavicle, acromion process",
-        "action": "Elevation, Upward rotation",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_interscapular_pain",
+        "title": "날개뼈 사이 뻐근함 및 늘어나는 통증",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_upper_crossed",
+            "title": "원인 A: 상지교차 체형 패턴 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_pec_major_tight",
+                "title": "가슴 근육 단축 및 등 근육 이완성 약화",
+                "type": "sub_class",
+                "clinical_insight": "가슴 앞쪽 근육(대흉근)이 우세해져 짧아지면 날개뼈 사이 근육(능형근)을 계속 잡아끌어 팽팽한 고무줄처럼 늘어지게 만듭니다. 늘어난 상태로 굳어 발생하는 이완성 긴장입니다.",
+                "postural_pattern": "Upper Crossed Syndrome (상지교차증후군) / 둥근 어깨",
+                "teaching_cues": {
+                  "analogy": "앞쪽에서 고무줄(가슴)을 꽉 잡아당기고 있으니까 등쪽 고무줄(능형근)이 억지로 팽팽해져서 비명을 지르는 중이에요. 등을 주무를 게 아니라 가슴을 풀어야 합니다.",
+                  "movement_cue": "어깨를 뒤로 모으는 게 아니라, 가슴 한가운데 뼈를 하늘로 살짝 들어올린다고 생각하세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "문틀 대흉근 스트레칭 (Doorway Pectoral Stretch)",
+                  "step2_activation": "Prone T-Raise - 능형근 및 중부승모근 등척성 수축",
+                  "step3_integration": "TRX 로우 (TRX Row) - 흉추 신전과 함께 견갑골 후인 통합"
+                },
+                "contraindications": [
+                  "푸시업(Push-up)이나 벤치프레스 과다 수행",
+                  "스마트폰 장시간 보기"
+                ],
+                "assessment": {
+                  "mrt": "[가슴 근육 유연성 시각 평가] 앙와위로 누워 깍지를 끼고 머리 위로 손을 올렸을 때 팔꿈치가 바닥에 닿지 않거나 어깨 앞쪽이 강하게 뜰 경우 전면부 텐션 과다를 의미합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "능형근",
+                      "position": "엎드려(또는 앉아서) 팔을 등 뒤쪽으로 당기며 날개뼈를 척추 쪽으로 강하게 모읍니다(후인 셋업).",
+                      "fixation": "트레이너는 회원의 몸통 앞쪽(가슴)을 밀착시켜 상체가 딸려가지 않게 안정화합니다.",
+                      "test": "트레이너가 회원의 팔꿈치를 앞쪽 방향(외전 및 전인)으로 지그시 당겨 능형근이 제 위치를 버티는지 평가합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "대흉근 (Pectoralis Major)",
+                    "origin": "Clavicle, Sternum",
+                    "insertion": "Greater tubercle of humerus",
+                    "action": "Adduction, Internal rotation",
+                    "type": "Tonic (이완)"
+                  },
+                  {
+                    "name": "능형근 (Rhomboids)",
+                    "origin": "Spinous processes C7-T5",
+                    "insertion": "Medial border of scapula",
+                    "action": "Scapular retraction",
+                    "type": "Phasic (강화/활성화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "대흉근 가동성 회복 MET: 회원이 앉은 벤치에서 양손을 깍지 껴 뒤통수에 댑니다. 트레이너는 회원 뒤에 서서 회원의 양 팔꿈치를 잡고 뒤로 부드럽게 젖혀 가슴을 엽니다. 회원이 양 팔꿈치를 앞으로 모으려는 능동적인 힘을 7초간 방어한 후 가동 범위를 뒤로 더 늘려 전면 사슬을 시원하게 오픈합니다.",
+                  "prt": "능형근 PRT: 엎드린 회원의 날개뼈와 척추 사이 능형근 텐션 부위를 찾아 핀치 그립합니다. 회원의 팔을 베드 밑으로 툭 떨어뜨리고 날개뼈를 뒤로 가볍게 모아주어(후인 유도) 등 근육을 느슨하게 세팅한 채 90초간 이완을 기다립니다."
+                },
+                "red_flag": "목을 회전할 때 날개뼈 쪽으로 강한 방사통이 뻗친다면 목(경추) 이슈 체크.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "견갑거근 (Levator Scapulae)",
-        "origin": "Transverse processes of C1~C4",
-        "insertion": "Upper medial border of scapula",
-        "action": "Elevation, Downward rotation",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_thoracic_stiffness",
+        "title": "등 굽음 체형 및 숨쉬기 답답함",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_thoracic_kyphosis",
+            "title": "원인 A: 흉곽 가동성 저하 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_t_spine_immobile",
+                "title": "흉추 후만 패턴",
+                "type": "sub_class",
+                "clinical_insight": "흉추(등뼈) 관절이 굽은 채 뻣뻣해지면 호흡 시 갈비뼈(흉곽)의 자연스러운 팽창을 방해하여 가슴을 답답하게 하고 코어 세팅을 어렵게 만듭니다.",
+                "postural_pattern": "Thoracic Kyphosis (흉추 후만증)",
+                "teaching_cues": {
+                  "analogy": "새장에 녹이 슬어서 새장 창살(갈비뼈)이 안 벌려지는 거예요. 숨을 마시려면 녹슨 창살부터 부드럽게 움직이게 기름칠을 해줘야 합니다.",
+                  "movement_cue": "등을 둥글게 말았다가(고양이), 명치를 하늘로 끌어올리면서(소) 등뼈 마디마디가 움직이는 걸 느껴보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "오픈 북 스트레칭 (Open Book) - 흉추 회전 가동성 확보",
+                  "step2_activation": "프론 코브라 (Prone Cobra) - 하부 흉추 기립근 활성화",
+                  "step3_integration": "케틀벨 헤일로 (Kettlebell Halo) - 코어 고정 후 흉추 동적 가동"
+                },
+                "contraindications": [
+                  "중량 스쿼트 및 데드리프트 (흉추 무너지면 요추 박살남)",
+                  "무리한 브릿지(Bridge) 동작"
+                ],
+                "assessment": {
+                  "mrt": "[흉곽 팽창도 측정] 줄자를 이용해 흉골 검상돌기 위치에서 숨을 최대로 내쉬었을 때와 들이마셨을 때의 둘레 차이를 봅니다. 5cm 미만이면 흉곽 모빌리티 저하로 판별합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "흉추 기립근",
+                      "position": "회원은 엎드린 상태에서 두 손을 이마에 대고 가슴 명치가 바닥에서 떨어질 때까지 상체를 들어 올립니다.",
+                      "fixation": "트레이너는 회원의 엉덩이와 요추 부위를 폼롤러나 손으로 단단히 눌러 하체를 안정화합니다.",
+                      "test": "트레이너가 회원의 등 상부(흉추부)를 바닥 쪽으로 지그시 눌러 흉추를 펴내는 버티기 힘을 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "흉추 다열근 (Thoracic Multifidus)",
+                    "origin": "Transverse processes of thoracic vertebrae",
+                    "insertion": "Spinous processes of vertebrae above",
+                    "action": "Spinal extension, stabilization",
+                    "type": "Phasic (활성화/모빌리티 확보)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "흉곽 확장 호흡 케어: 회원이 폼롤러나 벤치에 앉은 자세에서 호흡을 흉곽(갈비뼈 측면)으로 깊게 들이마시게 합니다. 이때 흉곽이 옆으로 팽창하려는 힘을 트레이너가 양손으로 갈비뼈 바깥에서 안쪽으로 쥐어짜듯 7초간 저항합니다. 깊게 내쉴 때 흉곽의 텐션이 떨어지는 것을 인지시킵니다.",
+                  "prt": "흉추 기립근 PRT: 엎드린 회원의 등 중앙 흉추 극돌기 바로 옆 근육 라인의 단단한 띠를 컨택합니다. 얇은 베개나 수건을 회원의 명치 밑에 받쳐 등을 살짝 둥글게 말아(굴곡 세팅) 근육 텐션을 0으로 만든 채 90초 유지합니다."
+                },
+                "red_flag": "시니어 회원의 경우 무리한 흉추 신전 시 미세 골절 리스크 주의.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "흉쇄유돌근 (SCM)",
-        "origin": "Upper sternum, Medial 1/3 clavicle",
-        "insertion": "Mastoid process of temporal bone",
-        "action": "Lateral flexion, Contralateral rotation",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_rib_flare",
+        "title": "오버헤드 프레스 시 허리 꺾임 및 갈비뼈 들림 (Rib Flare)",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_core_bracing",
+            "title": "원인 A: 코어 브레이싱 실패 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_oblique_weak",
+                "title": "복횡근 및 내복사근 기능 저하 (Open Scissors)",
+                "type": "sub_class",
+                "clinical_insight": "가위가 활짝 열린 것처럼(Open Scissors Syndrome) 갈비뼈가 위로 들리고 골반이 앞으로 쏟아지는 현상입니다. 코어 실린더가 잠기지 않아 상체의 모든 무게가 요추(허리) 후관절로 짓눌리게 됩니다.",
+                "postural_pattern": "Open Scissors Syndrome (오픈 시저스 증후군)",
+                "teaching_cues": {
+                  "analogy": "물기둥(코어)이 단단해야 무거운 걸 드는데, 물기둥 중간에 구멍이 뚫려서 물이 줄줄 새어나가니까 허리가 대신 그 무게를 다 버티며 꺾이는 거예요.",
+                  "movement_cue": "헛기침을 '크흠!' 하고 뱉을 때 단단해지는 배의 압력을 유지하면서, 갈비뼈를 배꼽 쪽으로 지퍼 채우듯이 끌어내리세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "폼롤러 흉추 신전 모빌리티 (흉추 가동성 부족 보상 방지)",
+                  "step2_activation": "90/90 호흡(Breathing) 훈련 및 펠빅 틸트(PPT) 인지",
+                  "step3_integration": "데드버그 (Dead bug) 및 하프 닐링 케이블 촙 (Cable Chop)"
+                },
+                "contraindications": [
+                  "중량 스탠딩 오버헤드 프레스 (코어 통제 전까지 시티드로 대체)",
+                  "허리를 과도하게 젖히는 코브라 스트레칭"
+                ],
+                "assessment": {
+                  "mrt": "[Rib Flare 시각적 평가] 회원을 앙와위로 눕히고 양팔을 머리 위로 만세하게 합니다. 이때 하부 갈비뼈(Rib margin)가 바닥에서 붕 솟아오르고 허리에 주먹 하나가 들어갈 정도로 아치가 심해지면 코어 조절 능력이 상실된 것입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "내복사근 / 복횡근",
+                      "position": "앙와위 자세에서 무릎을 90도 굽히고 발바닥을 바닥에 댑니다.",
+                      "fixation": "트레이너는 회원의 골반이 흔들리지 않게 고정합니다.",
+                      "test": "회원에게 갈비뼈를 아래로 끌어내리며 복부를 납작하게 만들게(Bracing) 한 뒤, 트레이너가 어깨를 대각선 방향으로 밀어 코어의 회전/신전 저항력을 테스트합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "복횡근 (Transversus Abdominis)",
+                    "origin": "Inguinal ligament, Iliac crest, Ribs 7-12",
+                    "insertion": "Linea alba, Pubic crest",
+                    "action": "Compresses abdomen (Core Bracing)",
+                    "type": "Phasic (강화/안정화)"
+                  },
+                  {
+                    "name": "요부 기립근 (Lumbar Erector Spinae)",
+                    "origin": "Sacrum, Iliac crest",
+                    "insertion": "Thoracic/Cervical vertebrae, Ribs",
+                    "action": "Spinal extension",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "호흡을 통한 코어 릴리즈: 앙와위로 누운 회원의 들린 갈비뼈 측면에 손을 댑니다. 회원이 깊게 숨을 들이마실 때 갈비뼈가 옆으로 벌어지려는 힘을 강하게 막고(등척성), 숨을 끝까지 길게(후~~) 내뱉을 때 트레이너가 갈비뼈를 골반 대각선 아래 방향으로 지그시 눌러 내려 닫아줍니다.",
+                  "prt": "요방형근/기립근 PRT: 엎드린 자세에서 과긴장된 허리 뒷근육(Q.L)을 컨택합니다. 회원의 양 다리를 트레이너 쪽(통증이 있는 쪽)으로 구부려 골반을 측굴시키고, 허리가 가장 편안하게 헐렁해지는 각도에서 90초간 텐션을 없앱니다."
+                },
+                "red_flag": "운동 중 급격한 복부 통증이나 서혜부 방사통 발생 시 탈장 주의.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_lat_tightness",
+            "title": "원인 B: 광배근 타이트니스 보상 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_lat_overactive",
+                "title": "광배근 단축 및 견관절 굴곡 제한",
+                "type": "sub_class",
+                "clinical_insight": "광배근은 팔(상완골)에서 시작해 골반과 허리(흉요근막)까지 이어지는 거대한 근육입니다. 이 근육이 뻣뻣하면 팔을 위로 들 때, 억지로 팔을 올리기 위해 광배근이 허리와 갈비뼈를 통째로 앞으로 잡아당겨 허리가 꺾이게 됩니다.",
+                "postural_pattern": "Flat Back (일자 허리) 동반 광배근 우세",
+                "teaching_cues": {
+                  "analogy": "팔이랑 허리가 질긴 고무줄 하나로 묶여 있는 상태라, 팔을 위로 번쩍 들면 허리가 고무줄에 딸려 올라가서 꺾이는 겁니다. 고무줄을 늘려야 해요.",
+                  "movement_cue": "팔을 귀 옆에 붙이려고 억지로 허리를 꺾지 마세요. 허리는 벽에 딱 붙인 채 팔이 올라가는 곳까지만 올려보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "폼롤러 광배근/대원근 타겟 SMR (겨드랑이 아래 릴리즈)",
+                  "step2_activation": "하프 닐링 광배근 스트레칭 (골반 후방경사 잠그고 팔 뻗기)",
+                  "step3_integration": "월 슬라이드 (Wall Slide) - 허리를 벽에 밀착한 상태로 어깨 굴곡 훈련"
+                },
+                "contraindications": [
+                  "중량 풀업 및 랫풀다운 (광배근 우세 패턴 심화)",
+                  "키핑 풀업(Kipping Pull-up) 등 반동을 쓰는 상지 운동"
+                ],
+                "assessment": {
+                  "mrt": "[광배근 유연성 평가 (Lat Length Test)] 앙와위에서 무릎을 굽혀 허리를 바닥에 완전히 밀착(PPT)시킵니다. 양팔을 앞으로 나란히 한 뒤 머리 위로 천천히 넘겼을 때, 팔이 바닥에 닿기 전 허리가 바닥에서 뜨거나 팔이 바깥으로 벌어지면 광배근 단축입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "광배근",
+                      "position": "엎드린 자세(복와위)에서 팔을 몸통 옆에 붙이고 내회전(손등이 엉덩이를 향하게) 시킵니다.",
+                      "fixation": "트레이너는 회원의 반대편 골반 부위를 눌러 고정합니다.",
+                      "test": "회원에게 팔을 천장 위(신전 및 내전)로 들어올리게 한 뒤, 트레이너가 전완을 잡아 바닥 바깥쪽 방향(굴곡 및 외전)으로 눌러 버티는 힘을 봅니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "광배근 (Latissimus Dorsi)",
+                    "origin": "T7-L5 spinous processes, Thoracolumbar fascia, Iliac crest",
+                    "insertion": "Intertubercular groove of humerus",
+                    "action": "Shoulder extension, Adduction, Internal rotation",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "광배근 PIR: 측와위로 눕힌 회원의 위쪽 팔을 머리 위(굴곡)로 최대한 늘려 잡습니다. 골반을 단단히 고정시킨 후, 회원이 팔을 골반 쪽으로(내전 및 신전) 강하게 당기려는 힘을 7초간 방어합니다. 힘을 빼면 팔을 머리 위로 더 뻗어 측면 사슬 전체를 이완합니다.",
+                  "prt": "광배근 PRT: 엎드린 회원의 겨드랑이 바로 밑 광배근 외측연의 결절 부위를 컨택합니다. 팔을 몸통 옆으로 바짝 붙이고(내전), 안으로 돌려(내회전) 근막을 완전히 느슨하게 만든 채 90초간 인내합니다."
+                },
+                "red_flag": "어깨 전면부 통증이 동반되면 이두근 건염(Biceps Tendinitis)도 함께 체크.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "manual_technique": {
-      "met": "견갑거근/SCM PIR: 해당 근육을 이완 범위 끝까지 스트레칭 후, 환자가 원래 방향으로 20% 힘을 주고 5~7초간 버티게 한 뒤 이완한다.",
-      "prt": "후두하근(Suboccipitalis) 및 경추 부착부 촉진 후 고개를 약간 신전시키고 치료사 쪽으로 체중을 실어 압박을 줄인 채 90초 유지한다."
-    },
-    "red_flag": "경추를 움직일 때 상지(손끝)까지 저릿한 감각이 강하게 퍼지거나 어지러움, 구토가 발생하면 신경/혈관 문제 의심.",
-    "category": "🦴 체형 및 관절 기초 통증"
+    ]
   },
   {
-    "symptom": "발목이 자주 삐거나 쪼그려 앉을 때 발목 앞쪽이 막히고 종아리가 심하게 뭉침",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 비복근/가자미근 단축은 족배굴곡(발등 굽힘)을 제한하여, 쪼그려 앉거나 스쿼트 시 무게중심이 뒤로 쏠리거나 무릎에 과부하를 줍니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 족저/족배굴곡 등척성 수축을 통해 길항관계인 전경골근과 비복근의 억제/활성 불균형 평가",
-      "mmt_details": [
-        {
-          "muscle": "전경골근 (Tibialis Anterior)",
-          "position": "1. 자세: Supine 자세에서 고관절과 슬관절 신전 + 족관절 배측굴곡.",
-          "fixation": "2. 고정: 발목 하퇴부(Tibia)를 단단히 고정한다.",
-          "test": "3. 검사: 발등에 접촉하여 저측굴곡 방향으로 강하게 저항을 준다."
-        },
-        {
-          "muscle": "비복근/가자미근 (Gastrocnemius/Soleus)",
-          "position": "1. 자세: Prone 자세에서 슬관절 90도 굴곡(가자미근) 또는 완전 신전(비복근) + 족관절 저측굴곡.",
-          "fixation": "2. 고정: 발목을 고정한다.",
-          "test": "3. 검사: 한 손은 발뒤꿈치, 다른 손은 발바닥에 접촉하여 배측굴곡 방향으로 꺾어 누르며 저항을 준다."
-        },
-        {
-          "muscle": "후경골근 (Tibialis Posterior)",
-          "position": "1. 자세: Supine 자세에서 족관절 저측굴곡 + 내번(Inversion).",
-          "fixation": "2. 고정: 발목을 고정한다.",
-          "test": "3. 검사: 발의 내측에 접촉하여 배측굴곡 + 외번 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
+    "id": "part_elbow_wrist",
+    "title": "💪 팔/손목 (Elbow & Wrist)",
+    "type": "body_part",
+    "children": [
       {
-        "name": "전경골근 (Tibialis Anterior)",
-        "origin": "Lateral condyle of tibia, interosseous membrane",
-        "insertion": "1st cuneiform, 1st metatarsal",
-        "action": "Dorsiflexion, Inversion",
-        "type": "Phasic (강화 대상)"
+        "id": "sym_tennis_elbow",
+        "title": "기구 그립 시 팔꿈치 바깥쪽 뻐근함",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_lateral_epi",
+            "title": "원인 A: 전완(아래팔) 과사용 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_wrist_extensor",
+                "title": "손목 폄근 과활성화",
+                "type": "sub_class",
+                "clinical_insight": "바벨이나 덤벨을 쥘 때 전완근을 비정상적으로 과사용하여, 근육이 시작되는 팔꿈치 바깥쪽 건(Tendon) 부위에 텐션이 누적된 상태입니다.",
+                "postural_pattern": "Over-gripping Pattern / 손목 과신전 체형",
+                "teaching_cues": {
+                  "analogy": "가느다란 실(힘줄)에 무거운 추를 매달고 계속 흔들다 보니 실 끝부분(팔꿈치 바깥)이 조금씩 뜯어지고 있는 중이에요.",
+                  "movement_cue": "바벨을 쥘 때 손목이 뒤로 꺾이지 않게, 주먹과 팔뚝이 깁스한 것처럼 일자가 되게 꽉 쥐세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "전완근 스트레칭 (손등 바닥으로 꺾기)",
+                  "step2_activation": "타이거 테일 롤러 마사지스틱 활용",
+                  "step3_integration": "파머스 워크 (Farmer's Walk) - 중립 손목 그립 유지 훈련"
+                },
+                "contraindications": [
+                  "덤벨 레터럴 레이즈 (손목 꺾임 시 최악)",
+                  "바벨 컬 (EZ-Bar로 교체 권장)"
+                ],
+                "assessment": {
+                  "mrt": "[Cozen's 동적 평가] 회원은 팔꿈치를 90도 굽히고 주먹을 쥔 채 손목을 몸 쪽으로 젖힙니다(배측굴곡 세팅). 트레이너가 이 주먹을 아래로 강하게 누를 때 팔꿈치 바깥쪽에 찌릿함이 발현되는지 봅니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "장요측수근신근",
+                      "position": "회원은 팔꿈치를 쭉 펴고 손바닥이 바닥을 향하게 한 상태에서 손목을 손등 쪽으로 끝까지 젖힙니다.",
+                      "fixation": "트레이너는 회원의 전완 중간 부위를 흔들리지 않게 양손으로 꽉 잡아 고정합니다.",
+                      "test": "회원의 손등을 손바닥 방향(굴곡)으로 강하게 눌러 신전근의 버티는 토크를 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "수근신근 (Wrist Extensors)",
+                    "origin": "Lateral epicondyle of humerus",
+                    "insertion": "Base of metacarpal bones",
+                    "action": "Wrist extension",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "전완 신전근 이완기법: 회원은 팔꿈치를 펴고 반대쪽 손으로 손목을 바닥 쪽으로 지그시 꺾어 전완 상단을 최대로 늘려줍니다. 트레이너가 손등을 받쳐 저항벽을 만들고, 회원이 손목을 위로 젖히려는 능동적인 힘(20%)을 7초간 쓴 뒤 릴리즈합니다.",
+                  "prt": "전완 신전근 PRT: 앉은 회원의 팔꿈치 바깥쪽(외상과 바로 밑) 볼록 튀어나온 전완 근복부를 엄지로 부드럽게 누릅니다. 회원의 손목을 뒤로 젖히고(신전 세팅) 팔꿈치를 가장 편안한 각도로 구부려 전완 텐션을 완전히 없앤 상태를 90초간 인내합니다."
+                },
+                "red_flag": "운동 후 열감, 붓기가 뚜렷하면 무리한 마사지를 피하고 아이싱 및 휴식 권장.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_shoulder_comp",
+            "title": "원인 B: 어깨 안정성 부재(보상 작용)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_sh_instability",
+                "title": "근위부 약화로 인한 원위부 보상 패턴",
+                "type": "sub_class",
+                "clinical_insight": "뿌리(어깨)가 약하면 가지(팔꿈치, 손목)가 대신 무리하게 일을 합니다. 프레스 동작 시 회전근개가 관절을 잡아주지 못해 팔 전체가 흔들리면 손목과 전완 근육이 브레이크 역할을 하느라 뻣뻣해집니다.",
+                "postural_pattern": "Proximal Instability (근위부 불안정성 체형)",
+                "teaching_cues": {
+                  "analogy": "배(몸통)가 흔들리면 돛대(팔)를 잡고 있는 밧줄(전완근)이 끊어질 듯이 팽팽해지죠. 배 자체의 중심(어깨 심부)을 묵직하게 잡아야 합니다.",
+                  "movement_cue": "그립을 너무 꽉 쥐지 말고, 어깨뼈를 등 뒤 주머니에 꽂아 넣는 느낌으로 먼저 안정화시키세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "어깨 후방 관절낭 폼롤링",
+                  "step2_activation": "밴드 익스터널 로테이션 (Band External Rotation) - 극하근 세팅",
+                  "step3_integration": "터키시 겟업 (Turkish Get-Up) 파셜 동작 - 전신-어깨 통합 안정화"
+                },
+                "contraindications": [
+                  "불안정한 지면(보수볼 등) 위에서의 푸시업",
+                  "중량 풀업 (관절 통제 불능 상태)"
+                ],
+                "assessment": {
+                  "mrt": "[동적 프레스 평가] 오버헤드 프레스나 푸시업 동작 시 어깨가 과하게 으쓱거리거나 팔꿈치가 좌우로 덜렁거리는지 관찰함과 동시에 어깨 심부 근력을 테스트합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "극하근",
+                      "position": "팔꿈치를 옆구리에 밀착시킨 상태로 90도 굽히고 손을 바깥쪽으로 수평 회전시킵니다(외회전 셋업).",
+                      "fixation": "트레이너는 회원의 팔꿈치가 몸통에서 떨어지지 않게 벽을 세워 눌러줍니다.",
+                      "test": "회원의 손목을 배 쪽으로(내회전 방향) 밀어붙이며 어깨 후면부 안정화 근육이 버티는지 체크합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "극하근 (Infraspinatus)",
+                    "origin": "Infraspinous fossa of scapula",
+                    "insertion": "Greater tubercle of humerus",
+                    "action": "External rotation",
+                    "type": "Phasic (안정성 확보)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "어깨 후면 등척성 활성화: 팔꿈치를 직접 압박하는 대신, 밴드나 벽을 이용해 팔을 바깥쪽으로 회전하며 버티는(외회전 등척성) 루틴을 통해 회전근개의 코어 역할을 먼저 깨워줍니다.",
+                  "prt": "어깨 후방 관절낭 릴리즈: 엎드린 회원의 어깨 후면(극하근/소원근) 텐션 스팟을 압박한 채 팔을 밖으로 부드럽게 돌려 어깨 뒤쪽 긴장을 떨어뜨려 관절 중심화를 돕습니다."
+                },
+                "red_flag": "특정 각도에서 어깨가 헐거운 느낌(불안정성)이 강하다면 딥스 등 위험 종목 배제.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          }
+        ]
       },
       {
-        "name": "비복근 (Gastrocnemius)",
-        "origin": "Medial and lateral condyle of femur",
-        "insertion": "Posterior surface of calcaneus",
-        "action": "Flexion (knee), Plantar flexion",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "후경골근 (Tibialis Posterior)",
-        "origin": "Posterior surface of tibia and fibula",
-        "insertion": "2~4 metatarsal",
-        "action": "Plantar flexion, Inversion",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_wrist_extension",
+        "title": "푸시업/플랭크 시 손목 앞쪽 꺾임 통증",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_wrist_flexor_tight",
+            "title": "원인 A: 전완부 유연성 결여",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_flexor_carpi",
+                "title": "수근굴근 만성 타이트니스",
+                "type": "sub_class",
+                "clinical_insight": "마우스 작업이나 덤벨을 꽉 쥐는 습관(Over-gripping)으로 손목 굽힘근이 뻣뻣해지면, 바닥을 짚을 때 손목이 90도(배측굴곡)로 꺾이지 않아 관절 앞쪽 뼈끼리 강하게 압박됩니다.",
+                "postural_pattern": "라운드 숄더 및 손목 굽힘(Flexion) 고착형",
+                "teaching_cues": {
+                  "analogy": "손목 안쪽 근육이 고무줄처럼 질겨서 손등 쪽으로 넘어가질 않으니까, 관절 뼈 자체가 맷돌처럼 짓눌리고 있는 거예요.",
+                  "movement_cue": "손바닥 아랫부분(수근부)에만 체중을 싣지 말고, 열 손가락 끝으로 바닥을 움켜쥐듯이 힘을 분산시켜보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "네발기기(Quadruped) 손목 락킹(Rocking) 스트레칭 (손가락 방향 다양하게)",
+                  "step2_activation": "손목 신전근(Extensors) 리버스 컬 훈련",
+                  "step3_integration": "케틀벨 파머스 워크 (Kettlebell Farmer's Walk) - 중립 손목 코어 훈련"
+                },
+                "contraindications": [
+                  "맨손 바닥 푸시업 (통증 소실 전까지 푸시업 바 필수 사용)",
+                  "과도한 중량의 바벨 컬 (손목이 꺾이는 폼)"
+                ],
+                "assessment": {
+                  "mrt": "[Phalen's Test 및 손목 가동성 검사] 양 손등을 맞대고 손목을 90도 꺾어 가슴 앞에서 1분간 유지하게 합니다. 찌릿한 저림(수근관 증후군)이 유발되는지 보고, 능동적인 손목 폄(신전) 각도가 70도 이하인지 확인합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "수근굴근",
+                      "position": "회원은 전완을 테이블에 올리고 손바닥이 천장을 향하게(회외) 한 뒤 손목을 안으로 굽힙니다(굴곡).",
+                      "fixation": "트레이너는 회원의 전완 중간을 흔들리지 않게 고정합니다.",
+                      "test": "회원의 손바닥(수장부)을 바닥 쪽(신전 방향)으로 강하게 눌러 굴곡근이 뻣뻣하게 버티는지 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "수근굴근 (Wrist Flexors)",
+                    "origin": "Medial epicondyle of humerus",
+                    "insertion": "Carpal and metacarpal bones",
+                    "action": "Wrist flexion",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "손목 굴곡근 PIR: 회원은 팔꿈치를 펴고 손바닥을 천장으로 향하게 합니다. 트레이너가 회원의 손가락과 손바닥을 감싸고 바닥 쪽(신전)으로 젖혀 텐션을 만듭니다. 회원에게 손목을 안으로 굽히려는 힘(20%)을 쓰게 하고 7초간 막은 뒤, 힘을 풀 때 더 깊게 스트레칭합니다.",
+                  "prt": "전완 굴곡근 PRT: 앙와위 자세에서 전완 앞쪽(팔꿈치 안쪽 아래)의 볼록한 굴곡근 복부 텐션을 엄지로 압박합니다. 손목을 안으로 완전히 굽히고(굴곡) 팔꿈치도 살짝 굽혀 근육을 가장 느슨하게 90초간 세팅합니다."
+                },
+                "red_flag": "엄지, 검지, 중지 손가락 끝으로 저림이 심하다면 손목터널증후군(CTS) 의심 병원 진료.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_serratus_shoulder",
+            "title": "원인 B: 상지 체중 지지 실패 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_serratus_wrist",
+                "title": "전거근 약화 및 어깨 안정성 부재",
+                "type": "sub_class",
+                "clinical_insight": "플랭크나 푸시업 시 어깨(견갑대)를 앞으로 강하게 밀어내어 상체를 띄워주는 전거근이 약하면, 상체의 체중이 고스란히 아래로 쏟아져 가장 약한 관절인 손목에 압력이 폭발합니다.",
+                "postural_pattern": "익상견갑 (Winging Scapula) / 어깨 무너짐",
+                "teaching_cues": {
+                  "analogy": "건물의 기둥(어깨)이 무너지니까 1층 바닥(손목)이 그 무게를 다 떠받치고 박살나는 중이에요. 겨드랑이 밑 근육으로 바닥을 밀어내야 합니다.",
+                  "movement_cue": "날개뼈가 등 뒤로 튀어나오지 않게, 겨드랑이 아래에 힘을 줘서 바닥과 내 몸이 최대한 멀어지게 밀어내세요!"
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "소흉근 폼롤러 릴리즈 (가슴 펴기)",
+                  "step2_activation": "스카풀라 푸시업 (Scapular Push-up) - 무릎 꿇고 전거근 인지",
+                  "step3_integration": "월 슬라이드 위드 폼롤러 (Wall Slide) - 전거근 활성화 상태로 상완 거상"
+                },
+                "contraindications": [
+                  "무거운 벤치프레스 (어깨 통제 상실 시 손목 꺾임 치명적)",
+                  "덤벨 플라이 (견갑대 불안정 시 인대 부상 위험)"
+                ],
+                "assessment": {
+                  "mrt": "[플랭크 시각적 보상 평가] 회원에게 플랭크 자세를 취하게 합니다. 10초 내에 날개뼈 사이가 푹 꺼지거나 날개뼈가 등 뒤로 박쥐처럼 튀어나온다면(Winging) 전거근 약화가 뚜렷한 것입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "전거근",
+                      "position": "회원은 앉은 자세에서 팔을 앞으로 130도 정도 뻗고 어깨를 앞으로 쭉 내밉니다(전인).",
+                      "fixation": "트레이너는 회원의 날개뼈(견갑골) 바깥쪽 연을 손으로 지지합니다.",
+                      "test": "회원의 손목 부근(전완 하단)을 잡고 몸통 쪽(견갑골 후인 방향)으로 강하게 밀며 전거근이 날개뼈를 잘 고정하는지 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "전거근 (Serratus Anterior)",
+                    "origin": "Outer surfaces of upper 8-9 ribs",
+                    "insertion": "Medial border of scapula",
+                    "action": "Protracts and upwardly rotates scapula",
+                    "type": "Phasic (강화/안정화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "전거근 활성화 등척성 기법: 회원이 앉은 상태에서 팔을 앞으로 뻗게 합니다. 트레이너가 앞에서 주먹을 맞대고, 회원에게 트레이너를 밀어내듯 팔을 뻗으라고 지시하며(전인) 10초간 저항을 버텨 전거근 신경을 깨웁니다.",
+                  "prt": "견갑하근/전거근 주변 릴리즈: 앙와위로 누워 팔을 벌린 상태에서, 겨드랑이 안쪽(견갑골 외측연 깊은 곳)의 텐션을 찾아 가볍게 컨택하고 팔을 부드럽게 지지하여 텐션을 낮춥니다."
+                },
+                "red_flag": "어깨 전면으로 날카로운 통증이 동반되면 회전근개 손상 여부부터 감별.",
+                "image_url": "assets/images/shoulder.png"
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "manual_technique": {
-      "met": "비복근 PIR: 배측굴곡(Dorsiflexion) 저항점까지 올린 뒤, 환자가 20%의 힘으로 페달을 밟듯 5~7초 수축하게 하고 10초간 늘려준다.",
-      "prt": "종아리 심부 근복(가자미근/후경골근 부위) 압박 후 무릎을 굽히고 발목을 저측굴곡하여 가장 부드러워지는 자세로 90초 유지한다."
-    },
-    "red_flag": "외상 병력이 있거나 특정 인대 부위에 극심한 압통/피멍 동반 시 인대 파열 및 골절이 의심되므로 조작 금지.",
-    "category": "🦴 체형 및 관절 기초 통증"
+    ]
   },
   {
-    "symptom": "양반다리가 안 되고 사타구니 안쪽이 항상 당기며 뻐근해요",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 내전근의 과긴장은 고관절 외전을 물리적으로 막으며, 보행 시 골반의 수평 밸런스를 깨뜨려 무릎 내측과 허리에 스트레스를 전달합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 고관절 외전 시 2초간 내전근의 신장성 통증 및 저항감(Spasm) 양상 파악",
-      "mmt_details": [
-        {
-          "muscle": "장/단내전근 (Adductor Longus/Brevis)",
-          "position": "1. 자세: 측와위에서 위쪽 다리를 외전/신전하여 지지하고 아래쪽 다리를 거상한다.",
-          "fixation": "2. 고정: 골반이 틀어지지 않게 상단에서 골반을 고정한다.",
-          "test": "3. 검사: 아래쪽 다리 대퇴부 내측에 하방 저항을 주어 버티게 한다."
-        },
-        {
-          "muscle": "대내전근 (Adductor Magnus)",
-          "position": "1. 자세: Supine 자세에서 고관절 내전 + 슬관절 신전 + 외회전.",
-          "fixation": "2. 고정: 반대쪽 다리의 발목을 고정한다.",
-          "test": "3. 검사: 발목을 외전 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
+    "id": "part_hip_groin",
+    "title": "🩳 고관절/서혜부 (Hip & Groin)",
+    "type": "body_part",
+    "children": [
       {
-        "name": "장/단내전근 (Adductor Longus/Brevis)",
-        "origin": "Anterior surface/Ramus of pubis",
-        "insertion": "Linea aspera of femur",
-        "action": "Adduction, Flexion, Lateral rotation (hip)",
-        "type": "Tonic/Phasic 혼합"
-      },
-      {
-        "name": "대내전근 (Adductor Magnus)",
-        "origin": "Ramus of pubis, Ischial tuberosity",
-        "insertion": "Linea aspera of femur",
-        "action": "Adduction, Lateral rotation (hip)",
-        "type": "Tonic (이완 대상)"
+        "id": "sym_hip_impingement",
+        "title": "스쿼트/레그프레스 시 팬티라인 찝힘 (FAI)",
+        "type": "symptom_location",
+        "children": [
+          {
+            "id": "disease_anterior_glide_hip",
+            "title": "원인 A: 굴곡근 우세 기인 (대퇴골 전방활주)",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_psoas_dom_hip",
+                "title": "장요근 및 대퇴직근 과긴장",
+                "type": "sub_class",
+                "clinical_insight": "고관절 앞쪽 근육이 너무 타이트하면, 앉는 동작(고관절 굴곡) 시 대퇴골두가 소켓(관절구) 안에서 부드럽게 뒤로 미끄러지지(Posterior Glide) 못하고 앞쪽 구조물을 쾅쾅 찝게 됩니다.",
+                "postural_pattern": "Anterior Pelvic Tilt (골반 전방경사) / 고관절 굴곡 구축",
+                "teaching_cues": {
+                  "analogy": "문짝이 문틀에 딱 맞게 닫혀야 하는데, 경첩(고관절) 앞쪽에 두꺼운 고무줄이 끼어있어서 문을 닫을 때마다 억지로 꽉 찡기는 거예요.",
+                  "movement_cue": "팬티라인에 끼워둔 볼펜을 접어서 부러뜨리는 느낌이 아니라, 엉덩이를 뒤로 깊게 빼면서 볼펜을 살짝 놔주는 느낌으로 앉아보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "하프 닐링 장요근 스트레칭 (골반 후방경사 세팅 필수)",
+                  "step2_activation": "짐볼 힙 스러스트 (Hip Thrust) - 대둔근 활성화를 통한 상호억제",
+                  "step3_integration": "고블렛 스쿼트 (Goblet Squat) - 상체를 세워 힙 힌지 각도 재교육"
+                },
+                "contraindications": [
+                  "발판을 너무 높게 세팅한 레그 프레스 (찝힘 각도 폭발)",
+                  "브이업(V-up) 등 장요근을 극단적으로 쓰는 복근 운동"
+                ],
+                "assessment": {
+                  "mrt": "[FADIR Test] 회원을 앙와위로 눕히고 고관절을 90도 굽힌(Flexion) 뒤, 안쪽으로 모으고(Adduction) 내회전(Internal Rotation) 시켰을 때 서혜부(팬티라인) 깊은 곳에 날카로운 찝힘이 나타나는지 확인합니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "장요근",
+                      "position": "앉은 자세에서 무릎을 가슴 쪽으로 100도 이상 들어올립니다.",
+                      "fixation": "트레이너는 반대편 골반이 뜨지 않게 고정합니다.",
+                      "test": "회원의 허벅지 하단(무릎 위)을 바닥 쪽으로 지그시 누르며 장요근이 뻣뻣하게 버티는지 확인합니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "장요근 (Iliopsoas)",
+                    "origin": "T12-L5 vertebrae, Iliac fossa",
+                    "insertion": "Lesser trochanter of femur",
+                    "action": "Hip flexion",
+                    "type": "Tonic (이완)"
+                  },
+                  {
+                    "name": "대둔근 (Gluteus Maximus)",
+                    "origin": "Posterior ilium, Sacrum",
+                    "insertion": "Gluteal tuberosity, IT tract",
+                    "action": "Hip extension",
+                    "type": "Phasic (강화/활성화)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "고관절 후방활주(Posterior Glide) MET: 앙와위로 누운 회원의 무릎을 굽혀 세웁니다. 트레이너의 양손을 무릎 앞쪽에 대고 체중을 실어 대퇴골 방향(바닥 대각선 아래)으로 지그시 압박합니다. 이때 회원이 무릎을 가슴 쪽으로 밀어올리려(20% 힘) 하고 7초간 방어하여 관절 중심화를 유도합니다.",
+                  "prt": "장요근 PRT: 배꼽과 골반 앞 뼈(ASIS) 사이 심부 장요근 텐션을 손끝으로 컨택한 후, 회원의 고관절과 무릎을 가슴 쪽으로 깊게 굽혀 복부를 완전히 느슨하게 만든 채 90초간 이완합니다."
+                },
+                "red_flag": "서혜부 탈장(Hernia) 병력이 있거나 사타구니가 부어있다면 압박 금지.",
+                "image_url": "assets/images/lumbar.png"
+              }
+            ]
+          },
+          {
+            "id": "disease_post_capsule_hip",
+            "title": "원인 B: 후면부 타이트니스 기인",
+            "type": "disease",
+            "children": [
+              {
+                "id": "sub_piri_glute_tight",
+                "title": "고관절 심부 외회전근 및 후방관절낭 단축",
+                "type": "sub_class",
+                "clinical_insight": "고관절 뒤쪽에 있는 엉덩이 심부 근육(이상근 등)과 캡슐(관절낭)이 질겨지면, 뼈가 뒤로 빠져나가야 할 공간을 막아버려서 결국 뼈가 앞쪽으로 밀려 충돌을 일으킵니다.",
+                "postural_pattern": "팔자걸음 체형 / 고관절 외회전 고착",
+                "teaching_cues": {
+                  "analogy": "바지 뒷주머니 쪽 천이 꽉 쪼그라들어 있어서, 앉으려고 하면 앞주머니 쪽이 억지로 구겨지는 상황이에요. 뒤쪽을 부드럽게 늘려줘야 합니다.",
+                  "movement_cue": "무릎을 바깥으로 과도하게 벌리면서 앉지 말고, 발끝과 무릎 방향을 똑같이 맞춘 채로 앉아보세요."
+                },
+                "corrective_exercise": {
+                  "step1_mobility": "비둘기 자세 (Pigeon Pose) 및 90/90 스트레칭",
+                  "step2_activation": "사이드 라이잉 내회전 훈련 (고관절 내회전 가동성 회복)",
+                  "step3_integration": "스플릿 스쿼트 (Split Squat) - 양측 고관절 밸런스 훈련"
+                },
+                "contraindications": [
+                  "스모 데드리프트 및 와이드 스쿼트 (외회전근 과부하)",
+                  "다리 꼬고 앉기"
+                ],
+                "assessment": {
+                  "mrt": "[고관절 내회전 가동성 검사] 엎드린 상태(복와위)에서 무릎을 90도 굽히고 발을 바깥쪽으로 벌려봅니다(고관절 내회전). 양쪽 각도 차이가 심하고 30도 이하로 제한된다면 심부 외회전근 단축입니다.",
+                  "mmt_details": [
+                    {
+                      "muscle": "이상근",
+                      "position": "앉은 자세에서 허벅지를 고정하고 무릎을 안쪽으로 모으며 발을 바깥쪽으로 뻗어 올립니다(외회전 상태).",
+                      "fixation": "트레이너는 회원의 무릎 바깥쪽을 받쳐 고정합니다.",
+                      "test": "회원의 발목 안쪽을 잡아 바깥쪽으로 밀며 이상근의 버티기 능력을 봅니다."
+                    }
+                  ]
+                },
+                "involved_muscles": [
+                  {
+                    "name": "이상근 (Piriformis)",
+                    "origin": "Anterior sacrum",
+                    "insertion": "Greater trochanter of femur",
+                    "action": "External rotation of hip",
+                    "type": "Tonic (이완)"
+                  }
+                ],
+                "manual_technique": {
+                  "met": "이상근 PIR: 앙와위로 누워 회원의 무릎을 가슴 쪽으로 당긴 뒤 반대편 어깨 방향(내전)으로 넘깁니다. 회원에게 무릎을 바깥쪽으로 벌리려는 힘을 7초간 쓰게 하고 방어한 뒤, 이완 시 더 안쪽으로 당겨 스트레칭합니다.",
+                  "prt": "고관절 후면 PRT: 엎드린 회원의 엉덩이 깊은 곳 뻐근한 포인트를 엄지로 지그시 압박합니다. 다리를 침대 밖으로 떨어뜨리고 가볍게 벌려(외전/외회전) 근육 텐션이 '0'이 되는 지점을 찾아 90초 유지합니다."
+                },
+                "red_flag": "엉덩이부터 다리 발끝까지 타는 듯한 저림 동반 시 신경학적 디스크 우선 의심.",
+                "image_url": "assets/images/leg.png"
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "manual_technique": {
-      "met": "내전근 PIR: Supine에서 나비자세(FABER 유사)를 취한 뒤, 환자가 무릎을 오므리는 힘(20%)에 대해 치료사가 버티며 7초 수축 후 바닥으로 이완한다.",
-      "prt": "내전근 기시부(치골 부근) 압통점 압박 후, 고관절을 내전/내회전 시켜 긴장을 풀고 90초 유지한다."
-    },
-    "red_flag": "심한 서혜부 통증 동반 시 고관절 와순 파열(Labral tear)이나 대퇴골두 무혈성 괴사 가능성을 배제해야 함.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "등 가운데(날개뼈 사이)가 항상 뻐근하고 굽은 등(Round Back)을 지적받아요",
-    "image_url": "assets/images/lumbar.png",
-    "clinical_insight": "💡 임상 메커니즘: 대흉근의 강한 앞쪽 당김이 길항근인 능형근/중부승모근을 강제로 늘어뜨려(이완성 약화) 발생하는 전형적인 상위교차증후군(Upper Crossed Syndrome)입니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견갑골 후인(Retraction) 시 2-2-2 수축을 통해 능형근과 중부승모근의 Phasic 약화 파악",
-      "mmt_details": [
-        {
-          "muscle": "중/하부승모근 (Mid/Lower Trapezius)",
-          "position": "1. 자세: Prone 자세에서 외전(90/150도) + 외회전(손등/엄지가 위로).",
-          "fixation": "2. 고정: 반대쪽 견갑대 혹은 장골을 고정한다.",
-          "test": "3. 검사: 손목 근위부에 접촉하여 견관절 수평내전(바닥) 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "능형근 (Rhomboid)",
-          "position": "1. 자세: 앉거나 선 자세에서 주관절 90도 굴곡 + 견갑골 내전 + 거상.",
-          "fixation": "2. 고정: 검사하는 쪽의 어깨 전면을 고정한다.",
-          "test": "3. 검사: 주관절에 접촉하여 외전방향(몸에서 멀어지게)으로 잡아 당긴다."
-        },
-        {
-          "muscle": "대흉근 (Pectoralis Major)",
-          "position": "1. 자세: 주관절 신전, 견관절 90도 굴곡 + 최대한 내회전 + 수평내전.",
-          "fixation": "2. 고정: 반대쪽 어깨를 고정한다.",
-          "test": "3. 검사: 피검사자의 손목에 접촉하여 외상방/외하방(45도) 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "능형근 (Rhomboid)",
-        "origin": "Spinous process of C7~T5",
-        "insertion": "Medial border of scapula",
-        "action": "Retraction, Elevation, Downward rotation",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "중/하부승모근 (Mid/Low Trapezius)",
-        "origin": "T1-T12 spinous process",
-        "insertion": "Acromion, Scapula spine",
-        "action": "Retraction, Depression, Upward rotation",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "대흉근 (Pectoralis Major)",
-        "origin": "Clavicle, Sternum, Upper 6 ribs",
-        "insertion": "Intertubercular groove of humerus",
-        "action": "Adduction, Internal rotation, Horizontal adduction",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "대흉근 PIR: 환자가 누운 상태에서 팔을 외전/신전 시키고, 환자는 안으로 모으려는 힘(20%)을 내고 치료사는 버티며 7초 후 스트레칭 범위를 늘린다.",
-      "prt": "능형근 압통점 촉진 후, 팔을 반대쪽 어깨로 보내어(수평내전) 견갑골 사이를 늘린 뒤 흉추를 후만시켜 Slacked position을 찾는다."
-    },
-    "red_flag": "흉추 후만이 뼈 구조적으로 고착화(Structural Kyphosis)된 경우, 무리한 신전 교정은 척추 극돌기 골절 위험이 있습니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "팔을 머리 뒤로 넘기기 힘들고 겨드랑이 뒤쪽과 등 아래가 타이트해요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 광배근은 골반에서 팔까지 이어지는 거대한 근육이므로, 단축 시 팔을 올리면 이를 보상하기 위해 요추가 앞으로 심하게 꺾이는(요추 전만) 현상이 발생합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견관절 최대 굴곡 시 광배근의 신장성 통증 및 보상적인 요추 전만 발생 관찰",
-      "mmt_details": [
-        {
-          "muscle": "광배근 (Latissimus Dorsi)",
-          "position": "1. 자세: Prone 자세에서 검사하고자 하는 방향으로 목을 회전 + 허리 신전.",
-          "fixation": "2. 고정: 반대측 골반 혹은 견관절을 고정한다.",
-          "test": "3. 검사: 팔목 혹은 측두골에 접촉하여 굴곡 및 외전 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "대원근 (Teres Major)",
-          "position": "1. 자세: 서거나 누운 자세에서 주관절 신전 + 견관절 내전 + 내회전.",
-          "fixation": "2. 고정: 검사하는 쪽 견관절을 고정한다.",
-          "test": "3. 검사: 외전과 약간의 굴곡 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "광배근 (Latissimus Dorsi)",
-        "origin": "Thoracolumbar fascia, Iliac crest, Lower 3-4 ribs",
-        "insertion": "Intertubercular groove of humerus",
-        "action": "Extension, Adduction, Internal rotation (humerus)",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "대원근 (Teres Major)",
-        "origin": "Inferior angle of scapula",
-        "insertion": "Intertubercular groove of humerus",
-        "action": "Extension, Adduction, Internal rotation (humerus)",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "광배근 PIR: 환자가 옆으로 누워 팔을 귀 위로 뻗게 한 뒤, 팔을 골반 쪽으로 끌어내리려는 힘(20%)에 저항하며 7초 후 10초간 신전한다.",
-      "prt": "견갑골 하각 주변 광배근/대원근 부착부 핀칭 후, 견관절을 내전/내회전 시켜 텐션을 풀고 90초 유지한다."
-    },
-    "red_flag": "팔을 올릴 때 겨드랑이 당김보다 견봉하 충돌 통증이 강하게 선행된다면, 광배근 단축보다는 회전근개 손상을 먼저 평가해야 합니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "열중쉬어 자세를 하거나 팔을 바깥으로 돌릴 때 어깨 깊숙이 아프고 힘이 빠져요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 견갑하근(내회전근)의 고질적 단축은 외회전근(극하근/소원근)을 상호억제시켜, 팔을 들어올리거나 돌릴 때 상완골두를 관절와에 고정하지 못해 충돌을 유발합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견관절 내/외회전 저항 시 2-2-2 수축을 통해 회전근개 건의 파열 또는 건염 유발 통증 파악",
-      "mmt_details": [
-        {
-          "muscle": "소원근/극하근 (Teres Minor/Infraspinatus)",
-          "position": "1. 자세: 주관절 90도 굴곡 후 몸에 붙이거나(소원근), 견관절 90도 외전(극하근) 상태에서 외회전 시킨다.",
-          "fixation": "2. 고정: 검사하는 쪽의 주관절을 고정한다.",
-          "test": "3. 검사: 손목 근위부에 접촉하여 견관절 내회전 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "견갑하근 (Subscapularis)",
-          "position": "1. 자세: 견관절 90도 외전 + 주관절 90도 굴곡 + 내회전.",
-          "fixation": "2. 고정: 검사하는 쪽의 주관절을 고정한다.",
-          "test": "3. 검사: 손목 근위부에 접촉하여 외회전 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "극하근/소원근 (Infraspinatus/Teres Minor)",
-        "origin": "Infraspinous fossa / Lateral border of scapula",
-        "insertion": "Greater tubercle of humerus",
-        "action": "External rotation (humerus)",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "견갑하근 (Subscapularis)",
-        "origin": "Subscapular fossa of scapula",
-        "insertion": "Lesser tubercle of humerus",
-        "action": "Internal rotation (humerus)",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "견갑하근 PIR: 환자가 누운 상태에서 팔을 외회전 끝범위로 가져간 뒤, 안으로 회전하려는 힘(내회전 20%)에 저항하며 7초 후 외회전 범위를 늘린다.",
-      "prt": "극하근 압통점 촉진 후, 팔을 외회전시키고 어깨를 살짝 굴곡시켜 근복이 가장 부드러워지는 지점에서 90초 유지한다."
-    },
-    "red_flag": "저항 검사 시 통증을 넘어 아예 버티지 못하고 무너지는 경우(근력 2/5 이하) 회전근개 전층 파열이 의심되므로 수술적 처치 필요성 검토.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "허리를 굽힐 때 허벅지 뒤쪽이 심하게 당기고 오금(무릎 뒤)이 아파요",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 햄스트링이 뻣뻣하면 허리를 숙일 때 골반이 정상적으로 앞으로 회전하지 못해, 요추가 억지로 꺾이면서 허리 디스크의 후방 압력을 치솟게 합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 슬관절 굴곡 등척성 수축 시 햄스트링의 쥐내림(Cramp) 발생 여부 관찰",
-      "mmt_details": [
-        {
-          "muscle": "햄스트링 (Hamstrings: Biceps femoris, Semi-m, Semi-t)",
-          "position": "1. 자세: Prone 자세에서 슬관절 60도 이상 굴곡시킨다.",
-          "fixation": "2. 고정: 골반이나 슬관절 위쪽을 대퇴부에서 고정한다.",
-          "test": "3. 검사: 발목의 근위부에 접촉하여 슬관절 신전 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "슬와근 (Popliteus)",
-          "position": "1. 자세: Prone 자세에서 발목을 저측굴곡 시킨다.",
-          "fixation": "2. 고정: 한 손은 발목을 고정한다.",
-          "test": "3. 검사: 발바닥에 접촉하여 배측굴곡 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "햄스트링 (Hamstrings)",
-        "origin": "Ischial tuberosity",
-        "insertion": "Head of fibula, Medial condyle of tibia",
-        "action": "Extension (hip), Flexion (knee)",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "슬와근 (Popliteus)",
-        "origin": "Lateral condyle of femur",
-        "insertion": "Posterior surface of tibia",
-        "action": "Flexion, Internal rotation (knee)",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "햄스트링 PIR: 앙와위에서 다리를 뻗은 채 들어올려(SLR) 텐션을 느낀 뒤, 다리를 바닥으로 내리려는 힘(20%)에 저항하며 7초 수축 후 이완한다.",
-      "prt": "무릎 후면 슬와근 건 부착부 핀칭 후 무릎을 90도 굴곡하고 내회전 시켜 압통이 사라지는 각도에서 90초 유지한다."
-    },
-    "red_flag": "SLR(하지직거상) 테스트 중 30-40도에서 전기가 오는 듯한 찌릿함 발생 시, 단순 근육 단축이 아닌 요추 디스크 신경근 압박 징후입니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "무거운 물건을 들거나 팔꿈치를 구부렸다 펼 때 팔꿈치 주변이 아프고 힘이 빠져요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 상완이두근(Tonic)과 삼두근(Phasic)의 근력 불균형은 주관절의 미세한 축 틀어짐을 유발하여, 움직일 때마다 건(Tendon)에 부자연스러운 마찰과 염증을 일으킵니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 주관절 굴곡/신전 시 2초간 버티게 하여 상완이두근 건염 및 삼두근 약화 판별",
-      "mmt_details": [
-        {
-          "muscle": "상완이두근 (Biceps Brachii)",
-          "position": "1. 자세: Supine 자세에서 주관절 90도 굴곡 + 손바닥이 견관절을 향하도록 회외(Supination).",
-          "fixation": "2. 고정: 주관절의 후면을 바닥/테이블에 고정한다.",
-          "test": "3. 검사: 손목 부위에 접촉하여 주관절 신전 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "상완삼두근 (Triceps Brachii)",
-          "position": "1. 자세: Supine 자세에서 주관절 약간 굴곡 + 손바닥이 위로 향하게 한다.",
-          "fixation": "2. 고정: 주관절의 후면을 고정한다.",
-          "test": "3. 검사: 손목 근위부에 접촉하여 주관절 굴곡 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "완요골근 (Brachioradialis)",
-          "position": "1. 자세: Supine 자세에서 주관절 90도 굴곡 + 엄지가 견관절을 향하게(Mid-prone) 한다.",
-          "fixation": "2. 고정: 주관절의 후면을 고정한다.",
-          "test": "3. 검사: 손목 부위에 접촉하여 주관절 신전 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "상완이두근 (Biceps Brachii)",
-        "origin": "Supraglenoid tubercle, Coracoid process",
-        "insertion": "Radial tuberosity",
-        "action": "Elbow flexion, Supinates forearm",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "상완삼두근 (Triceps Brachii)",
-        "origin": "Infraglenoid tubercle, Posterior humerus",
-        "insertion": "Olecranon process of ulna",
-        "action": "Extension (elbow, humerus)",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "완요골근 (Brachioradialis)",
-        "origin": "Lateral supracondylar ridge of humerus",
-        "insertion": "Styloid process of radius",
-        "action": "Flexion (elbow)",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "상완이두근 PIR: 팔꿈치를 끝까지 편 상태에서 환자가 구부리려는 힘(20%)에 저항하며 7초 유지 후, 팔꿈치와 어깨를 신전/회내 시켜 이완한다.",
-      "prt": "상완이두근 장두/단두 부착부(결절간구 부근) 핀칭 후 어깨와 팔꿈치를 굽혀 이완된 각도에서 90초 유지한다."
-    },
-    "red_flag": "외상과염(테니스엘보) 또는 내상과염(골프엘보) 병력이 뚜렷할 경우 무리한 근력 검사는 건의 미세파열을 가중시키므로 주의합니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "팔을 앞이나 옆으로 들어 올릴 때 어깨 겉면 근육이 무겁고 힘이 안 들어가요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 삼각근은 회전근개가 뼈를 관절에 꽉 잡아준 상태에서 겉의 거친 움직임을 만들어야 합니다. 속근육(회전근개)이 약하면 삼각근 혼자 뼈를 들어올리다 주변 연부조직과 마찰을 일으킵니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견관절 굴곡/외전/신전 시 2초간 등척성 수축을 통해 삼각근 섬유별(전/중/후) 활성화 패턴 확인",
-      "mmt_details": [
-        {
-          "muscle": "전삼각근 (Anterior Deltoid)",
-          "position": "1. 자세: 앉거나 선 자세에서 견관절을 90도 굴곡시킨다.",
-          "fixation": "2. 고정: 반대쪽 어깨나 흉곽을 고정한다.",
-          "test": "3. 검사: 팔목 근위부에 접촉하여 하방(신전) 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "중삼각근 (Middle Deltoid)",
-          "position": "1. 자세: 앉거나 선 자세에서 견관절을 90도 외전시킨다.",
-          "fixation": "2. 고정: 반대쪽 어깨를 고정한다.",
-          "test": "3. 검사: 팔목 근위부에 접촉하여 내전(하방) 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "후삼각근 (Posterior Deltoid)",
-          "position": "1. 자세: Prone 또는 앉은 자세에서 견관절 90도 외전 후 약간 신전시킨다.",
-          "fixation": "2. 고정: 검사하는 쪽의 견갑골/어깨를 고정한다.",
-          "test": "3. 검사: 팔목 근위부에 접촉하여 전방(굴곡) 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "전삼각근 (Anterior Deltoid)",
-        "origin": "Clavicle (lateral 1/3)",
-        "insertion": "Deltoid tuberosity of humerus",
-        "action": "Flexion, Internal rotation",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "중/후삼각근 (Mid/Post Deltoid)",
-        "origin": "Acromion, Spine of scapula",
-        "insertion": "Deltoid tuberosity of humerus",
-        "action": "Abduction, Extension, External rotation",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "삼각근 활성화 기법: 각 삼각근의 약화된 방향으로 저항을 주며 환자가 20%의 힘으로 밀어내게 하는 등척성 수축을 유도한다.",
-      "prt": "삼각근 정지부(상완골 외측) 압박 후 어깨를 외전 및 굴곡 시켜 근육이 가장 느슨해지는 각도에서 90초간 유지한다."
-    },
-    "red_flag": "단순 근육 약화가 아닌 어깨 관절 자체가 빠질 것 같은 불안정성(Instability)이나 탈구 병력이 동반될 경우 관절와순 파열 주의.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "평발이 심해지는 것 같고, 서 있을 때 발목 바깥쪽과 발등이 자주 뻐근해요",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 장/단비골근이 약해지면 체중 부하 시 발목을 바깥으로 단단히 받쳐주지 못해 발아치가 무너지고(과회내), 이는 결과적으로 무릎이 안으로 무너지는(Valgus) 연쇄 반응을 일으킵니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 발목 외번(Eversion) 상태에서 2초간 저항을 주어 장/단비골근의 약화 및 밸런스 붕괴 확인",
-      "mmt_details": [
-        {
-          "muscle": "장/단비골근 (Peroneus Longus/Brevis)",
-          "position": "1. 자세: Supine 자세에서 족관절 저측굴곡 + 외번(Eversion) 시킨다.",
-          "fixation": "2. 고정: 발목을 고정한다.",
-          "test": "3. 검사: 발의 외측에 접촉하여 배측굴곡 + 내번 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "제3비골근 (Peroneus Tertius)",
-          "position": "1. 자세: Supine 자세에서 족관절 배측굴곡 + 외번(Eversion) 시킨다.",
-          "fixation": "2. 고정: 발목의 내측부분을 고정시킨다.",
-          "test": "3. 검사: 발목의 외측에 접촉하여 내번 방향으로 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "장/단비골근 (Peroneus Longus/Brevis)",
-        "origin": "Lateral surface of fibula",
-        "insertion": "Cuneiform, 1st & 5th metatarsal",
-        "action": "Plantar flexion, Eversion (ankle)",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "제3비골근 (Peroneus Tertius)",
-        "origin": "Anterior of fibula (distal)",
-        "insertion": "5th metatarsal",
-        "action": "Dorsiflexion, Eversion (ankle)",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "비골근 활성화: 발목을 내번(Inversion) 시킨 후, 환자에게 외번(바깥쪽으로 돌림) 방향으로 20% 저항을 내게 하여 7초간 수축시킨다.",
-      "prt": "비골두(Fibular head) 하단 근복을 압박한 상태로 발목을 외번 시켜 텐션이 사라지는 각도를 찾아 90초 유지한다."
-    },
-    "red_flag": "발목을 심하게 접지른 이력이 있고 복숭아뼈 전하방에 지속적인 부종과 극심한 압통이 있다면 전거비인대(ATFL) 파열을 의심합니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "숨을 깊게 들이마실 때 목 앞쪽과 쇄골 주변이 답답하고 두통이 있어요",
-    "image_url": "assets/images/neck.png",
-    "clinical_insight": "💡 임상 메커니즘: 횡격막 호흡 기능을 상실하면 사각근과 흉쇄유돌근을 이용한 강박적인 '흉식호흡'을 하게 되며, 이는 목 주변 근막을 하루 2만 번 이상 수축시켜 돌덩이처럼 굳게 만듭니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 흉식 호흡(Inhalation)을 유도하며 사각근의 비정상적 과수축 여부 및 흉곽 거상 관찰",
-      "mmt_details": [
-        {
-          "muscle": "사각근 (Scalenes)",
-          "position": "1. 자세: Supine 자세에서 목을 살짝 굴곡 및 반대쪽으로 회전시킨다.",
-          "fixation": "2. 고정: 쇄골 주변 흉곽이 과도하게 들리지 않게 고정한다.",
-          "test": "3. 검사: 측두골에 접촉하여 신전 방향으로 가볍게 저항을 준다."
-        },
-        {
-          "muscle": "후두하근 (Suboccipitalis)",
-          "position": "1. 자세: Prone 자세에서 턱을 당긴(Chin-in) 상태를 유지한다.",
-          "fixation": "2. 고정: 후두골 하단 부위를 고정한다.",
-          "test": "3. 검사: 목의 상부 굴곡(Chin-in)이 풀리도록 이마에서 뒤로 가볍게 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "사각근 (Scalenes)",
-        "origin": "Transverse process of C2~C7",
-        "insertion": "1st and 2nd ribs",
-        "action": "Lateral flexion, Contralateral rotation, Raises ribs",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "후두하근 (Suboccipitalis)",
-        "origin": "C1, C2 (Atlas, Axis)",
-        "insertion": "Occipital bone",
-        "action": "Extension, Rotation of head",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "사각근 PIR: 쇄골을 하방으로 고정한 뒤 목을 반대쪽으로 측굴/회전시켜 늘리고, 환자가 제자리로 돌아오려는 힘(10%)에 7초간 저항한다.",
-      "prt": "두개골 하단(C1-C2 부위)을 손가락 끝으로 부드럽게 지지하고 고개를 살짝 신전시켜 근막의 이완을 유도하며 90초 유지한다."
-    },
-    "red_flag": "흉곽출구증후군(TOS) 동반 시, 사각근 사이로 지나가는 상완신경총이 압박되어 심한 상지 저림이 나타날 수 있으므로 무리한 스트레칭을 피합니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "허리를 펴고 오래 서있으면 척추 기립근 전체가 나무토막처럼 뻣뻣해져요",
-    "image_url": "assets/images/lumbar.png",
-    "clinical_insight": "💡 임상 메커니즘: 요추부 기립근은 체중을 지탱하느라 항상 단축 및 과긴장(Tonic)하는 반면, 흉추부 기립근은 굽은 등에 의해 뒤로 늘어나서 힘을 잃게 됩니다(Phasic). 즉, 같은 기립근이라도 부위별로 접근이 달라야 합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 엎드려 척추를 신전할 때 요추와 흉추 중 어느 부위에서 먼저 과활성 또는 떨림이 일어나는지 관찰",
-      "mmt_details": [
-        {
-          "muscle": "척추 기립근 - 요추부 (Erector Spinae Lumborum)",
-          "position": "1. 자세: Prone 자세에서 상체를 바닥에서 약간 들어올린다.",
-          "fixation": "2. 고정: 골반 후면을 단단히 고정한다.",
-          "test": "3. 검사: 흉추 하단부에 접촉하여 바닥 방향으로 하방 저항을 준다."
-        },
-        {
-          "muscle": "척추 기립근 - 흉추부 (Erector Spinae Thoracis)",
-          "position": "1. 자세: Prone 자세에서 가슴을 바닥에서 들어올려 흉추 신전을 만든다.",
-          "fixation": "2. 고정: 요추부나 골반을 고정한다.",
-          "test": "3. 검사: 상부 흉추에 접촉하여 바닥 방향으로 하방 저항을 준다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "기립근 요추부 (Erector Spinae L&C)",
-        "origin": "Sacrum, Iliac crest, Lumbar vertebrae",
-        "insertion": "Ribs, Cervical/Thoracic vertebrae",
-        "action": "Spinal extension, Lateral flexion",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "기립근 흉추부 (Erector Spinae Middle Thoracic)",
-        "origin": "Thoracic spinous processes",
-        "insertion": "Upper thoracic vertebrae",
-        "action": "Spinal extension",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "요추부 PIR: 환자가 앉아서 둥글게 허리를 구부린 후, 치료사가 누르는 힘에 대항해 뒤로 펴려는 힘(20%)을 내며 7초 후 이완하여 굽힘을 늘린다.",
-      "prt": "척추 기립근의 가장 단단한 띠(Taut band)를 핀칭 후, 허리를 살짝 신전시키거나 측굴하여 긴장이 떨어지는 위치에서 90초 유지한다."
-    },
-    "red_flag": "만성적인 척추관 협착증이나 전방전위증이 있는 경우 척추 신전을 강제하면 신경 압박이 극심해지므로 꺾는 동작을 금지합니다.",
-    "category": "🦴 체형 및 관절 기초 통증"
-  },
-  {
-    "symptom": "[스쿼트] 깊게 앉으면 골반이 뒤로 둥글게 말리며 허리가 불안해요 (Butt Wink)",
-    "image_url": "assets/images/lumbar.png",
-    "clinical_insight": "💡 임상 메커니즘: 햄스트링/대둔근이 뻣뻣하거나 고관절 굴곡근(장요근)이 약해지면, 고관절에서 나와야 할 굴곡 각도를 요추가 억지로 둥글게 말면서(골반 후방경사) 보상하는 전형적인 벗윙크 현상입니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 능동적 고관절 굴곡 시 장요근 약화, 슬관절 신전 시 햄스트링 단축성 통증 확인",
-      "mmt_details": [
-        {
-          "muscle": "장요근 (Iliopsoas)",
-          "position": "1. 자세: 앉은 자세에서 고관절을 90도 이상 굴곡시킨다.",
-          "fixation": "2. 고정: 반대쪽 골반을 고정하여 흔들리지 않게 한다.",
-          "test": "3. 검사: 대퇴부 원위부에 접촉하여 하방(신전) 방향으로 저항을 준다."
-        },
-        {
-          "muscle": "햄스트링 (Hamstrings)",
-          "position": "1. 자세: Supine에서 다리를 곧게 펴고 들어올린다 (SLR Test).",
-          "fixation": "2. 고정: 반대쪽 다리가 들리지 않게 골반을 고정한다.",
-          "test": "3. 검사: 70도 미만에서 저항감이 강하게 걸리는지 타이트함을 평가한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "햄스트링 (Hamstrings)",
-        "origin": "Ischial tuberosity",
-        "insertion": "Head of fibula, Medial condyle of tibia",
-        "action": "Extension (hip), Flexion (knee)",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "장요근 (Iliopsoas)",
-        "origin": "T12-L5 vertebrae, Iliac fossa",
-        "insertion": "Lesser trochanter of femur",
-        "action": "Flexion (hip)",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "장요근 RI: 환자에게 능동적으로 무릎을 가슴으로 당기게 하고(장요근 수축), 길항근인 햄스트링과 대둔근의 상호억제 이완을 유도합니다.",
-      "prt": "햄스트링 기시부(좌골결절) 주변 압박 후, 무릎을 살짝 굽혀 텐션을 완전히 뺀 상태에서 90초 유지합니다."
-    },
-    "red_flag": "스쿼트 시 요추 하단에서 찌릿하거나 전기가 통하는 느낌이 든다면 이미 디스크 팽윤이 진행 중일 수 있으므로 즉시 가동범위를 제한해야 합니다.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[벤치프레스] 가슴 자극은 없고 어깨 앞쪽 관절만 찢어질 듯 아파요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 전거근과 하부승모근이 약하면 바벨을 내릴 때 견갑골을 등 뒤로 단단히 모아주지(Retraction) 못하고, 어깨가 앞으로 둥글게 말려(Anterior Glide) 이두근 건과 전면 삼각근에 100% 부하가 걸립니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견갑골 후인/하강 등척성 수축 시 전거근/하부승모근의 Phasic 약화 파악",
-      "mmt_details": [
-        {
-          "muscle": "하부승모근 (Lower Trapezius)",
-          "position": "1. 자세: Prone 자세에서 팔을 145도(Y자) 외전 + 엄지가 위를 향하게 한다.",
-          "fixation": "2. 고정: 반대쪽 흉곽과 골반을 단단히 고정한다.",
-          "test": "3. 검사: 팔목 근위부에 접촉하여 바닥 방향으로 하방 저항을 준다."
-        },
-        {
-          "muscle": "상완이두근 장두 (Biceps Long Head)",
-          "position": "1. 자세: 앉은 자세에서 팔을 90도 앞으로 뻗고 회외(Supination) 시킨다 (Speed Test).",
-          "fixation": "2. 고정: 어깨 후면을 고정한다.",
-          "test": "3. 검사: 팔목을 아래로 누르며 버티게 하여 어깨 앞쪽 결절간구 통증을 유발한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "하부승모근 (Lower Trapezius)",
-        "origin": "Spinous processes of T4-T12",
-        "insertion": "Spine of scapula",
-        "action": "Depression, Upward rotation, Retraction",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "상완이두근 장두 건 (Biceps Long Head Tendon)",
-        "origin": "Supraglenoid tubercle of scapula",
-        "insertion": "Radial tuberosity",
-        "action": "Shoulder flexion (weak), Elbow flexion",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "하부승모근 활성화: Y자 레이즈 자세에서 환자가 위로 올리는 힘(20%)을 내고 7초간 버텨 견갑골 안정화 근육을 깨웁니다.",
-      "prt": "어깨 전면 결절간구(이두근 건) 부위를 핀칭 후, 팔을 약간 굴곡 및 내회전 시켜 통증이 가장 줄어드는 각도에서 90초 유지합니다."
-    },
-    "red_flag": "어깨 앞쪽을 누를 때 찌릿함을 넘어 팔 아래로 저린 느낌이 든다면, 단순히 건염이 아니라 신경 압박일 가능성이 큽니다.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[데드리프트] 엉덩이 힘은 안 들어오고 기립근만 터질 것 같이 뭉쳐요",
-    "image_url": "assets/images/lumbar.png",
-    "clinical_insight": "💡 임상 메커니즘: 대둔근에 불이 들어오지 않는 '둔근 기억상실증(Gluteal Amnesia)' 상태에서 무거운 무게를 들면, 협력근인 척추 기립근과 햄스트링이 메인 엔진 역할을 강제로 떠맡아 과부하가 걸립니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 엎드려 고관절 신전 시 대둔근보다 기립근이나 햄스트링이 먼저 굳어지는(Firing Sequence 오류) 현상 관찰",
-      "mmt_details": [
-        {
-          "muscle": "대둔근 (Gluteus Maximus)",
-          "position": "1. 자세: Prone 자세에서 무릎을 90도 굽힌 채 다리를 천장으로 든다.",
-          "fixation": "2. 고정: 골반이 들리지 않게 손으로 꽉 눌러 고정한다.",
-          "test": "3. 검사: 대퇴부 하단에 접촉하여 바닥 방향으로 누르며 버티게 한다."
-        },
-        {
-          "muscle": "척추 기립근 (Erector Spinae)",
-          "position": "1. 자세: Prone 자세에서 가슴을 살짝 든다.",
-          "fixation": "2. 고정: 골반을 누른다.",
-          "test": "3. 검사: 기립근이 대둔근보다 먼저 딱딱해지는지 촉진한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "대둔근 (Gluteus Maximus)",
-        "origin": "Posterior ilium, sacrum, coccyx",
-        "insertion": "Gluteal tuberosity, IT band",
-        "action": "Hip extension",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "기립근 요추부 (Erector Spinae)",
-        "origin": "Sacrum, Iliac crest",
-        "insertion": "Ribs, Vertebrae",
-        "action": "Spinal extension",
-        "type": "Tonic (과활성화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "대둔근 활성화: 무릎을 굽히고 다리를 뒤로 드는 힘(20%)을 내게 한 뒤 버티며 둔근의 독립적인 수축감을 인지시킵니다.",
-      "prt": "허리 기립근의 단단한 띠를 핀칭 후, 요추를 살짝 측굴/신전 시켜 텐션이 빠지는 지점에서 90초 유지합니다."
-    },
-    "red_flag": "데드리프트 직후 허리를 굽히지도 펴지도 못하는 급성 요추 염좌(Sprain) 발생 시 절대 수기요법을 피하고 냉찜질 및 휴식이 필요합니다.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[오버헤드 프레스] 팔이 끝까지 안 펴지고 허리가 활처럼 과하게 꺾여요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 광배근과 대원근이 단축되어 있으면 팔을 180도 들어 올리는 굴곡 동작에 락(Lock)이 걸립니다. 이를 뚫고 무게를 밀어 올리려다 보니 보상 작용으로 흉곽이 들리고 허리가 꺾이는 것입니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 누워서 팔을 머리 위로 올릴 때(Shoulder Flexion) 허리가 바닥에서 붕 뜨는지 확인",
-      "mmt_details": [
-        {
-          "muscle": "광배근 (Latissimus Dorsi)",
-          "position": "1. 자세: Prone 자세에서 팔을 몸통에 붙이고 내회전한다.",
-          "fixation": "2. 고정: 반대쪽 골반을 고정한다.",
-          "test": "3. 검사: 팔목에 접촉하여 굴곡/외전 방향으로 당기며 저항한다."
-        },
-        {
-          "muscle": "하부승모근 (Lower Trapezius)",
-          "position": "1. 자세: Prone 자세에서 팔을 145도 올린다.",
-          "fixation": "2. 고정: 반대쪽 흉곽을 고정한다.",
-          "test": "3. 검사: 팔목을 바닥으로 누르며 견갑골 상방회전 능력을 평가한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "광배근 (Latissimus Dorsi)",
-        "origin": "Thoracolumbar fascia, Iliac crest",
-        "insertion": "Intertubercular groove of humerus",
-        "action": "Extension, Adduction, Internal rotation",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "하부승모근 (Lower Trapezius)",
-        "origin": "Spinous processes T4-T12",
-        "insertion": "Spine of scapula",
-        "action": "Upward rotation, Depression",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "광배근 PIR: 팔을 끝까지 만세 시킨 상태에서 환자가 팔을 다시 내리려는 힘(20%)을 내고, 치료사가 이를 버티며 7초 후 위로 더 늘려줍니다.",
-      "prt": "겨드랑이 뒤쪽 광배근/대원근 부착부를 넓게 잡고 팔을 내전시켜 근육을 접은 후 90초 유지합니다."
-    },
-    "red_flag": "허리가 꺾일 때 요추 후관절(Facet joint)이 맞닿으면서 날카로운 핀칭 통증이 발생할 수 있으므로, 척추 분리증 의심 시 주의합니다.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[턱걸이/랫풀다운] 등에 힘이 안 들어가고 뒷목과 승모근만 뻐근해요",
-    "image_url": "assets/images/neck.png",
-    "clinical_insight": "💡 임상 메커니즘: 당기는 동작에서 견갑골을 하강(Depression)시키는 하부승모근과 광배근 하부가 쓰이지 않으면, 상부승모근과 견갑거근이 어깨를 으쓱(Elevation) 올리면서 억지로 바를 당기게 됩니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 견갑골 거상/하강 등척성 수축 시 상부승모근의 과활성화 및 하부승모근의 스위칭 결함 확인",
-      "mmt_details": [
-        {
-          "muscle": "상부승모근 (Upper Trapezius)",
-          "position": "1. 자세: 어깨를 으쓱 올리고 고개를 같은 쪽으로 기울인다.",
-          "fixation": "2. 고정: 없음.",
-          "test": "3. 검사: 어깨와 고개를 찢어내듯 반대 방향으로 누른다."
-        },
-        {
-          "muscle": "광배근 하부 섬유 (Lower Latissimus Dorsi)",
-          "position": "1. 자세: Prone 자세에서 팔을 신전/내전 시킨다.",
-          "fixation": "2. 고정: 골반 고정.",
-          "test": "3. 검사: 팔을 굴곡 방향으로 뜯어내며 하부 텐션을 살핀다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "상부승모근 (Upper Trapezius)",
-        "origin": "Occipital bone, Nuchal ligament",
-        "insertion": "Lateral clavicle, Acromion",
-        "action": "Scapular elevation",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "하부승모근/광배근 (Lower Trap / Lats)",
-        "origin": "Lower Thoracic / Lumbar vertebrae",
-        "insertion": "Scapula spine / Humerus",
-        "action": "Scapular depression, Retraction",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "상부승모근 PIR: 고개를 반대로 굽혀 승모근을 늘린 뒤, 어깨를 으쓱하려는 힘(20%)에 대항해 7초 버티고, 10초간 고개를 더 늘립니다.",
-      "prt": "상부승모근의 가장 두꺼운 근복을 핀칭 후, 고개를 같은 쪽으로 굽혀 텐션을 완전히 느슨하게 만들고 90초 유지합니다."
-    },
-    "red_flag": "뒷목 통증과 함께 두통이나 구역질이 동반된다면, 후두하 신경 압박이 심각한 상태일 수 있습니다.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[런지/스플릿 스쿼트] 내려갈 때 앞발 무릎이 자꾸 안쪽으로 꺾여요 (Knee Valgus)",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 중둔근(골반 외전근)이 체중을 버티지 못해 약해지면, 강력한 내전근 그룹이 무릎을 안쪽으로 강제로 끌고 들어옵니다. 이는 전방십자인대(ACL)에 막대한 부하를 줍니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 외발 서기(Single leg stance) 시 골반이 무너지거나 무릎이 내전되는 보상 작용 관찰",
-      "mmt_details": [
-        {
-          "muscle": "중둔근 (Gluteus Medius)",
-          "position": "1. 자세: 측와위에서 위쪽 다리를 벌리고 약간 뒤로 보낸다.",
-          "fixation": "2. 고정: 골반이 뒤로 눕지 않게 고정.",
-          "test": "3. 검사: 대퇴부 하단을 바닥 방향으로 누르며 버티게 한다."
-        },
-        {
-          "muscle": "장/단내전근 (Adductors)",
-          "position": "1. 자세: Supine에서 다리를 안으로 모은다.",
-          "fixation": "2. 고정: 반대쪽 골반 고정.",
-          "test": "3. 검사: 무릎 내측을 바깥으로 밀어내며 내전근 단축을 확인한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "중둔근 (Gluteus Medius)",
-        "origin": "Outer surface of ilium",
-        "insertion": "Greater trochanter",
-        "action": "Hip abduction, Stabilization",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "내전근 그룹 (Adductor Complex)",
-        "origin": "Pubis",
-        "insertion": "Linea aspera of femur",
-        "action": "Hip adduction",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "내전근 PIR: 나비 자세로 눕혀 허벅지를 벌리고, 환자가 무릎을 오므리는 힘(20%)을 내면 치료사가 버티며 7초 후 무릎을 더 바닥으로 누릅니다.",
-      "prt": "서혜부 안쪽 내전근 기시부를 압박하고 고관절을 굴곡/내전시켜 느슨하게 한 뒤 90초 유지합니다."
-    },
-    "red_flag": "무릎이 안으로 꺾일 때 무릎 내측(MCL)이나 슬개골 하단에서 '뚝' 소리와 함께 예리한 통증이 발생하면 인대/반월상연골 손상 주의.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[바벨 로우] 날개뼈가 잘 안 모이고 팔꿈치나 이두근만 과하게 펌핑돼요",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 능형근과 중부승모근이 날개뼈를 척추 쪽으로 당겨주지 못하면, 바벨을 끌어올리기 위해 상완이두근과 후면 삼각근이 메인 동력원으로 쓰이면서 팔만 아프게 됩니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 능동적 견갑골 후인(Retraction) 시 능형근의 쥐내림 여부와 이두근의 보상적 수축 관찰",
-      "mmt_details": [
-        {
-          "muscle": "능형근 (Rhomboids)",
-          "position": "1. 자세: 앉은 자세에서 열중쉬어 후 날개뼈를 뒤로 모은다.",
-          "fixation": "2. 고정: 반대쪽 어깨 고정.",
-          "test": "3. 검사: 팔꿈치를 앞쪽으로 잡아당기며 날개뼈가 벌어지는지 테스트한다."
-        },
-        {
-          "muscle": "상완이두근 (Biceps Brachii)",
-          "position": "1. 자세: 팔꿈치를 90도 굽히고 손바닥을 위로 한다.",
-          "fixation": "2. 고정: 팔꿈치 밑을 고정.",
-          "test": "3. 검사: 손목을 눌러 신전시키며 이두근의 과긴장을 체크한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "능형근 (Rhomboids)",
-        "origin": "Spinous processes C7-T5",
-        "insertion": "Medial border of scapula",
-        "action": "Scapular retraction",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "상완이두근 (Biceps Brachii)",
-        "origin": "Scapula (Coracoid, Supraglenoid)",
-        "insertion": "Radial tuberosity",
-        "action": "Elbow flexion",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "능형근 활성화: 날개뼈를 뒤로 모은 상태에서 치료사가 날개뼈를 바깥으로 벌리려 하고, 환자는 20% 힘으로 버티게 하여 근육을 깨웁니다.",
-      "prt": "상완이두근의 단단한 근복을 핀칭 후, 팔꿈치와 어깨를 굽혀(Slacked) 90초 유지합니다."
-    },
-    "red_flag": "이두근 건염이 심한 상태에서 무거운 로우 동작을 반복하면 건 파열(Biceps Tear)의 위험이 있습니다.",
-    "category": "🏋️‍♂️ 웨이트 트레이닝 기능 손상"
-  },
-  {
-    "symptom": "[아침 기상 시] 침대에서 첫 발을 디딜 때 발바닥과 뒤꿈치가 찢어질 듯 아파요 (족저근막염 패턴)",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 수면 중에는 발목이 펴져(Plantar flexion) 종아리와 족저근막이 짧아진 채 굳습니다. 아침에 체중을 싣는 순간 굳어있던 단축된 근막이 강제로 찢어지며 극심한 통증을 유발합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 족지 굴곡/신전 시 발바닥 근막의 텐션 확인, 비복근 등척성 수축 시 과긴장 확인",
-      "mmt_details": [
-        {
-          "muscle": "가자미근 (Soleus)",
-          "position": "1. 자세: Prone에서 무릎을 90도 굽히고 발목을 저측굴곡 한다.",
-          "fixation": "2. 고정: 정강이를 바닥에 단단히 고정한다.",
-          "test": "3. 검사: 발바닥을 배측굴곡 방향으로 꺾어 누르며 강하게 저항을 준다."
-        },
-        {
-          "muscle": "족저근막/단지굴근 (Plantar Fascia / Flexor Digitorum Brevis)",
-          "position": "1. 자세: 발가락을 위로 최대한 꺾는다 (Windlass Test).",
-          "fixation": "2. 고정: 발뒤꿈치를 고정한다.",
-          "test": "3. 검사: 족저근막 띠가 팽팽해질 때 발뒤꿈치 종골 부착부에 통증이 유발되는지 확인한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "가자미근/비복근 (Soleus/Gastrocnemius)",
-        "origin": "Tibia, Fibula, Femur",
-        "insertion": "Calcaneus (Achilles tendon)",
-        "action": "Plantar flexion",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "후경골근 (Tibialis Posterior)",
-        "origin": "Posterior Tibia/Fibula",
-        "insertion": "Navicular, Cuneiform",
-        "action": "Inversion, Supports arch",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "비복근/가자미근 PIR: 발목을 위로 꺾은(Dorsiflexion) 상태에서 환자가 페달을 밟듯 20%의 힘을 내고 7초 후 스트레칭 범위를 늘립니다.",
-      "prt": "종아리 하단(아킬레스건 이행부)의 압통점을 누르고, 무릎을 굽히고 발목을 펴서 텐션을 완전히 뺀 후 90초 유지합니다."
-    },
-    "red_flag": "단순 근막염이 아닌 종골 골극(Heel Spur)이 뼈에 자라난 상태라면 수기요법만으로 근본 해결이 어려울 수 있습니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[계단/등산] 내리막을 걸을 때 무릎 바깥쪽에서 뚝뚝 소리가 나고 시큰거려요 (장경인대 증후군)",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 대퇴근막장근(TFL)과 대둔근의 불균형으로 장경인대(IT Band)가 뻣뻣해지면, 무릎이 30도 굽혀질 때마다 인대가 대퇴골 외측상과를 긁고 넘어가며 마찰과 염증을 발생시킵니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): Ober Test 자세에서 IT Band의 물리적 단축 확인",
-      "mmt_details": [
-        {
-          "muscle": "대퇴근막장근 (TFL)",
-          "position": "1. 자세: Supine에서 다리를 살짝 들고 벌리며 안쪽으로 돌린다.",
-          "fixation": "2. 고정: 반대쪽 골반 고정.",
-          "test": "3. 검사: 다리를 안으로 밀어넣으면서 밑으로 누른다."
-        },
-        {
-          "muscle": "외측광근 (Vastus Lateralis)",
-          "position": "1. 자세: 앉아서 무릎을 편다.",
-          "fixation": "2. 고정: 대퇴부 고정.",
-          "test": "3. 검사: 발목을 눌러 무릎을 굽히게 하며 외측 대퇴부의 뻣뻣함을 평가한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "대퇴근막장근 (TFL) & IT Band",
-        "origin": "ASIS",
-        "insertion": "Lateral condyle of tibia (Gerdy's tubercle)",
-        "action": "Hip abduction, flexion, internal rotation",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "중둔근 (Gluteus Medius)",
-        "origin": "Outer ilium",
-        "insertion": "Greater trochanter",
-        "action": "Hip abduction",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "TFL RI: 다리를 모아 바닥으로 늘려놓고, 환자에게 다리를 바깥/위로 벌리는 힘을 내게 하여 길항근(중둔근)을 수축시킴으로써 TFL을 이완합니다.",
-      "prt": "골반 옆 TFL 근복을 강하게 압박하고 고관절을 외전/굴곡시켜 인대가 가장 느슨해지는 각도에서 90초 유지합니다."
-    },
-    "red_flag": "무릎 바깥쪽 관절선(Joint line) 자체를 누를 때 극심한 통증이 있다면 외측 반월상 연골판 손상일 수 있습니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[장시간 PC 업무] 등 뒤쪽에 살이 붙은 것처럼 튀어나오고 화끈거려요 (버섯증후군/Dowager's Hump)",
-    "image_url": "assets/images/neck.png",
-    "clinical_insight": "💡 임상 메커니즘: 거북목이 심화되어 하부 경추(C7)와 상부 흉추(T1)가 과도하게 꺾이면, 인체는 척추를 보호하기 위해 해당 부위에 지방과 결합조직을 쌓아 단단한 버섯 모양의 패드를 만듭니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 경추 굴곡 시 C7-T1 분절에서 유연성이 없고 통째로 움직이는지 관찰",
-      "mmt_details": [
-        {
-          "muscle": "하부경추/상부흉추 기립근",
-          "position": "1. 자세: 앉아서 고개를 최대한 숙인다 (Chin to chest).",
-          "fixation": "2. 고정: 흉곽 상단을 고정한다.",
-          "test": "3. 검사: 후두하근과 능형근의 팽팽함, C7 주변의 뻐근한 통증 유발 여부를 체크한다."
-        },
-        {
-          "muscle": "심부경추굴곡근 (Deep Cervical Flexors)",
-          "position": "1. 자세: Supine에서 턱을 당긴 채 고개를 바닥에서 2cm만 든다.",
-          "fixation": "2. 고정: 없음.",
-          "test": "3. 검사: 10초 이상 버티지 못하고 턱이 들리면 심부근 약화(Phasic) 확진."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "후두하근 / 판상근 (Suboccipitals / Splenius)",
-        "origin": "Upper cervical / Lower cervical",
-        "insertion": "Occiput / Upper cervical",
-        "action": "Neck extension",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "심부경추굴곡근 (Deep Cervical Flexors)",
-        "origin": "Anterior cervical spine",
-        "insertion": "Anterior cervical spine, Occiput",
-        "action": "Neck flexion (Chin tuck)",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "판상근/경추기립근 PIR: 턱을 당겨 고개를 굽힌 후, 환자가 뒤로 젖히려는 힘(20%)에 대항해 7초 버티고, 10초간 고개를 더 굽힙니다.",
-      "prt": "버섯증후군 주위(C7)의 굳은 연부조직을 핀칭 후, 고개를 살짝 신전시켜 살이 말랑해지는 각도에서 90초 지그시 압박합니다."
-    },
-    "red_flag": "단순 지방 침착이 아닌 골다공증에 의한 압박골절로 척추 뼈 자체가 굽은 경우, 강한 압박은 골절을 악화시킬 수 있습니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[키보드/마우스] 팔꿈치 바깥쪽부터 손등, 손목까지 뻐근하고 찌릿해요 (테니스 엘보 패턴)",
-    "image_url": "assets/images/shoulder.png",
-    "clinical_insight": "💡 임상 메커니즘: 키보드 타건과 마우스 클릭을 위해 손목 신전근(손등을 젖히는 근육)이 하루 종일 긴장하면, 이 근육들이 모여 붙는 팔꿈치 바깥쪽(외상과) 뼈 부착부에 지속적인 견인력이 가해져 염증이 발생합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 손목 신전 등척성 수축 시 외상과 부위의 통증 유발 확인 (Cozen's Test 양상)",
-      "mmt_details": [
-        {
-          "muscle": "장/단요측수근신근 (ECRL / ECRB)",
-          "position": "1. 자세: 팔꿈치를 90도 굽히고 손등이 위로 향하게 한 뒤 손목을 젖힌다.",
-          "fixation": "2. 고정: 전완부(팔뚝)를 고정한다.",
-          "test": "3. 검사: 주먹 쥔 손등을 바닥 쪽으로 꺾어 내리며 버티게 한다."
-        },
-        {
-          "muscle": "수지신근 (Extensor Digitorum)",
-          "position": "1. 자세: 손가락들을 곧게 편다.",
-          "fixation": "2. 고정: 손목을 고정한다.",
-          "test": "3. 검사: 중지(가운데 손가락)를 누르며 버티게 할 때 팔꿈치에 통증이 오는지 확인한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "수근신근 그룹 (Wrist Extensors)",
-        "origin": "Lateral epicondyle of humerus",
-        "insertion": "Base of metacarpals",
-        "action": "Wrist extension",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "수근굴근 그룹 (Wrist Flexors)",
-        "origin": "Medial epicondyle of humerus",
-        "insertion": "Carpals, Metacarpals",
-        "action": "Wrist flexion",
-        "type": "Phasic (강화 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "수근신근 PIR: 팔꿈치를 펴고 손목을 아래로 꺾어(스트레칭) 텐션을 잡은 뒤, 환자가 위로 올리려는 힘(20%)에 대항해 7초 버티고 더 꺾어줍니다.",
-      "prt": "팔꿈치 바깥쪽 외상과에서 2cm 아래 가장 뭉친 근복을 누르고, 손목을 뒤로 젖혀 텐션을 풀어준 상태로 90초 유지합니다."
-    },
-    "red_flag": "팔꿈치가 붓고 열감이 있으며 가만히 있어도 욱신거린다면 급성 염증기이므로 스트레칭과 마사지를 절대 금지해야 합니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[오래 서있기] 배가 앞으로 튀어나오고 허리가 뒤로 과하게 꺾이는 체형이에요 (Sway Back)",
-    "image_url": "assets/images/lumbar.png",
-    "clinical_insight": "💡 임상 메커니즘: 코어(복직근/외복사근)와 둔근이 완전히 힘을 잃으면, 뼈와 인대에 체중을 걸쳐서 서게 됩니다. 이로 인해 골반은 앞으로 밀려나가고 흉추는 뒤로 굽는 스웨이백(Sway Back) 체형이 고착화됩니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 엎드려 다리 들기 시 둔근 약화, 바로 누워 상체 말아 올리기 시 복근 떨림/약화 관찰",
-      "mmt_details": [
-        {
-          "muscle": "복직근 (Rectus Abdominis)",
-          "position": "1. 자세: Supine에서 무릎을 굽히고 어깨가 바닥에서 떨어지도록 상체를 만다(Crunch).",
-          "fixation": "2. 고정: 발을 고정한다.",
-          "test": "3. 검사: 가슴에 손을 얹고 바닥 쪽으로 누르며 버티게 한다."
-        },
-        {
-          "muscle": "슬괵근 / 햄스트링 (Hamstrings)",
-          "position": "1. 자세: Prone에서 무릎을 살짝 굽힌다.",
-          "fixation": "2. 고정: 골반 고정.",
-          "test": "3. 검사: 무릎을 펴는 방향으로 누르며 햄스트링의 과활성화 여부를 평가한다 (Sway back은 햄스트링이 Tonic 함)."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "복부 근육군 (Abdominals)",
-        "origin": "Pubic crest, Ribs",
-        "insertion": "Ribs, Linea alba, Pelvis",
-        "action": "Trunk flexion",
-        "type": "Phasic (강화 대상)"
-      },
-      {
-        "name": "햄스트링 (Hamstrings)",
-        "origin": "Ischial tuberosity",
-        "insertion": "Tibia, Fibula",
-        "action": "Hip extension",
-        "type": "Tonic (과긴장 상태)"
-      }
-    ],
-    "manual_technique": {
-      "met": "햄스트링 PIR: 다리를 들어 올려 텐션을 잡고, 환자가 바닥으로 내리려는 힘(20%)에 저항 후 다리를 머리 쪽으로 더 늘려줍니다.",
-      "prt": "좌골결절(엉덩이 밑 뼈) 주변 햄스트링 기시부를 압박하고, 무릎을 굽혀 느슨하게 한 뒤 90초 유지합니다."
-    },
-    "red_flag": "서 있을 때 허리 통증을 넘어 다리 전체로 터질 듯한 저림(파행)이 발생하면 척추관 협착증이 심화된 상태일 수 있습니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[장시간 운전/앉기] 엉덩이 깊은 곳부터 허벅지 뒤쪽을 타고 다리까지 저려요 (이상근 증후군 패턴)",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 장시간 앉아 있으면 이상근(Piriformis)이 굳어지며 두꺼워집니다. 이상근 바로 밑을 지나가는 좌골신경(Sciatic Nerve)이 이 두꺼워진 근육에 짓눌려 허리 디스크와 유사한 극심한 저림을 유발합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 고관절 내/외회전 시 이상근의 경련성 통증 및 방사통 재현 여부 확인 (FAIR Test)",
-      "mmt_details": [
-        {
-          "muscle": "이상근 (Piriformis)",
-          "position": "1. 자세: Prone 자세에서 무릎을 90도 굽히고 다리를 바깥으로 기울인다 (고관절 내회전 상태).",
-          "fixation": "2. 고정: 검사하는 쪽 골반을 고정한다.",
-          "test": "3. 검사: 발목 내측을 잡고 밖으로(고관절 외회전 방향) 밀어내며 버티게 한다."
-        },
-        {
-          "muscle": "대둔근 (Gluteus Maximus)",
-          "position": "1. 자세: Prone에서 무릎을 굽히고 다리를 천장으로 든다.",
-          "fixation": "2. 고정: 골반 고정.",
-          "test": "3. 검사: 대둔근 약화 시 이상근이 외회전/신전을 대신하려다 과부하가 걸리는지 파악."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "이상근 (Piriformis)",
-        "origin": "Anterior surface of sacrum",
-        "insertion": "Greater trochanter of femur",
-        "action": "Hip external rotation, Abduction",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "쌍자근/폐쇄근 (Gemellus/Obturator)",
-        "origin": "Ischium, Pelvis",
-        "insertion": "Greater trochanter",
-        "action": "Hip external rotation",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "이상근 PIR: Supine에서 무릎을 가슴으로 당기고 반대쪽 어깨 방향으로 꺾은(FAIR) 상태에서, 환자가 무릎을 밖으로 벌리려는 힘(20%)에 7초 저항 후 안으로 더 늘립니다.",
-      "prt": "엉덩이 한가운데 깊은 곳(이상근 트리거포인트)을 팔꿈치나 엄지로 핀칭 후, 다리를 바깥으로 돌려(외회전) 통증이 사라지면 90초 유지합니다."
-    },
-    "red_flag": "수기요법 중 다리 저림이 폭발적으로 심해진다면, 단순 근육 뭉침이 아니라 요추 디스크 탈출증에 의한 진짜 좌골신경통일 수 있습니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[달리기/빠른 걷기] 조금만 뛰어도 정강이 앞쪽 뼈를 따라 터질 듯이 아파요 (Shin Splints 양상)",
-    "image_url": "assets/images/leg.png",
-    "clinical_insight": "💡 임상 메커니즘: 뒤꿈치로 강하게 착지할 때, 전경골근이 발목이 쾅 떨어지지 않게 브레이크(신장성 수축)를 겁니다. 이 근육이 피로해지면 정강이 뼈(경골)에 붙은 골막을 지속적으로 잡아당겨 골막염(Shin Splints)을 유발합니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 족관절 배측굴곡(발목 젖힘) 후 등척성 수축 시 정강이 앞쪽으로 예리한 통증 유발 여부 확인",
-      "mmt_details": [
-        {
-          "muscle": "전경골근 (Tibialis Anterior)",
-          "position": "1. 자세: Supine에서 다리를 펴고 발목을 내번+배측굴곡 한다.",
-          "fixation": "2. 고정: 종아리 하단을 고정한다.",
-          "test": "3. 검사: 발등 안쪽을 누르며 외번+저측굴곡 방향으로 강하게 꺾어 저항한다."
-        },
-        {
-          "muscle": "장지신근 (Extensor Digitorum Longus)",
-          "position": "1. 자세: 발가락을 위로 편다.",
-          "fixation": "2. 고정: 발등을 고정한다.",
-          "test": "3. 검사: 발가락 윗면을 눌러 발가락이 버틸 수 있는지 체크한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "전경골근 (Tibialis Anterior)",
-        "origin": "Lateral condyle/shaft of tibia",
-        "insertion": "First cuneiform, 1st metatarsal",
-        "action": "Ankle dorsiflexion, Inversion",
-        "type": "Tonic (염증기에는 과활성, 평소엔 Phasic)"
-      },
-      {
-        "name": "비복근/가자미근 (Calf muscles)",
-        "origin": "Femur, Tibia, Fibula",
-        "insertion": "Calcaneus",
-        "action": "Ankle plantar flexion",
-        "type": "Tonic (이완 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "전경골근 PIR: 발목을 저측굴곡 시켜 정강이를 늘린 뒤, 환자가 위로 젖히려는 힘(20%)에 7초간 저항하고 범위를 더 늘려줍니다.",
-      "prt": "정강이 뼈 바로 바깥쪽 근복을 핀칭 후, 발목을 위로 젖혀 근육을 짧게 만들어 통증이 사라지는 각도에서 90초 유지합니다."
-    },
-    "red_flag": "정강이 뼈 특정 부위에 콕 찌르는 듯한 극심한 점 통증(Point tenderness)이 있다면 피로 골절(Stress Fracture)일 수 있으므로 즉각 운동을 중지합니다.",
-    "category": "💼 일상생활 만성 증후군"
-  },
-  {
-    "symptom": "[스마트폰 사용] 턱 관절이 뻐근하고 목 앞쪽이 꽉 막혀 목소리가 잘 안 나와요",
-    "image_url": "assets/images/neck.png",
-    "clinical_insight": "💡 임상 메커니즘: 스마트폰을 보며 고개를 푹 숙이면 목 앞쪽의 흉쇄유돌근(SCM)과 사각근이 극도로 짧아집니다. 이 근육들이 굳으면 턱뼈를 아래로 끌어당겨 턱관절 통증을 유발하고, 기도/식도 주변 근막을 옥죄어 답답함을 만듭니다.",
-    "assessment": {
-      "mrt": "MRT (2-2-2 Rule): 목의 굴곡 및 회전 시 SCM의 밧줄 같은 띠(Taut band)가 튀어나오며 통증 유발 여부 확인",
-      "mmt_details": [
-        {
-          "muscle": "흉쇄유돌근 (Sternocleidomastoid)",
-          "position": "1. 자세: Supine에서 고개를 반대쪽으로 돌리고 살짝 든다.",
-          "fixation": "2. 고정: 흉곽 상단을 가볍게 고정한다.",
-          "test": "3. 검사: 이마(측두골)를 대각선 뒤쪽 바닥 방향으로 누르며 버티게 한다."
-        },
-        {
-          "muscle": "광경근/설골근군 (Platysma / Hyoid muscles)",
-          "position": "1. 자세: 입을 살짝 벌리고 아래턱을 내민다.",
-          "fixation": "2. 고정: 없음.",
-          "test": "3. 검사: 목 앞쪽 피부와 얇은 근육층의 뻣뻣함을 시각 및 촉각으로 평가한다."
-        }
-      ]
-    },
-    "involved_muscles": [
-      {
-        "name": "흉쇄유돌근 (SCM)",
-        "origin": "Sternum, Clavicle",
-        "insertion": "Mastoid process",
-        "action": "Neck flexion, Contralateral rotation",
-        "type": "Tonic (이완 대상)"
-      },
-      {
-        "name": "교근 (Masseter - 턱관절 연관)",
-        "origin": "Zygomatic arch",
-        "insertion": "Angle of mandible",
-        "action": "Closes jaw (Chewing)",
-        "type": "Tonic (과긴장 대상)"
-      }
-    ],
-    "manual_technique": {
-      "met": "SCM PIR: 고개를 반대로 돌리고 신전시켜 SCM을 길게 늘린 후, 환자가 제자리로 돌아오려는 힘(10%)에 대항해 7초 버티고 더 늘려줍니다.",
-      "prt": "SCM의 가장 뭉친 부위를 부드럽게 핀칭 후, 고개를 같은 쪽으로 돌려 근육을 완전히 느슨하게 만든 채 90초 유지합니다."
-    },
-    "red_flag": "목 앞쪽 마사지 중 경동맥(Carotid Artery)을 강하게 압박하면 혈압 저하로 기절할 수 있으므로 맥박이 뛰는 곳은 절대 강하게 누르지 않습니다.",
-    "category": "💼 일상생활 만성 증후군"
+    ]
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = manualDataTree;
+}
